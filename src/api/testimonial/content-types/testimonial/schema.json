@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "testimonials",
+  "info": {
+    "singularName": "testimonial",
+    "pluralName": "testimonials",
+    "displayName": "testimonial",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "commentBy": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "colleges": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::college.college",
+      "inversedBy": "testimonial"
+    },
+    "year": {
+      "type": "date",
+      "required": true
+    },
+    "testimonial": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

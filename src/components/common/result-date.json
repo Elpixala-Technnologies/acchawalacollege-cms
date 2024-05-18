@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_common_result_dates",
+  "info": {
+    "displayName": "resultDate"
+  },
+  "options": {},
+  "attributes": {
+    "startDate": {
+      "type": "date"
+    },
+    "endDate": {
+      "type": "date"
+    }
+  }
+}

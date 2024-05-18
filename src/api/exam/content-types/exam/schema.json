@@ -1,0 +1,102 @@
+{
+  "kind": "collectionType",
+  "collectionName": "exams",
+  "info": {
+    "singularName": "exam",
+    "pluralName": "exams",
+    "displayName": "exam",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "banner": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "streams": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::stream.stream",
+      "inversedBy": "exams"
+    },
+    "navbars": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::navbar.navbar",
+      "inversedBy": "exams"
+    },
+    "applicationDate": {
+      "displayName": "applicationDate",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.application-date"
+    },
+    "resultDate": {
+      "displayName": "resultDate",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.result-date"
+    },
+    "news": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::new.new",
+      "mappedBy": "exams"
+    },
+    "isFeaturedExam": {
+      "type": "boolean",
+      "default": false
+    },
+    "examMode": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::exam-mode.exam-mode",
+      "inversedBy": "exams"
+    },
+    "examLevel": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::exam-level.exam-level",
+      "inversedBy": "exams"
+    },
+    "url": {
+      "type": "string",
+      "unique": true
+    },
+    "user_forms": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::user-form.user-form",
+      "mappedBy": "exam"
+    },
+    "pageData": {
+      "type": "dynamiczone",
+      "components": [
+        "common.gallery",
+        "common.tab-data",
+        "common.faq"
+      ]
+    }
+  }
+}

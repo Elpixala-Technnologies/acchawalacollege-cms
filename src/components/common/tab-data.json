@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_common_tab_data",
+  "info": {
+    "displayName": "tabData"
+  },
+  "options": {},
+  "attributes": {
+    "heading": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_common_dislikes",
+  "info": {
+    "displayName": "dislikes"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

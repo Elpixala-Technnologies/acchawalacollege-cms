@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "popular_companies",
+  "info": {
+    "singularName": "popular-company",
+    "pluralName": "popular-companies",
+    "displayName": "popular_company"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "company_name": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "company_description": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "required": true,
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "colleges": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::college.college",
+      "inversedBy": "popular_company"
+    },
+    "college": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::college.college",
+      "mappedBy": "popular_companies"
+    }
+  }
+}

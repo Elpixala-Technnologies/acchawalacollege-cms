@@ -1,0 +1,212 @@
+{
+  "kind": "collectionType",
+  "collectionName": "colleges",
+  "info": {
+    "singularName": "college",
+    "pluralName": "colleges",
+    "displayName": "college",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "college_url": {
+      "type": "uid",
+      "required": true
+    },
+    "banner": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "is_top": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "page_data": {
+      "type": "dynamiczone",
+      "components": [
+        "common.gallery",
+        "common.faq",
+        "common.new-overview",
+        "common.banner-component",
+        "common.recommended-college"
+      ]
+    },
+    "pin_code": {
+      "type": "integer",
+      "required": true
+    },
+    "approved_by": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::organisation.organisation",
+      "inversedBy": "colleges"
+    },
+    "streams": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::stream.stream",
+      "inversedBy": "college_names"
+    },
+    "city": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::city.city",
+      "inversedBy": "college"
+    },
+    "country": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::country.country",
+      "inversedBy": "colleges"
+    },
+    "ranking_by": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::ranking-body.ranking-body",
+      "mappedBy": "colleges"
+    },
+    "courses": {
+      "type": "component",
+      "repeatable": true,
+      "component": "course.course"
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "seo.seo"
+    },
+    "college_name": {
+      "type": "string",
+      "required": true
+    },
+    "news": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::new.new",
+      "mappedBy": "colleges"
+    },
+    "dawonload_brochure": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "college_title": {
+      "type": "text",
+      "required": true
+    },
+    "review_component": {
+      "displayName": "review_component",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.review-component",
+      "required": true
+    },
+    "popular_companies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::popular-company.popular-company",
+      "inversedBy": "college"
+    },
+    "discussion_forums": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::discussion-forum.discussion-forum",
+      "inversedBy": "colleges"
+    },
+    "scholarships": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::scholarship.scholarship",
+      "inversedBy": "colleges"
+    },
+    "user_forms": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::user-form.user-form",
+      "mappedBy": "colleges"
+    },
+    "testimonials": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::testimonial.testimonial",
+      "inversedBy": "colleges"
+    },
+    "is_featured": {
+      "type": "boolean",
+      "default": false
+    },
+    "gallery": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "states": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::state.state",
+      "inversedBy": "colleges"
+    },
+    "specializations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::specialization.specialization",
+      "mappedBy": "news"
+    },
+    "popular_company": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::popular-company.popular-company",
+      "mappedBy": "colleges"
+    },
+    "testimonial": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::testimonial.testimonial",
+      "mappedBy": "colleges"
+    },
+    "blogs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::blog.blog",
+      "inversedBy": "colleges"
+    },
+    "blog": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::blog.blog",
+      "inversedBy": "colleges"
+    }
+  }
+}

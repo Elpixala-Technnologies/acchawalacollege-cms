@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "discussion_forums",
+  "info": {
+    "singularName": "discussion-forum",
+    "pluralName": "discussion-forums",
+    "displayName": "discussion_forum"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "discussion_forum_title": {
+      "type": "string",
+      "required": true
+    },
+    "colleges": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::college.college",
+      "mappedBy": "discussion_forums"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "countries",
+  "info": {
+    "singularName": "country",
+    "pluralName": "countries",
+    "displayName": "country",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "states": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::state.state",
+      "mappedBy": "country"
+    },
+    "name": {
+      "type": "string"
+    },
+    "colleges": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::college.college",
+      "mappedBy": "country"
+    },
+    "user_form": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::user-form.user-form",
+      "mappedBy": "country"
+    }
+  }
+}

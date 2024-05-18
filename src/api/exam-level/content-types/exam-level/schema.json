@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "exam_levels",
+  "info": {
+    "singularName": "exam-level",
+    "pluralName": "exam-levels",
+    "displayName": "examLevel",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "exams": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::exam.exam",
+      "mappedBy": "examLevel"
+    }
+  }
+}

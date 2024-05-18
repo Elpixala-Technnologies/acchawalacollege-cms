@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_course_courses",
+  "info": {
+    "displayName": "Course",
+    "icon": "seed",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "course_name": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::course.course"
+    },
+    "exam_accepted": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::exam.exam"
+    },
+    "specializations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::specialization.specialization"
+    },
+    "course_fee": {
+      "type": "biginteger"
+    },
+    "course_lebel": {
+      "type": "string"
+    }
+  }
+}

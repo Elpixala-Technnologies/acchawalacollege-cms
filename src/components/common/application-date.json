@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_common_application_dates",
+  "info": {
+    "displayName": "applicationDate"
+  },
+  "options": {},
+  "attributes": {
+    "startDate": {
+      "type": "date"
+    },
+    "endDate": {
+      "type": "date"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_course_addcourses",
+  "info": {
+    "displayName": "courses",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "section": {
+      "type": "text"
+    }
+  }
+}

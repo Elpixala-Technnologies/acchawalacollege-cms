@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "users_meta_datas",
+  "info": {
+    "singularName": "users-meta-data",
+    "pluralName": "users-meta-datas",
+    "displayName": "users_meta_data"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "gender": {
+      "type": "string"
+    },
+    "number": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "user_datum": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::user-data.user-data",
+      "mappedBy": "users_meta_datum"
+    },
+    "courseInterested": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course.course",
+      "mappedBy": "users_meta_datum"
+    }
+  }
+}

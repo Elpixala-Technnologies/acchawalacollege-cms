@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_common_recommended_exams",
+  "info": {
+    "displayName": "recommended_exams"
+  },
+  "options": {},
+  "attributes": {
+    "exams": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::exam.exam"
+    }
+  }
+}

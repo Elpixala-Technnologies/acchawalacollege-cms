@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ranking_bodies",
+  "info": {
+    "singularName": "ranking-body",
+    "pluralName": "ranking-bodies",
+    "displayName": "ranking_body"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "ranking_body_name": {
+      "type": "string",
+      "required": true
+    },
+    "ranking_body_logo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    },
+    "content_writer": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "required": true,
+      "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "colleges": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::college.college",
+      "inversedBy": "ranking_by"
+    },
+    "college": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course.course",
+      "mappedBy": "ranked_by"
+    }
+  }
+}
