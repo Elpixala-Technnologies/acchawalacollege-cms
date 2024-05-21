@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "exam_level_name": {
       "type": "string"
     },
     "exams": {

@@ -18,7 +18,7 @@
       "target": "api::state.state",
       "mappedBy": "country"
     },
-    "name": {
+    "country_name": {
       "type": "string"
     },
     "colleges": {
@@ -27,10 +27,16 @@
       "target": "api::college.college",
       "mappedBy": "country"
     },
-    "user_form": {
+    "blog": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::user-form.user-form",
+      "relation": "manyToMany",
+      "target": "api::blog.blog",
+      "inversedBy": "countries"
+    },
+    "scholarships": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::scholarship.scholarship",
       "mappedBy": "country"
     }
   }

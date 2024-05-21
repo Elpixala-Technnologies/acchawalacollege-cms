@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "levelName": {
+    "course_level_name": {
       "type": "string"
     },
     "courses": {

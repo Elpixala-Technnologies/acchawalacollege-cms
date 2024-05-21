@@ -13,7 +13,7 @@
   "pluginOptions": {},
   "attributes": {
     "city_name": {
-      "type": "uid",
+      "type": "string",
       "required": true
     },
     "college": {
@@ -27,12 +27,6 @@
       "relation": "manyToOne",
       "target": "api::state.state",
       "inversedBy": "cities"
-    },
-    "colleges": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::course.course",
-      "mappedBy": "city"
     }
   }
 }

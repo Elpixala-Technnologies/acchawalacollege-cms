@@ -21,7 +21,7 @@
       "options": {
         "preset": "toolbar"
       },
-      "required": true,
+      "required": false,
       "customField": "plugin::ckeditor5.CKEditor"
     },
     "content_for_exams": {
@@ -29,7 +29,7 @@
       "options": {
         "preset": "toolbar"
       },
-      "required": true,
+      "required": false,
       "customField": "plugin::ckeditor5.CKEditor"
     },
     "content_for_courses": {
@@ -40,15 +40,15 @@
       "customField": "plugin::ckeditor5.CKEditor"
     },
     "icon": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true,
-      "required": true
+      ]
     },
     "college_names": {
       "type": "relation",

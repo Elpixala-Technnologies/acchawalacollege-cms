@@ -809,17 +809,12 @@ export interface ApiBlogBlog extends Schema.CollectionType {
         }
       >;
     blog_title: Attribute.String & Attribute.Required;
-    blog_url: Attribute.String & Attribute.Required;
+    blog_url: Attribute.String;
     featured_image: Attribute.Media & Attribute.Required;
     excerpt: Attribute.String & Attribute.Required;
-    seo: Attribute.Component<'seo.seo'>;
+    seo: Attribute.Component<'common.seo'>;
     is_featured: Attribute.Boolean & Attribute.DefaultTo<false>;
     is_top: Attribute.Boolean & Attribute.DefaultTo<false>;
-    colleges: Attribute.Relation<
-      'api::blog.blog',
-      'manyToMany',
-      'api::college.college'
-    >;
     courses: Attribute.Relation<
       'api::blog.blog',
       'manyToMany',
@@ -837,6 +832,16 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       'api::country.country'
     >;
     tags: Attribute.Relation<'api::blog.blog', 'manyToMany', 'api::tag.tag'>;
+    colleges: Attribute.Relation<
+      'api::blog.blog',
+      'manyToMany',
+      'api::college.college'
+    >;
+    scholarship: Attribute.Relation<
+      'api::blog.blog',
+      'manyToMany',
+      'api::scholarship.scholarship'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -859,7 +864,7 @@ export interface ApiCityCity extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    city_name: Attribute.UID & Attribute.Required;
+    city_name: Attribute.String & Attribute.Required;
     college: Attribute.Relation<
       'api::city.city',
       'oneToMany',
@@ -869,11 +874,6 @@ export interface ApiCityCity extends Schema.CollectionType {
       'api::city.city',
       'manyToOne',
       'api::state.state'
-    >;
-    colleges: Attribute.Relation<
-      'api::city.city',
-      'oneToMany',
-      'api::course.course'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -897,8 +897,8 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
-    college_url: Attribute.UID & Attribute.Required;
+    college_name: Attribute.String & Attribute.Required;
+    college_url: Attribute.UID;
     banner: Attribute.Media & Attribute.Required;
     logo: Attribute.Media & Attribute.Required;
     is_top: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
@@ -938,22 +938,15 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
       'api::ranking-body.ranking-body'
     >;
     courses: Attribute.Component<'course.course', true>;
-    seo: Attribute.Component<'seo.seo'>;
-    college_name: Attribute.String & Attribute.Required;
+    seo: Attribute.Component<'common.seo'>;
     news: Attribute.Relation<
       'api::college.college',
       'manyToMany',
       'api::new.new'
     >;
     dawonload_brochure: Attribute.Media & Attribute.Required;
-    college_title: Attribute.Text & Attribute.Required;
     review_component: Attribute.Component<'common.review-component'> &
       Attribute.Required;
-    popular_companies: Attribute.Relation<
-      'api::college.college',
-      'manyToMany',
-      'api::popular-company.popular-company'
-    >;
     discussion_forums: Attribute.Relation<
       'api::college.college',
       'manyToMany',
@@ -997,11 +990,6 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
       'api::testimonial.testimonial'
     >;
     blogs: Attribute.Relation<
-      'api::college.college',
-      'manyToMany',
-      'api::blog.blog'
-    >;
-    blog: Attribute.Relation<
       'api::college.college',
       'manyToMany',
       'api::blog.blog'
@@ -1077,16 +1065,21 @@ export interface ApiCountryCountry extends Schema.CollectionType {
       'oneToMany',
       'api::state.state'
     >;
-    name: Attribute.String;
+    country_name: Attribute.String;
     colleges: Attribute.Relation<
       'api::country.country',
       'oneToMany',
       'api::college.college'
     >;
-    user_form: Attribute.Relation<
+    blog: Attribute.Relation<
       'api::country.country',
-      'oneToOne',
-      'api::user-form.user-form'
+      'manyToMany',
+      'api::blog.blog'
+    >;
+    scholarships: Attribute.Relation<
+      'api::country.country',
+      'oneToMany',
+      'api::scholarship.scholarship'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1145,17 +1138,12 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'manyToMany',
       'api::stream.stream'
     >;
-    city: Attribute.Relation<
-      'api::course.course',
-      'manyToOne',
-      'api::city.city'
-    >;
     state: Attribute.Relation<
       'api::course.course',
       'manyToOne',
       'api::state.state'
     >;
-    seo: Attribute.Component<'seo.seo'>;
+    seo: Attribute.Component<'common.seo'>;
     review_component: Attribute.Component<'common.review-component'> &
       Attribute.Required;
     college_type: Attribute.Relation<
@@ -1177,6 +1165,21 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'api::course.course',
       'oneToMany',
       'api::user-form.user-form'
+    >;
+    courseLevels: Attribute.Relation<
+      'api::course.course',
+      'manyToMany',
+      'api::course-level.course-level'
+    >;
+    navbars: Attribute.Relation<
+      'api::course.course',
+      'manyToMany',
+      'api::navbar.navbar'
+    >;
+    blog: Attribute.Relation<
+      'api::course.course',
+      'manyToMany',
+      'api::blog.blog'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1208,7 +1211,7 @@ export interface ApiCourseLevelCourseLevel extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    levelName: Attribute.String;
+    course_level_name: Attribute.String;
     courses: Attribute.Relation<
       'api::course-level.course-level',
       'manyToMany',
@@ -1250,6 +1253,11 @@ export interface ApiDiscussionForumDiscussionForum
       'manyToMany',
       'api::college.college'
     >;
+    scholarships: Attribute.Relation<
+      'api::discussion-forum.discussion-forum',
+      'manyToMany',
+      'api::scholarship.scholarship'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1280,8 +1288,8 @@ export interface ApiExamExam extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
-    title: Attribute.String;
+    exam_name: Attribute.String;
+    exam_title: Attribute.String;
     logo: Attribute.Media;
     banner: Attribute.Media;
     streams: Attribute.Relation<
@@ -1317,6 +1325,7 @@ export interface ApiExamExam extends Schema.CollectionType {
     pageData: Attribute.DynamicZone<
       ['common.gallery', 'common.tab-data', 'common.faq']
     >;
+    blog: Attribute.Relation<'api::exam.exam', 'manyToMany', 'api::blog.blog'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1339,7 +1348,7 @@ export interface ApiExamLevelExamLevel extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String;
+    exam_level_name: Attribute.String;
     exams: Attribute.Relation<
       'api::exam-level.exam-level',
       'manyToMany',
@@ -1375,7 +1384,7 @@ export interface ApiExamModeExamMode extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    mode: Attribute.String;
+    exam_mode: Attribute.String;
     exams: Attribute.Relation<
       'api::exam-mode.exam-mode',
       'oneToMany',
@@ -1405,6 +1414,7 @@ export interface ApiNavbarNavbar extends Schema.CollectionType {
     singularName: 'navbar';
     pluralName: 'navbars';
     displayName: 'navbar';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1456,8 +1466,9 @@ export interface ApiNewNew extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    name: Attribute.String & Attribute.Required;
     content: Attribute.RichText &
+      Attribute.Required &
       Attribute.CustomField<
         'plugin::ckeditor5.CKEditor',
         {
@@ -1489,6 +1500,13 @@ export interface ApiNewNew extends Schema.CollectionType {
       'api::new.new',
       'manyToMany',
       'api::specialization.specialization'
+    >;
+    type: Attribute.Enumeration<['blog', 'news']> & Attribute.Required;
+    seo: Attribute.Component<'common.seo'>;
+    scholarships: Attribute.Relation<
+      'api::new.new',
+      'manyToMany',
+      'api::scholarship.scholarship'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1560,6 +1578,11 @@ export interface ApiOrganisationOrganisation extends Schema.CollectionType {
       'manyToMany',
       'api::course.course'
     >;
+    scholarships: Attribute.Relation<
+      'api::organisation.organisation',
+      'oneToMany',
+      'api::scholarship.scholarship'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1584,6 +1607,7 @@ export interface ApiPopularCompanyPopularCompany extends Schema.CollectionType {
     singularName: 'popular-company';
     pluralName: 'popular-companies';
     displayName: 'popular_company';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1600,11 +1624,6 @@ export interface ApiPopularCompanyPopularCompany extends Schema.CollectionType {
         }
       >;
     colleges: Attribute.Relation<
-      'api::popular-company.popular-company',
-      'manyToMany',
-      'api::college.college'
-    >;
-    college: Attribute.Relation<
       'api::popular-company.popular-company',
       'manyToMany',
       'api::college.college'
@@ -1633,13 +1652,14 @@ export interface ApiRankingBodyRankingBody extends Schema.CollectionType {
     singularName: 'ranking-body';
     pluralName: 'ranking-bodies';
     displayName: 'ranking_body';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     ranking_body_name: Attribute.String & Attribute.Required;
-    ranking_body_logo: Attribute.Media & Attribute.Required;
+    ranking_body_logo: Attribute.Media;
     content_writer: Attribute.RichText &
       Attribute.Required &
       Attribute.CustomField<
@@ -1652,11 +1672,6 @@ export interface ApiRankingBodyRankingBody extends Schema.CollectionType {
       'api::ranking-body.ranking-body',
       'manyToMany',
       'api::college.college'
-    >;
-    college: Attribute.Relation<
-      'api::ranking-body.ranking-body',
-      'manyToMany',
-      'api::course.course'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1682,6 +1697,7 @@ export interface ApiScholarshipScholarship extends Schema.CollectionType {
     singularName: 'scholarship';
     pluralName: 'scholarships';
     displayName: 'scholarship';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1692,6 +1708,68 @@ export interface ApiScholarshipScholarship extends Schema.CollectionType {
       'api::scholarship.scholarship',
       'manyToMany',
       'api::college.college'
+    >;
+    blog: Attribute.Relation<
+      'api::scholarship.scholarship',
+      'manyToMany',
+      'api::blog.blog'
+    >;
+    page_data: Attribute.DynamicZone<
+      [
+        'common.gallery',
+        'common.faq',
+        'common.new-overview',
+        'common.recommended-college',
+        'common.recommended-courses',
+        'common.recommended-exams',
+        'common.banner-component'
+      ]
+    >;
+    banner: Attribute.Media & Attribute.Required;
+    conducted_by: Attribute.Relation<
+      'api::scholarship.scholarship',
+      'manyToOne',
+      'api::organisation.organisation'
+    >;
+    scholarship_title: Attribute.String & Attribute.Required;
+    eligibility: Attribute.String & Attribute.Required;
+    type: Attribute.Relation<
+      'api::scholarship.scholarship',
+      'manyToOne',
+      'api::scholarship-type.scholarship-type'
+    >;
+    number_of_scholarship: Attribute.BigInteger;
+    amount: Attribute.Decimal;
+    is_featured: Attribute.Boolean & Attribute.DefaultTo<false>;
+    scholarship_url: Attribute.String & Attribute.Required;
+    discussion_forums: Attribute.Relation<
+      'api::scholarship.scholarship',
+      'manyToMany',
+      'api::discussion-forum.discussion-forum'
+    >;
+    seo: Attribute.Component<'common.seo'>;
+    user_forms: Attribute.Relation<
+      'api::scholarship.scholarship',
+      'oneToMany',
+      'api::user-form.user-form'
+    >;
+    country: Attribute.Relation<
+      'api::scholarship.scholarship',
+      'manyToOne',
+      'api::country.country'
+    >;
+    is_top: Attribute.Boolean & Attribute.DefaultTo<false>;
+    gallery: Attribute.Media & Attribute.Required;
+    blogs: Attribute.Relation<
+      'api::scholarship.scholarship',
+      'manyToMany',
+      'api::blog.blog'
+    >;
+    review_component: Attribute.Component<'common.review-component', true>;
+    news: Attribute.Relation<
+      'api::scholarship.scholarship',
+      'manyToMany',
+      'api::new.new'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1704,6 +1782,42 @@ export interface ApiScholarshipScholarship extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::scholarship.scholarship',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiScholarshipTypeScholarshipType
+  extends Schema.CollectionType {
+  collectionName: 'scholarship_types';
+  info: {
+    singularName: 'scholarship-type';
+    pluralName: 'scholarship-types';
+    displayName: 'scholarship_type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    scholarship: Attribute.Relation<
+      'api::scholarship-type.scholarship-type',
+      'oneToMany',
+      'api::scholarship.scholarship'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::scholarship-type.scholarship-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::scholarship-type.scholarship-type',
       'oneToOne',
       'admin::user'
     > &
@@ -1733,7 +1847,7 @@ export interface ApiSpecializationSpecialization extends Schema.CollectionType {
     news: Attribute.Relation<
       'api::specialization.specialization',
       'manyToMany',
-      'api::new.new'
+      'api::college.college'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1765,7 +1879,7 @@ export interface ApiStateState extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    state_name: Attribute.UID & Attribute.Required;
+    name: Attribute.String & Attribute.Required;
     cities: Attribute.Relation<
       'api::state.state',
       'oneToMany',
@@ -1818,7 +1932,6 @@ export interface ApiStreamStream extends Schema.CollectionType {
   attributes: {
     stream_name: Attribute.String & Attribute.Required;
     content_for_colleges: Attribute.RichText &
-      Attribute.Required &
       Attribute.CustomField<
         'plugin::ckeditor5.CKEditor',
         {
@@ -1826,7 +1939,6 @@ export interface ApiStreamStream extends Schema.CollectionType {
         }
       >;
     content_for_exams: Attribute.RichText &
-      Attribute.Required &
       Attribute.CustomField<
         'plugin::ckeditor5.CKEditor',
         {
@@ -1840,7 +1952,7 @@ export interface ApiStreamStream extends Schema.CollectionType {
           preset: 'toolbar';
         }
       >;
-    icon: Attribute.Media & Attribute.Required;
+    icon: Attribute.Media;
     college_names: Attribute.Relation<
       'api::stream.stream',
       'manyToMany',
@@ -2016,12 +2128,12 @@ export interface ApiUserFormUserForm extends Schema.CollectionType {
       'manyToOne',
       'api::course.course'
     >;
-    country: Attribute.Relation<
-      'api::user-form.user-form',
-      'oneToOne',
-      'api::country.country'
-    >;
     form_stape: Attribute.Component<'common.form-stape', true>;
+    scholarship: Attribute.Relation<
+      'api::user-form.user-form',
+      'manyToOne',
+      'api::scholarship.scholarship'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -2119,6 +2231,7 @@ declare module '@strapi/types' {
       'api::popular-company.popular-company': ApiPopularCompanyPopularCompany;
       'api::ranking-body.ranking-body': ApiRankingBodyRankingBody;
       'api::scholarship.scholarship': ApiScholarshipScholarship;
+      'api::scholarship-type.scholarship-type': ApiScholarshipTypeScholarshipType;
       'api::specialization.specialization': ApiSpecializationSpecialization;
       'api::state.state': ApiStateState;
       'api::stream.stream': ApiStreamStream;

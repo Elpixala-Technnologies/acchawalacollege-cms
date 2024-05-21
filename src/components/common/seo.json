@@ -1,7 +1,8 @@
 {
   "collectionName": "components_common_seos",
   "info": {
-    "displayName": "seo"
+    "displayName": "seo",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -29,11 +30,12 @@
       "unique": true
     },
     "favicon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "favicon_alt_text": {
       "type": "text"

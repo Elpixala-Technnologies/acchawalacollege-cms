@@ -4,7 +4,8 @@
   "info": {
     "singularName": "popular-company",
     "pluralName": "popular-companies",
-    "displayName": "popular_company"
+    "displayName": "popular_company",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,12 +17,12 @@
       "required": true
     },
     "logo": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "company_description": {
       "type": "customField",
@@ -36,12 +37,6 @@
       "relation": "manyToMany",
       "target": "api::college.college",
       "inversedBy": "popular_company"
-    },
-    "college": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::college.college",
-      "mappedBy": "popular_companies"
     }
   }
 }

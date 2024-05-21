@@ -55,10 +55,29 @@ export interface CommonField extends Schema.Component {
   collectionName: 'components_common_fields';
   info: {
     displayName: 'field';
+    description: '';
   };
   attributes: {
     field_label: Attribute.String;
-    filed_type: Attribute.Enumeration<['pdf', 'jpg', 'png']>;
+    filed_type: Attribute.Enumeration<
+      [
+        'name',
+        'email',
+        'phone',
+        'otp',
+        'stream',
+        'course_level',
+        'course',
+        'short_text',
+        'filled_exams',
+        'preffered_colleges',
+        'gender',
+        'isWhatsAppSame',
+        'board',
+        'passing_year',
+        'score'
+      ]
+    >;
   };
 }
 
@@ -224,6 +243,24 @@ export interface CommonReviewComponent extends Schema.Component {
   };
 }
 
+export interface CommonSeo extends Schema.Component {
+  collectionName: 'components_common_seos';
+  info: {
+    displayName: 'seo';
+    description: '';
+  };
+  attributes: {
+    page_title: Attribute.Text & Attribute.Required;
+    page_og_title: Attribute.Text;
+    page_description: Attribute.Text;
+    page_og_description: Attribute.Text;
+    page_canonical_url: Attribute.Text & Attribute.Unique;
+    page_og_url: Attribute.Text & Attribute.Unique;
+    favicon: Attribute.Media;
+    favicon_alt_text: Attribute.Text;
+  };
+}
+
 export interface CommonStepDescription extends Schema.Component {
   collectionName: 'components_common_step_descriptions';
   info: {
@@ -306,23 +343,6 @@ export interface FaqFaqElements extends Schema.Component {
   };
 }
 
-export interface SeoSeo extends Schema.Component {
-  collectionName: 'components_common_seos';
-  info: {
-    displayName: 'seo';
-  };
-  attributes: {
-    page_title: Attribute.Text & Attribute.Required;
-    page_og_title: Attribute.Text;
-    page_description: Attribute.Text;
-    page_og_description: Attribute.Text;
-    page_canonical_url: Attribute.Text & Attribute.Unique;
-    page_og_url: Attribute.Text & Attribute.Unique;
-    favicon: Attribute.Media;
-    favicon_alt_text: Attribute.Text;
-  };
-}
-
 export interface TableColumn extends Schema.Component {
   collectionName: 'components_table_columns';
   info: {
@@ -379,13 +399,13 @@ declare module '@strapi/types' {
       'common.recommended-exams': CommonRecommendedExams;
       'common.result-date': CommonResultDate;
       'common.review-component': CommonReviewComponent;
+      'common.seo': CommonSeo;
       'common.step-description': CommonStepDescription;
       'common.tab-data': CommonTabData;
       'course.course': CourseCourse;
       'course.courses': CourseCourses;
       'course.specialisation': CourseSpecialisation;
       'faq.faq-elements': FaqFaqElements;
-      'seo.seo': SeoSeo;
       'table.column': TableColumn;
       'table.row': TableRow;
       'table.table': TableTable;

@@ -26,7 +26,7 @@
     },
     "blog_url": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "featured_image": {
       "type": "media",
@@ -46,7 +46,7 @@
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "seo.seo"
+      "component": "common.seo"
     },
     "is_featured": {
       "type": "boolean",
@@ -55,12 +55,6 @@
     "is_top": {
       "type": "boolean",
       "default": false
-    },
-    "colleges": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::college.college",
-      "mappedBy": "blog"
     },
     "courses": {
       "type": "relation",
@@ -90,6 +84,18 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::tag.tag",
+      "mappedBy": "blogs"
+    },
+    "colleges": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::college.college",
+      "mappedBy": "blogs"
+    },
+    "scholarship": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::scholarship.scholarship",
       "mappedBy": "blogs"
     }
   }

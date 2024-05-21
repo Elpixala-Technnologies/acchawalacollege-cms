@@ -12,8 +12,8 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "state_name": {
-      "type": "uid",
+    "name": {
+      "type": "string",
       "required": true
     },
     "cities": {

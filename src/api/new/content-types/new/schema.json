@@ -12,15 +12,17 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
-      "type": "string"
+    "name": {
+      "type": "string",
+      "required": true
     },
     "content": {
       "type": "customField",
       "options": {
         "preset": "toolbar"
       },
-      "customField": "plugin::ckeditor5.CKEditor"
+      "customField": "plugin::ckeditor5.CKEditor",
+      "required": true
     },
     "excerpt": {
       "type": "text",
@@ -62,6 +64,25 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::specialization.specialization",
+      "mappedBy": "news"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "blog",
+        "news"
+      ],
+      "required": true
+    },
+    "seo": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.seo"
+    },
+    "scholarships": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::scholarship.scholarship",
       "mappedBy": "news"
     }
   }

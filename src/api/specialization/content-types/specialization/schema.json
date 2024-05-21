@@ -29,7 +29,7 @@
     "news": {
       "type": "relation",
       "relation": "manyToMany",
-      "target": "api::new.new",
+      "target": "api::college.college",
       "inversedBy": "specializations"
     }
   }

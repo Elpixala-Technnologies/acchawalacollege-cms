@@ -39,17 +39,17 @@
       "target": "api::course.course",
       "inversedBy": "user_forms"
     },
-    "country": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::country.country",
-      "inversedBy": "user_form"
-    },
     "form_stape": {
       "displayName": "form_stape",
       "type": "component",
       "repeatable": true,
       "component": "common.form-stape"
+    },
+    "scholarship": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::scholarship.scholarship",
+      "inversedBy": "user_forms"
     }
   }
 }

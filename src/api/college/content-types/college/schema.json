@@ -12,13 +12,13 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "college_name": {
       "type": "string",
       "required": true
     },
     "college_url": {
       "type": "uid",
-      "required": true
+      "required": false
     },
     "banner": {
       "type": "media",
@@ -93,11 +93,7 @@
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "seo.seo"
-    },
-    "college_name": {
-      "type": "string",
-      "required": true
+      "component": "common.seo"
     },
     "news": {
       "type": "relation",
@@ -116,22 +112,12 @@
         "audios"
       ]
     },
-    "college_title": {
-      "type": "text",
-      "required": true
-    },
     "review_component": {
       "displayName": "review_component",
       "type": "component",
       "repeatable": false,
       "component": "common.review-component",
       "required": true
-    },
-    "popular_companies": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::popular-company.popular-company",
-      "inversedBy": "college"
     },
     "discussion_forums": {
       "type": "relation",
@@ -197,12 +183,6 @@
       "mappedBy": "colleges"
     },
     "blogs": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::blog.blog",
-      "inversedBy": "colleges"
-    },
-    "blog": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::blog.blog",

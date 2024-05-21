@@ -67,12 +67,6 @@
       "target": "api::stream.stream",
       "inversedBy": "courses"
     },
-    "city": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::city.city",
-      "inversedBy": "colleges"
-    },
     "state": {
       "type": "relation",
       "relation": "manyToOne",
@@ -82,7 +76,7 @@
     "seo": {
       "type": "component",
       "repeatable": false,
-      "component": "seo.seo"
+      "component": "common.seo"
     },
     "review_component": {
       "displayName": "review_component",
@@ -114,6 +108,24 @@
       "relation": "oneToMany",
       "target": "api::user-form.user-form",
       "mappedBy": "course"
+    },
+    "courseLevels": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course-level.course-level",
+      "inversedBy": "courses"
+    },
+    "navbars": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::navbar.navbar",
+      "inversedBy": "courses"
+    },
+    "blog": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::blog.blog",
+      "inversedBy": "courses"
     }
   }
 }

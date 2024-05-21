@@ -1,7 +1,8 @@
 {
   "collectionName": "components_common_fields",
   "info": {
-    "displayName": "field"
+    "displayName": "field",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,9 +12,21 @@
     "filed_type": {
       "type": "enumeration",
       "enum": [
-        "pdf",
-        "jpg",
-        "png"
+        "name",
+        "email",
+        "phone",
+        "otp",
+        "stream",
+        "course_level",
+        "course",
+        "short_text",
+        "filled_exams",
+        "preffered_colleges",
+        "gender",
+        "isWhatsAppSame",
+        "board",
+        "passing_year",
+        "score"
       ]
     }
   }

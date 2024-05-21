@@ -38,6 +38,12 @@
       "relation": "manyToMany",
       "target": "api::course.course",
       "inversedBy": "approvedBy"
+    },
+    "scholarships": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::scholarship.scholarship",
+      "mappedBy": "conducted_by"
     }
   }
 }

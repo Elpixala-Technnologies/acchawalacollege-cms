@@ -4,7 +4,8 @@
   "info": {
     "singularName": "navbar",
     "pluralName": "navbars",
-    "displayName": "navbar"
+    "displayName": "navbar",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true

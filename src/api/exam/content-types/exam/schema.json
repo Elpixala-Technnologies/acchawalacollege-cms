@@ -12,10 +12,10 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "exam_name": {
       "type": "string"
     },
-    "title": {
+    "exam_title": {
       "type": "string"
     },
     "logo": {
@@ -97,6 +97,12 @@
         "common.tab-data",
         "common.faq"
       ]
+    },
+    "blog": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::blog.blog",
+      "inversedBy": "exams"
     }
   }
 }

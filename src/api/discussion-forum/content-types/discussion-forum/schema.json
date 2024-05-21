@@ -20,6 +20,12 @@
       "relation": "manyToMany",
       "target": "api::college.college",
       "mappedBy": "discussion_forums"
+    },
+    "scholarships": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::scholarship.scholarship",
+      "mappedBy": "discussion_forums"
     }
   }
 }
