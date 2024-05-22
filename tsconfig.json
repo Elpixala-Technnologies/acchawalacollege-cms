@@ -1,14 +1,23 @@
 {
-  "compilerOptions": {
-    "target": "es6",
-    "module": "commonjs",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist",
-    "rootDir": "./src"
-  },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+	"extends": "@strapi/typescript-utils/tsconfigs/server",
+	"compilerOptions": {
+		"outDir": "dist",
+		"rootDir": "."
+	},
+	"include": [
+		"./",
+		"./**/*.ts",
+		"./**/*.js",
+		"src/**/*.json"
+	],
+	"exclude": [
+		"node_modules/",
+		"build/",
+		"dist/",
+		".cache/",
+		".tmp/",
+		"src/admin/",
+		"**/*.test.*",
+		"src/plugins/**"
+	]
 }

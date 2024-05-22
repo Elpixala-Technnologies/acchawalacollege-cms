@@ -1,45 +1,42 @@
 {
-  "name": "my-project",
-  "private": true,
-  "version": "0.1.0",
-  "description": "A Strapi application",
-  "scripts": {
-    "develop": "strapi develop",
-    "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi"
-  },
-  "dependencies": {
-    "@_sh/strapi-plugin-ckeditor": "^2.1.1",
-    "@strapi/plugin-cloud": "4.24.2",
-    "@strapi/plugin-graphql": "^4.24.2",
-    "@strapi/plugin-i18n": "4.24.2",
-    "@strapi/plugin-users-permissions": "4.24.2",
-    "@strapi/strapi": "4.24.2",
-    "better-sqlite3": "^10.0.0",
-    "graphql": "^16.8.1",
-    "pg": "^8.11.5",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "5.3.4",
-    "styled-components": "5.3.3"
-  },
-  "resolutions": {
-    "graphql": "^16.8.1"
-  },
-  "author": {
-    "name": "A Strapi developer"
-  },
-  "strapi": {
-    "uuid": "06a7df02-f118-4d8e-a0c3-b060b56752de"
-  },
-  "engines": {
-    "node": ">=18.0.0 <=20.x.x",
-    "npm": ">=6.0.0"
-  },
-  "license": "MIT",
-  "devDependencies": {
-    "@types/node": "^20.12.12",
-    "typescript": "^5.4.5"
-  }
+	"name": "my-project",
+	"private": true,
+	"version": "0.1.0",
+	"description": "A Strapi application",
+	"scripts": {
+		"develop": "strapi develop",
+		"start": "strapi start",
+		"build": "strapi build",
+		"strapi": "strapi"
+	},
+	"dependencies": {
+		"@_sh/strapi-plugin-ckeditor": "^2.1.1",
+		"@strapi/plugin-cloud": "4.24.2",
+		"@strapi/plugin-graphql": "^4.24.2",
+		"@strapi/plugin-i18n": "4.24.2",
+		"@strapi/plugin-users-permissions": "4.24.2",
+		"@strapi/strapi": "4.24.2",
+		"better-sqlite3": "^10.0.0",
+		"pg": "^8.11.5",
+		"react": "^18.0.0",
+		"react-dom": "^18.0.0",
+		"react-router-dom": "5.3.4",
+		"styled-components": "5.3.3",
+		"fs": "^0.0.1-security"
+	},
+	"author": {
+		"name": "A Strapi developer"
+	},
+	"strapi": {
+		"uuid": "06a7df02-f118-4d8e-a0c3-b060b56752de"
+	},
+	"engines": {
+		"node": ">=18.0.0 <=20.x.x",
+		"npm": ">=6.0.0"
+	},
+	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^20.12.12",
+		"typescript": "^5.4.5"
+	}
 }
