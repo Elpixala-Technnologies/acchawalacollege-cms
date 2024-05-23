@@ -897,11 +897,15 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    college_name: Attribute.String & Attribute.Required;
-    college_url: Attribute.UID;
+    college_name: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    college_url: Attribute.UID & Attribute.Required;
     banner: Attribute.Media & Attribute.Required;
     logo: Attribute.Media & Attribute.Required;
-    is_top: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
+    is_top: Attribute.Boolean & Attribute.DefaultTo<false>;
     page_data: Attribute.DynamicZone<
       [
         'common.gallery',
@@ -910,8 +914,9 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
         'common.banner-component',
         'common.recommended-college'
       ]
-    >;
-    pin_code: Attribute.Integer & Attribute.Required;
+    > &
+      Attribute.Required;
+    pin_code: Attribute.Integer;
     approved_by: Attribute.Relation<
       'api::college.college',
       'manyToMany',
@@ -1847,7 +1852,7 @@ export interface ApiSpecializationSpecialization extends Schema.CollectionType {
     news: Attribute.Relation<
       'api::specialization.specialization',
       'manyToMany',
-      'api::college.college'
+      'api::new.new'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

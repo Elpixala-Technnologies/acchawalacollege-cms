@@ -14,18 +14,22 @@
   "attributes": {
     "college_name": {
       "type": "string",
-      "required": true
+      "required": true,
+      "maxLength": 150
     },
     "college_url": {
       "type": "uid",
-      "required": false
+      "required": true
     },
     "banner": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "allowedTypes": [
-        "images"
+        "images",
+        "videos",
+        "audios",
+        "files"
       ]
     },
     "logo": {
@@ -33,13 +37,16 @@
       "multiple": false,
       "required": true,
       "allowedTypes": [
-        "images"
+        "images",
+        "videos",
+        "audios",
+        "files"
       ]
     },
     "is_top": {
       "type": "boolean",
       "default": false,
-      "required": true
+      "required": false
     },
     "page_data": {
       "type": "dynamiczone",
@@ -49,11 +56,12 @@
         "common.new-overview",
         "common.banner-component",
         "common.recommended-college"
-      ]
+      ],
+      "required": true
     },
     "pin_code": {
       "type": "integer",
-      "required": true
+      "required": false
     },
     "approved_by": {
       "type": "relation",
@@ -141,7 +149,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::testimonial.testimonial",
-      "inversedBy": "colleges"
+      "mappedBy": "colleges"
     },
     "is_featured": {
       "type": "boolean",
