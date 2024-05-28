@@ -79,7 +79,7 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::city.city",
-      "inversedBy": "college"
+      "inversedBy": "colleges"
     },
     "country": {
       "type": "relation",
@@ -87,13 +87,13 @@
       "target": "api::country.country",
       "inversedBy": "colleges"
     },
-    "ranking_by": {
+    "ranked_by": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::ranking-body.ranking-body",
-      "mappedBy": "colleges"
+      "inversedBy": "colleges"
     },
-    "courses": {
+    "Courses": {
       "type": "component",
       "repeatable": true,
       "component": "course.course"
@@ -166,7 +166,7 @@
         "audios"
       ]
     },
-    "states": {
+    "state": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::state.state",
@@ -194,6 +194,18 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::blog.blog",
+      "inversedBy": "colleges"
+    },
+    "college_type": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::colleges-type.colleges-type",
+      "inversedBy": "colleges"
+    },
+    "course": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course.course",
       "inversedBy": "colleges"
     }
   }

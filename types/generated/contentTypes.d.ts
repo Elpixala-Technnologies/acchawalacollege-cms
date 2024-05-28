@@ -865,15 +865,15 @@ export interface ApiCityCity extends Schema.CollectionType {
   };
   attributes: {
     city_name: Attribute.String & Attribute.Required;
-    college: Attribute.Relation<
-      'api::city.city',
-      'oneToMany',
-      'api::college.college'
-    >;
     state: Attribute.Relation<
       'api::city.city',
       'manyToOne',
       'api::state.state'
+    >;
+    colleges: Attribute.Relation<
+      'api::city.city',
+      'oneToMany',
+      'api::college.college'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -937,12 +937,12 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
       'manyToOne',
       'api::country.country'
     >;
-    ranking_by: Attribute.Relation<
+    ranked_by: Attribute.Relation<
       'api::college.college',
       'manyToMany',
       'api::ranking-body.ranking-body'
     >;
-    courses: Attribute.Component<'course.course', true>;
+    Courses: Attribute.Component<'course.course', true>;
     seo: Attribute.Component<'common.seo'>;
     news: Attribute.Relation<
       'api::college.college',
@@ -974,7 +974,7 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
     >;
     is_featured: Attribute.Boolean & Attribute.DefaultTo<false>;
     gallery: Attribute.Media & Attribute.Required;
-    states: Attribute.Relation<
+    state: Attribute.Relation<
       'api::college.college',
       'manyToOne',
       'api::state.state'
@@ -998,6 +998,16 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
       'api::college.college',
       'manyToMany',
       'api::blog.blog'
+    >;
+    college_type: Attribute.Relation<
+      'api::college.college',
+      'manyToOne',
+      'api::colleges-type.colleges-type'
+    >;
+    course: Attribute.Relation<
+      'api::college.college',
+      'manyToMany',
+      'api::course.course'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1034,6 +1044,11 @@ export interface ApiCollegesTypeCollegesType extends Schema.CollectionType {
       'api::colleges-type.colleges-type',
       'oneToOne',
       'api::course.course'
+    >;
+    colleges: Attribute.Relation<
+      'api::colleges-type.colleges-type',
+      'oneToMany',
+      'api::college.college'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1185,6 +1200,11 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'api::course.course',
       'manyToMany',
       'api::blog.blog'
+    >;
+    colleges: Attribute.Relation<
+      'api::course.course',
+      'manyToMany',
+      'api::college.college'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1852,7 +1872,7 @@ export interface ApiSpecializationSpecialization extends Schema.CollectionType {
     news: Attribute.Relation<
       'api::specialization.specialization',
       'manyToMany',
-      'api::new.new'
+      'api::college.college'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1890,11 +1910,6 @@ export interface ApiStateState extends Schema.CollectionType {
       'oneToMany',
       'api::city.city'
     >;
-    colleges: Attribute.Relation<
-      'api::state.state',
-      'oneToMany',
-      'api::college.college'
-    >;
     courses: Attribute.Relation<
       'api::state.state',
       'oneToMany',
@@ -1904,6 +1919,11 @@ export interface ApiStateState extends Schema.CollectionType {
       'api::state.state',
       'manyToOne',
       'api::country.country'
+    >;
+    colleges: Attribute.Relation<
+      'api::state.state',
+      'oneToMany',
+      'api::college.college'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

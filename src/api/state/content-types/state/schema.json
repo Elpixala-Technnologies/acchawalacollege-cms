@@ -22,12 +22,6 @@
       "target": "api::city.city",
       "mappedBy": "state"
     },
-    "colleges": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::college.college",
-      "mappedBy": "states"
-    },
     "courses": {
       "type": "relation",
       "relation": "oneToMany",
@@ -39,6 +33,12 @@
       "relation": "manyToOne",
       "target": "api::country.country",
       "inversedBy": "states"
+    },
+    "colleges": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::college.college",
+      "mappedBy": "state"
     }
   }
 }

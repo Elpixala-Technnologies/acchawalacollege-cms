@@ -126,6 +126,12 @@
       "relation": "manyToMany",
       "target": "api::blog.blog",
       "inversedBy": "courses"
+    },
+    "colleges": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::college.college",
+      "mappedBy": "course"
     }
   }
 }

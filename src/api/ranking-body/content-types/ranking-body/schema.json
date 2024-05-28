@@ -39,7 +39,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::college.college",
-      "inversedBy": "ranking_by"
+      "mappedBy": "ranked_by"
     }
   }
 }

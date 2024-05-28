@@ -16,17 +16,17 @@
       "type": "string",
       "required": true
     },
-    "college": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::college.college",
-      "mappedBy": "city"
-    },
     "state": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::state.state",
       "inversedBy": "cities"
+    },
+    "colleges": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::college.college",
+      "mappedBy": "city"
     }
   }
 }
