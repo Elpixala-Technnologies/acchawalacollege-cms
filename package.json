@@ -12,17 +12,19 @@
 	"dependencies": {
 		"@_sh/strapi-plugin-ckeditor": "^2.1.1",
 		"@strapi/plugin-cloud": "4.24.2",
-		"@strapi/plugin-graphql": "^4.24.2",
+		"@strapi/plugin-graphql": "^4.24.4",
 		"@strapi/plugin-i18n": "4.24.2",
 		"@strapi/plugin-users-permissions": "4.24.2",
 		"@strapi/strapi": "4.24.2",
 		"better-sqlite3": "^10.0.0",
+		"fs": "^0.0.1-security",
 		"pg": "^8.11.5",
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
 		"react-router-dom": "5.3.4",
-		"styled-components": "5.3.3",
-		"fs": "^0.0.1-security"
+		"strapi-provider-upload-aws-s3": "^3.6.11",
+		"strapi-provider-upload-do": "^3.6.9",
+		"styled-components": "5.3.3"
 	},
 	"author": {
 		"name": "A Strapi developer"
