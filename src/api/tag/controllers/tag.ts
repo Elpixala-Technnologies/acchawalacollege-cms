@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 /**
  * tag controller
  */
 
-import { factories } from '@strapi/strapi'
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreController('api::tag.tag');
+export default factories.createCoreController("api::tag.tag");

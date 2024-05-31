@@ -852,43 +852,6 @@ export interface ApiBlogBlog extends Schema.CollectionType {
   };
 }
 
-export interface ApiButtonButton extends Schema.CollectionType {
-  collectionName: 'buttons';
-  info: {
-    singularName: 'button';
-    pluralName: 'buttons';
-    displayName: 'button';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    text: Attribute.String & Attribute.Required;
-    href: Attribute.String & Attribute.Required;
-    colleges: Attribute.Relation<
-      'api::button.button',
-      'oneToMany',
-      'api::college.college'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::button.button',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::button.button',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiCityCity extends Schema.CollectionType {
   collectionName: 'cities';
   info: {
@@ -1030,26 +993,6 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
       'api::college.college',
       'manyToMany',
       'api::blog.blog'
-    >;
-    degrees: Attribute.Relation<
-      'api::college.college',
-      'oneToMany',
-      'api::degree.degree'
-    >;
-    lists: Attribute.Relation<
-      'api::college.college',
-      'oneToMany',
-      'api::list.list'
-    >;
-    button: Attribute.Relation<
-      'api::college.college',
-      'manyToOne',
-      'api::button.button'
-    >;
-    step: Attribute.Relation<
-      'api::college.college',
-      'manyToOne',
-      'api::step.step'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1292,42 +1235,6 @@ export interface ApiCourseLevelCourseLevel extends Schema.CollectionType {
   };
 }
 
-export interface ApiDegreeDegree extends Schema.CollectionType {
-  collectionName: 'degrees';
-  info: {
-    singularName: 'degree';
-    pluralName: 'degrees';
-    displayName: 'degree';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    name: Attribute.String & Attribute.Required;
-    icon: Attribute.Media & Attribute.Required;
-    college: Attribute.Relation<
-      'api::degree.degree',
-      'manyToOne',
-      'api::college.college'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::degree.degree',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::degree.degree',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiDiscussionForumDiscussionForum
   extends Schema.CollectionType {
   collectionName: 'discussion_forums';
@@ -1497,70 +1404,6 @@ export interface ApiExamModeExamMode extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiHeroSectionHeroSection extends Schema.CollectionType {
-  collectionName: 'hero_sections';
-  info: {
-    singularName: 'hero-section';
-    pluralName: 'hero-sections';
-    displayName: 'Hero_section';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    homebanner: Attribute.Component<'common.homebanner'>;
-    section2: Attribute.Component<'common.section2'>;
-    partners: Attribute.Component<'common.partners'>;
-    CounsellingPackages: Attribute.Component<'common.counselling-packages'>;
-    banner1: Attribute.Component<'common.banner1'>;
-    banner2: Attribute.Component<'common.banner2'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::hero-section.hero-section',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::hero-section.hero-section',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiListList extends Schema.CollectionType {
-  collectionName: 'lists';
-  info: {
-    singularName: 'list';
-    pluralName: 'lists';
-    displayName: 'list';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    isInclude: Attribute.Boolean & Attribute.Required;
-    text: Attribute.String & Attribute.Required;
-    college: Attribute.Relation<
-      'api::list.list',
-      'manyToOne',
-      'api::college.college'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::list.list', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::list.list', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -2075,34 +1918,6 @@ export interface ApiStateState extends Schema.CollectionType {
   };
 }
 
-export interface ApiStepStep extends Schema.CollectionType {
-  collectionName: 'steps';
-  info: {
-    singularName: 'step';
-    pluralName: 'steps';
-    displayName: 'step';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    text: Attribute.String & Attribute.Required;
-    colleges: Attribute.Relation<
-      'api::step.step',
-      'oneToMany',
-      'api::college.college'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::step.step', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::step.step', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
 export interface ApiStreamStream extends Schema.CollectionType {
   collectionName: 'streams';
   info: {
@@ -2399,20 +2214,16 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::blog.blog': ApiBlogBlog;
-      'api::button.button': ApiButtonButton;
       'api::city.city': ApiCityCity;
       'api::college.college': ApiCollegeCollege;
       'api::colleges-type.colleges-type': ApiCollegesTypeCollegesType;
       'api::country.country': ApiCountryCountry;
       'api::course.course': ApiCourseCourse;
       'api::course-level.course-level': ApiCourseLevelCourseLevel;
-      'api::degree.degree': ApiDegreeDegree;
       'api::discussion-forum.discussion-forum': ApiDiscussionForumDiscussionForum;
       'api::exam.exam': ApiExamExam;
       'api::exam-level.exam-level': ApiExamLevelExamLevel;
       'api::exam-mode.exam-mode': ApiExamModeExamMode;
-      'api::hero-section.hero-section': ApiHeroSectionHeroSection;
-      'api::list.list': ApiListList;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::new.new': ApiNewNew;
       'api::news-category.news-category': ApiNewsCategoryNewsCategory;
@@ -2423,7 +2234,6 @@ declare module '@strapi/types' {
       'api::scholarship-type.scholarship-type': ApiScholarshipTypeScholarshipType;
       'api::specialization.specialization': ApiSpecializationSpecialization;
       'api::state.state': ApiStateState;
-      'api::step.step': ApiStepStep;
       'api::stream.stream': ApiStreamStream;
       'api::tag.tag': ApiTagTag;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
