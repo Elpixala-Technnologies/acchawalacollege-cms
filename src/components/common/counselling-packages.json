@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_common_counselling_packages",
+  "info": {
+    "displayName": "CounsellingPackages"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "CounsellingPackagesCards": {
+      "displayName": "CounsellingPackagesCards",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.counselling-packages-cards"
+    }
+  }
+}

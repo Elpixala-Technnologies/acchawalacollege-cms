@@ -1,0 +1,55 @@
+{
+  "collectionName": "components_common_colleges",
+  "info": {
+    "displayName": "colleges",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "id_no": {
+      "type": "integer"
+    },
+    "collegeName": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150
+    },
+    "icon": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "img": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150
+    },
+    "text1": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150
+    },
+    "degreeType": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::degree.degree"
+    }
+  }
+}

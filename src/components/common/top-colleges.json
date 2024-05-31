@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_common_top_colleges",
+  "info": {
+    "displayName": "topColleges"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "displayName": "title",
+      "type": "component",
+      "repeatable": false,
+      "component": "colleges.title"
+    },
+    "colleges": {
+      "displayName": "colleges",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.colleges"
+    }
+  }
+}

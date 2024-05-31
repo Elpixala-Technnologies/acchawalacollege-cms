@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_common_card2s",
+  "info": {
+    "displayName": "card2"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150
+    },
+    "text": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150
+    }
+  }
+}

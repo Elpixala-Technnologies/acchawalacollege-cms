@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "buttons",
+  "info": {
+    "singularName": "button",
+    "pluralName": "buttons",
+    "displayName": "button",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "colleges": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::college.college",
+      "mappedBy": "button"
+    }
+  }
+}

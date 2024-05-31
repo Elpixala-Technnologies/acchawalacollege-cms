@@ -1,0 +1,54 @@
+{
+  "collectionName": "components_common_counselling_packages_cards",
+  "info": {
+    "displayName": "CounsellingPackagesCards",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "id_no": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "PackageName": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150
+    },
+    "isPopular": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "price": {
+      "type": "integer",
+      "required": true
+    },
+    "text1": {
+      "type": "string",
+      "required": true,
+      "maxLength": 250
+    },
+    "list": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::list.list"
+    },
+    "button": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::button.button"
+    }
+  }
+}

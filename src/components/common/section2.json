@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_common_section2s",
+  "info": {
+    "displayName": "section2"
+  },
+  "options": {},
+  "attributes": {
+    "card1": {
+      "displayName": "card1",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.card1"
+    },
+    "card2": {
+      "displayName": "card2",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.card2"
+    },
+    "card3": {
+      "displayName": "card3",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.card3"
+    }
+  }
+}
