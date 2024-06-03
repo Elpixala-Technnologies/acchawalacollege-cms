@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "stylings",
+  "info": {
+    "singularName": "styling",
+    "pluralName": "stylings",
+    "displayName": "styling",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "border": {
+      "type": "string",
+      "required": true
+    },
+    "tagBg": {
+      "type": "string",
+      "required": true
+    },
+    "colleges": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::college.college",
+      "mappedBy": "styling"
+    }
+  }
+}

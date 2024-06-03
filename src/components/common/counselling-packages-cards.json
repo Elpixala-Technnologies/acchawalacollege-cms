@@ -40,15 +40,20 @@
       "required": true,
       "maxLength": 250
     },
-    "list": {
+    "lists": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::list.list"
     },
     "button": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::button.button"
+    },
+    "styling": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::styling.styling"
     }
   }
 }

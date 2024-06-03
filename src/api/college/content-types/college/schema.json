@@ -211,6 +211,12 @@
       "relation": "manyToOne",
       "target": "api::step.step",
       "inversedBy": "colleges"
+    },
+    "styling": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::styling.styling",
+      "inversedBy": "colleges"
     }
   }
 }
