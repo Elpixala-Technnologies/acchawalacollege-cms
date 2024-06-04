@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_common_section3s",
+  "info": {
+    "displayName": "section3",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true,
+      "maxLength": 250
+    },
+    "text1": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.button"
+    }
+  }
+}

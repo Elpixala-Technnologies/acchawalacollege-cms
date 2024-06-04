@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_common_banner2s",
+  "info": {
+    "displayName": "banner2",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "colleges.title"
+    },
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "steps": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::step.step"
+    },
+    "bg": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}

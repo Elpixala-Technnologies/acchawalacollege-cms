@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 /**
  * user-data controller
  */
 
-import { factories } from '@strapi/strapi'
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreController('api::user-data.user-data');
+export default factories.createCoreController("api::user-data.user-data");

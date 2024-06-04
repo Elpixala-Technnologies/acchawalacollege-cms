@@ -1,0 +1,53 @@
+{
+  "collectionName": "components_common_homebanners",
+  "info": {
+    "displayName": "homebanner"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "displayName": "title",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.title"
+    },
+    "text1": {
+      "type": "text",
+      "maxLength": 250,
+      "required": true
+    },
+    "button1": {
+      "displayName": "button1",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.button1"
+    },
+    "button2": {
+      "displayName": "button2",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.button2"
+    },
+    "img": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    },
+    "text2": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150
+    },
+    "text3": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150
+    }
+  }
+}

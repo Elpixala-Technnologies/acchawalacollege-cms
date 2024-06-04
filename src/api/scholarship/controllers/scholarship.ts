@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 /**
  * scholarship controller
  */
 
-import { factories } from '@strapi/strapi'
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreController('api::scholarship.scholarship');
+export default factories.createCoreController("api::scholarship.scholarship");

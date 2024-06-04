@@ -187,6 +187,36 @@
       "relation": "manyToMany",
       "target": "api::blog.blog",
       "inversedBy": "colleges"
+    },
+    "degrees": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::degree.degree",
+      "mappedBy": "college"
+    },
+    "lists": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::list.list",
+      "mappedBy": "college"
+    },
+    "button": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::button.button",
+      "inversedBy": "colleges"
+    },
+    "step": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::step.step",
+      "inversedBy": "colleges"
+    },
+    "styling": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::styling.styling",
+      "inversedBy": "colleges"
     }
   }
 }

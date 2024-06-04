@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_common_button1s",
+  "info": {
+    "displayName": "button1"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150
+    },
+    "href": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150
+    }
+  }
+}

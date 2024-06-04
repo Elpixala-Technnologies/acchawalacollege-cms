@@ -1,5 +1,26 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface CollegesTitle extends Schema.Component {
+  collectionName: 'components_colleges_titles';
+  info: {
+    displayName: 'title';
+    description: '';
+  };
+  attributes: {
+    t1: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    t2: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    t3: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface CommonApplicationDate extends Schema.Component {
   collectionName: 'components_common_application_dates';
   info: {
@@ -25,6 +46,248 @@ export interface CommonBannerComponent extends Schema.Component {
       'common.banner-component',
       'oneToMany',
       'api::college.college'
+    >;
+  };
+}
+
+export interface CommonBanner1 extends Schema.Component {
+  collectionName: 'components_common_banner1s';
+  info: {
+    displayName: 'banner1';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    text1: Attribute.String & Attribute.Required;
+    button: Attribute.Component<'common.button'>;
+  };
+}
+
+export interface CommonBanner2 extends Schema.Component {
+  collectionName: 'components_common_banner2s';
+  info: {
+    displayName: 'banner2';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.Component<'colleges.title'>;
+    text: Attribute.String & Attribute.Required;
+    steps: Attribute.Relation<'common.banner2', 'oneToMany', 'api::step.step'>;
+    bg: Attribute.Media & Attribute.Required;
+  };
+}
+
+export interface CommonBlogsAndOthers extends Schema.Component {
+  collectionName: 'components_common_blogs_and_others';
+  info: {
+    displayName: 'BlogsAndOthers';
+  };
+  attributes: {};
+}
+
+export interface CommonButton extends Schema.Component {
+  collectionName: 'components_common_buttons';
+  info: {
+    displayName: 'button';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    href: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    bgImg: Attribute.Media & Attribute.Required;
+  };
+}
+
+export interface CommonButton1 extends Schema.Component {
+  collectionName: 'components_common_button1s';
+  info: {
+    displayName: 'button1';
+  };
+  attributes: {
+    text: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    href: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+  };
+}
+
+export interface CommonButton2 extends Schema.Component {
+  collectionName: 'components_common_button2s';
+  info: {
+    displayName: 'button2';
+  };
+  attributes: {
+    text: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    href: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+  };
+}
+
+export interface CommonCard1 extends Schema.Component {
+  collectionName: 'components_common_card1s';
+  info: {
+    displayName: 'card1';
+  };
+  attributes: {
+    icon: Attribute.Media & Attribute.Required;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    text: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+  };
+}
+
+export interface CommonCard2 extends Schema.Component {
+  collectionName: 'components_common_card2s';
+  info: {
+    displayName: 'card2';
+  };
+  attributes: {
+    icon: Attribute.Media & Attribute.Required;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    text: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+  };
+}
+
+export interface CommonCard3 extends Schema.Component {
+  collectionName: 'components_common_card3s';
+  info: {
+    displayName: 'card3';
+  };
+  attributes: {
+    icon: Attribute.Media & Attribute.Required;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    text: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+  };
+}
+
+export interface CommonColleges extends Schema.Component {
+  collectionName: 'components_common_colleges';
+  info: {
+    displayName: 'colleges';
+    description: '';
+  };
+  attributes: {
+    id_no: Attribute.Integer;
+    collegeName: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    icon: Attribute.Media & Attribute.Required;
+    img: Attribute.Media & Attribute.Required;
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    text1: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    degreeType: Attribute.Relation<
+      'common.colleges',
+      'oneToMany',
+      'api::degree.degree'
+    >;
+  };
+}
+
+export interface CommonCounsellingPackagesCards extends Schema.Component {
+  collectionName: 'components_common_counselling_packages_cards';
+  info: {
+    displayName: 'CounsellingPackagesCards';
+    description: '';
+  };
+  attributes: {
+    id_no: Attribute.String & Attribute.Required;
+    icon: Attribute.Media & Attribute.Required;
+    PackageName: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    isPopular: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    price: Attribute.Integer & Attribute.Required;
+    text1: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    lists: Attribute.Relation<
+      'common.counselling-packages-cards',
+      'oneToMany',
+      'api::list.list'
+    >;
+    button: Attribute.Relation<
+      'common.counselling-packages-cards',
+      'oneToOne',
+      'api::button.button'
+    >;
+    styling: Attribute.Relation<
+      'common.counselling-packages-cards',
+      'oneToOne',
+      'api::styling.styling'
+    >;
+  };
+}
+
+export interface CommonCounsellingPackages extends Schema.Component {
+  collectionName: 'components_common_counselling_packages';
+  info: {
+    displayName: 'CounsellingPackages';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    CounsellingPackagesCards: Attribute.Component<
+      'common.counselling-packages-cards',
+      true
     >;
   };
 }
@@ -119,6 +382,34 @@ export interface CommonGoogleAds extends Schema.Component {
   };
 }
 
+export interface CommonHomebanner extends Schema.Component {
+  collectionName: 'components_common_homebanners';
+  info: {
+    displayName: 'homebanner';
+  };
+  attributes: {
+    title: Attribute.Component<'common.title'>;
+    text1: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    button1: Attribute.Component<'common.button1'>;
+    button2: Attribute.Component<'common.button2'>;
+    img: Attribute.Media & Attribute.Required;
+    text2: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    text3: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+  };
+}
+
 export interface CommonLikes extends Schema.Component {
   collectionName: 'components_common_likes';
   info: {
@@ -170,6 +461,17 @@ export interface CommonNewOverview extends Schema.Component {
     writer_name: Attribute.String & Attribute.DefaultTo<'null'>;
     date: Attribute.Date;
     section: Attribute.String;
+  };
+}
+
+export interface CommonPartners extends Schema.Component {
+  collectionName: 'components_common_partners';
+  info: {
+    displayName: 'partners';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    images: Attribute.Media & Attribute.Required;
   };
 }
 
@@ -243,6 +545,39 @@ export interface CommonReviewComponent extends Schema.Component {
   };
 }
 
+export interface CommonSection2 extends Schema.Component {
+  collectionName: 'components_common_section2s';
+  info: {
+    displayName: 'section2';
+  };
+  attributes: {
+    card1: Attribute.Component<'common.card1'>;
+    card2: Attribute.Component<'common.card2'>;
+    card3: Attribute.Component<'common.card3'>;
+  };
+}
+
+export interface CommonSection3 extends Schema.Component {
+  collectionName: 'components_common_section3s';
+  info: {
+    displayName: 'section3';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 250;
+      }>;
+    text1: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    button: Attribute.Component<'common.button'>;
+  };
+}
+
 export interface CommonSeo extends Schema.Component {
   collectionName: 'components_common_seos';
   info: {
@@ -279,6 +614,41 @@ export interface CommonTabData extends Schema.Component {
   };
   attributes: {
     heading: Attribute.String;
+  };
+}
+
+export interface CommonTitle extends Schema.Component {
+  collectionName: 'components_common_titles';
+  info: {
+    displayName: 'title';
+  };
+  attributes: {
+    t1: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    t2: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+    t3: Attribute.String &
+      Attribute.Required &
+      Attribute.SetMinMaxLength<{
+        maxLength: 150;
+      }>;
+  };
+}
+
+export interface CommonTopColleges extends Schema.Component {
+  collectionName: 'components_common_top_colleges';
+  info: {
+    displayName: 'topColleges';
+  };
+  attributes: {
+    title: Attribute.Component<'colleges.title'>;
+    colleges: Attribute.Component<'common.colleges'>;
   };
 }
 
@@ -382,26 +752,45 @@ export interface TableTable extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'colleges.title': CollegesTitle;
       'common.application-date': CommonApplicationDate;
       'common.banner-component': CommonBannerComponent;
+      'common.banner1': CommonBanner1;
+      'common.banner2': CommonBanner2;
+      'common.blogs-and-others': CommonBlogsAndOthers;
+      'common.button': CommonButton;
+      'common.button1': CommonButton1;
+      'common.button2': CommonButton2;
+      'common.card1': CommonCard1;
+      'common.card2': CommonCard2;
+      'common.card3': CommonCard3;
+      'common.colleges': CommonColleges;
+      'common.counselling-packages-cards': CommonCounsellingPackagesCards;
+      'common.counselling-packages': CommonCounsellingPackages;
       'common.dislikes': CommonDislikes;
       'common.faq': CommonFaq;
       'common.field': CommonField;
       'common.form-stape': CommonFormStape;
       'common.gallery': CommonGallery;
       'common.google-ads': CommonGoogleAds;
+      'common.homebanner': CommonHomebanner;
       'common.likes': CommonLikes;
       'common.nav-item': CommonNavItem;
       'common.navbar': CommonNavbar;
       'common.new-overview': CommonNewOverview;
+      'common.partners': CommonPartners;
       'common.recommended-college': CommonRecommendedCollege;
       'common.recommended-courses': CommonRecommendedCourses;
       'common.recommended-exams': CommonRecommendedExams;
       'common.result-date': CommonResultDate;
       'common.review-component': CommonReviewComponent;
+      'common.section2': CommonSection2;
+      'common.section3': CommonSection3;
       'common.seo': CommonSeo;
       'common.step-description': CommonStepDescription;
       'common.tab-data': CommonTabData;
+      'common.title': CommonTitle;
+      'common.top-colleges': CommonTopColleges;
       'course.course': CourseCourse;
       'course.courses': CourseCourses;
       'course.specialisation': CourseSpecialisation;

@@ -1,9 +1,11 @@
-'use strict';
+"use strict";
 
 /**
  * discussion-forum controller
  */
 
-import { factories } from '@strapi/strapi'
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreController('api::discussion-forum.discussion-forum');
+export default factories.createCoreController(
+  "api::discussion-forum.discussion-forum"
+);

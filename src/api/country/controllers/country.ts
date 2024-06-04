@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 /**
  * country controller
  */
 
-import { factories } from '@strapi/strapi'
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreController('api::country.country');
+export default factories.createCoreController("api::country.country");

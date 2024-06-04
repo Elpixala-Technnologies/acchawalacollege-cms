@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_colleges_titles",
+  "info": {
+    "displayName": "title",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "t1": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150
+    },
+    "t2": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150
+    },
+    "t3": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

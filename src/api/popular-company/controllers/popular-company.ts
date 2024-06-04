@@ -1,9 +1,11 @@
-'use strict';
+"use strict";
 
 /**
  * popular-company controller
  */
 
-import { factories } from '@strapi/strapi'
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreController('api::popular-company.popular-company');
+export default factories.createCoreController(
+  "api::popular-company.popular-company"
+);

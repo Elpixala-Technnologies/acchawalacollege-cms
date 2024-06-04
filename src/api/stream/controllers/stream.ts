@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 /**
  * stream controller
  */
 
-import { factories } from '@strapi/strapi'
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreController('api::stream.stream');
+export default factories.createCoreController("api::stream.stream");

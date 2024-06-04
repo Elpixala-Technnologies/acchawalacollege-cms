@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "degrees",
+  "info": {
+    "singularName": "degree",
+    "pluralName": "degrees",
+    "displayName": "degree"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "icon": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    },
+    "college": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::college.college",
+      "inversedBy": "degrees"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_common_buttons",
+  "info": {
+    "displayName": "button",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true,
+      "maxLength": 150
+    },
+    "href": {
+      "type": "text",
+      "required": true,
+      "maxLength": 250
+    },
+    "bgImg": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}

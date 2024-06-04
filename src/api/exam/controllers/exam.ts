@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 /**
  * exam controller
  */
 
-import { factories } from '@strapi/strapi'
+import { factories } from "@strapi/strapi";
 
-export default factories.createCoreController('api::exam.exam');
+export default factories.createCoreController("api::exam.exam");
