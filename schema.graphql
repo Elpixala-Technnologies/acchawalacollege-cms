@@ -109,7 +109,6 @@ input BooleanFilterInput {
   startsWith: Boolean
 }
 
-
 type Button {
   colleges(filters: CollegeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): CollegeRelationResponseCollection
   createdAt: DateTime
@@ -156,7 +155,6 @@ input ButtonInput {
 type ButtonRelationResponseCollection {
   data: [ButtonEntity!]!
 }
-
 
 type City {
   city_name: String!
@@ -209,9 +207,7 @@ type College {
   approved_by(filters: OrganisationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): OrganisationRelationResponseCollection
   banner: UploadFileEntityResponse!
   blogs(filters: BlogFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogRelationResponseCollection
-
   button: ButtonEntityResponse
-
   city: CityEntityResponse
   college_name: String!
   college_url: String
@@ -219,15 +215,12 @@ type College {
   courses(filters: ComponentCourseCourseFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentCourseCourse]
   createdAt: DateTime
   dawonload_brochure(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection!
-
   degrees(filters: DegreeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): DegreeRelationResponseCollection
-
   discussion_forums(filters: DiscussionForumFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): DiscussionForumRelationResponseCollection
   gallery(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection!
   is_featured: Boolean
   is_top: Boolean!
   lists(filters: ListFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ListRelationResponseCollection
-
   logo: UploadFileEntityResponse!
   news(filters: NewFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): NewRelationResponseCollection
   page_data: [CollegePageDataDynamicZone]
@@ -242,6 +235,7 @@ type College {
   states: StateEntityResponse
   step: StepEntityResponse
   streams(filters: StreamFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): StreamRelationResponseCollection
+  styling: StylingEntityResponse
   testimonial(filters: TestimonialFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TestimonialRelationResponseCollection
   testimonials(filters: TestimonialFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TestimonialRelationResponseCollection
   updatedAt: DateTime
@@ -293,6 +287,7 @@ input CollegeFiltersInput {
   states: StateFiltersInput
   step: StepFiltersInput
   streams: StreamFiltersInput
+  styling: StylingFiltersInput
   testimonial: TestimonialFiltersInput
   testimonials: TestimonialFiltersInput
   updatedAt: DateTimeFilterInput
@@ -330,6 +325,7 @@ input CollegeInput {
   states: ID
   step: ID
   streams: [ID]
+  styling: ID
   testimonial: [ID]
   testimonials: [ID]
   user_forms: [ID]
@@ -386,6 +382,7 @@ input CollegesTypeInput {
 type CollegesTypeRelationResponseCollection {
   data: [CollegesTypeEntity!]!
 }
+
 type ComponentCollegesTitle {
   id: ID!
   t1: String!
@@ -679,7 +676,7 @@ input ComponentCommonCollegesInput {
 }
 
 type ComponentCommonCounsellingPackages {
-  CounsellingPackagesCards: ComponentCommonCounsellingPackagesCards
+  CounsellingPackagesCards(filters: ComponentCommonCounsellingPackagesCardsFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentCommonCounsellingPackagesCards]
   id: ID!
   title: String!
 }
@@ -691,8 +688,9 @@ type ComponentCommonCounsellingPackagesCards {
   id: ID!
   id_no: String!
   isPopular: Boolean!
-  list: ListEntityResponse
+  lists(filters: ListFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ListRelationResponseCollection
   price: Int!
+  styling: StylingEntityResponse
   text1: String!
 }
 
@@ -702,10 +700,11 @@ input ComponentCommonCounsellingPackagesCardsFiltersInput {
   button: ButtonFiltersInput
   id_no: StringFilterInput
   isPopular: BooleanFilterInput
-  list: ListFiltersInput
+  lists: ListFiltersInput
   not: ComponentCommonCounsellingPackagesCardsFiltersInput
   or: [ComponentCommonCounsellingPackagesCardsFiltersInput]
   price: IntFilterInput
+  styling: StylingFiltersInput
   text1: StringFilterInput
 }
 
@@ -716,8 +715,9 @@ input ComponentCommonCounsellingPackagesCardsInput {
   id: ID
   id_no: String
   isPopular: Boolean
-  list: ID
+  lists: [ID]
   price: Int
+  styling: ID
   text1: String
 }
 
@@ -730,7 +730,7 @@ input ComponentCommonCounsellingPackagesFiltersInput {
 }
 
 input ComponentCommonCounsellingPackagesInput {
-  CounsellingPackagesCards: ComponentCommonCounsellingPackagesCardsInput
+  CounsellingPackagesCards: [ComponentCommonCounsellingPackagesCardsInput]
   id: ID
   title: String
 }
@@ -970,7 +970,6 @@ input ComponentCommonNewOverviewInput {
   writer_name: String
 }
 
-
 type ComponentCommonPartners {
   id: ID!
   images(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection!
@@ -1083,7 +1082,6 @@ input ComponentCommonReviewComponentInput {
   id: ID
   likes: [ComponentCommonLikesInput]
 }
-
 
 type ComponentCommonSection2 {
   card1: ComponentCommonCard1
@@ -1247,7 +1245,6 @@ input ComponentCommonTopCollegesInput {
   id: ID
   title: ComponentCollegesTitleInput
 }
-
 
 type ComponentCourseCourse {
   course_fee: Long
@@ -1639,7 +1636,6 @@ input DateTimeFilterInput {
   startsWith: DateTime
 }
 
-
 type Degree {
   college: CollegeEntityResponse
   createdAt: DateTime
@@ -1685,7 +1681,6 @@ input DegreeInput {
 type DegreeRelationResponseCollection {
   data: [DegreeEntity!]!
 }
-
 
 type DiscussionForum {
   colleges(filters: CollegeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): CollegeRelationResponseCollection
@@ -1973,8 +1968,7 @@ input FloatFilterInput {
   startsWith: Float
 }
 
-
-union GenericMorph = Blog | Button | City | College | CollegesType | ComponentCollegesTitle | ComponentCommonApplicationDate | ComponentCommonBanner1 | ComponentCommonBanner2 | ComponentCommonBannerComponent | ComponentCommonBlogsAndOthers | ComponentCommonButton | ComponentCommonButton1 | ComponentCommonButton2 | ComponentCommonCard1 | ComponentCommonCard2 | ComponentCommonCard3 | ComponentCommonColleges | ComponentCommonCounsellingPackages | ComponentCommonCounsellingPackagesCards | ComponentCommonDislikes | ComponentCommonFaq | ComponentCommonField | ComponentCommonFormStape | ComponentCommonGallery | ComponentCommonGoogleAds | ComponentCommonHomebanner | ComponentCommonLikes | ComponentCommonNavItem | ComponentCommonNavbar | ComponentCommonNewOverview | ComponentCommonPartners | ComponentCommonRecommendedCollege | ComponentCommonRecommendedCourses | ComponentCommonRecommendedExams | ComponentCommonResultDate | ComponentCommonReviewComponent | ComponentCommonSection2 | ComponentCommonSection3 | ComponentCommonSeo | ComponentCommonStepDescription | ComponentCommonTabData | ComponentCommonTitle | ComponentCommonTopColleges | ComponentCourseCourse | ComponentCourseCourses | ComponentCourseSpecialisation | ComponentFaqFaqElements | ComponentTableColumn | ComponentTableRow | ComponentTableTable | Country | Course | CourseLevel | Degree | DiscussionForum | Exam | ExamLevel | ExamMode | HeroSection | I18NLocale | List | Navbar | New | NewsCategory | Organisation | PopularCompany | RankingBody | Scholarship | ScholarshipType | Specialization | State | Step | Stream | Tag | Testimonial | UploadFile | UploadFolder | UserData | UserForm | UsersMetaData | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Blog | Button | City | College | CollegesType | ComponentCollegesTitle | ComponentCommonApplicationDate | ComponentCommonBanner1 | ComponentCommonBanner2 | ComponentCommonBannerComponent | ComponentCommonBlogsAndOthers | ComponentCommonButton | ComponentCommonButton1 | ComponentCommonButton2 | ComponentCommonCard1 | ComponentCommonCard2 | ComponentCommonCard3 | ComponentCommonColleges | ComponentCommonCounsellingPackages | ComponentCommonCounsellingPackagesCards | ComponentCommonDislikes | ComponentCommonFaq | ComponentCommonField | ComponentCommonFormStape | ComponentCommonGallery | ComponentCommonGoogleAds | ComponentCommonHomebanner | ComponentCommonLikes | ComponentCommonNavItem | ComponentCommonNavbar | ComponentCommonNewOverview | ComponentCommonPartners | ComponentCommonRecommendedCollege | ComponentCommonRecommendedCourses | ComponentCommonRecommendedExams | ComponentCommonResultDate | ComponentCommonReviewComponent | ComponentCommonSection2 | ComponentCommonSection3 | ComponentCommonSeo | ComponentCommonStepDescription | ComponentCommonTabData | ComponentCommonTitle | ComponentCommonTopColleges | ComponentCourseCourse | ComponentCourseCourses | ComponentCourseSpecialisation | ComponentFaqFaqElements | ComponentTableColumn | ComponentTableRow | ComponentTableTable | Country | Course | CourseLevel | Degree | DiscussionForum | Exam | ExamLevel | ExamMode | HeroSection | I18NLocale | List | Navbar | New | NewsCategory | Organisation | PopularCompany | RankingBody | Scholarship | ScholarshipType | Specialization | State | Step | Stream | Styling | Tag | Testimonial | UploadFile | UploadFolder | UserData | UserForm | UsersMetaData | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type HeroSection {
   CounsellingPackages: ComponentCommonCounsellingPackages
@@ -2031,8 +2025,6 @@ input HeroSectionInput {
 type HeroSectionRelationResponseCollection {
   data: [HeroSectionEntity!]!
 }
-
-
 
 type I18NLocale {
   code: String
@@ -2158,7 +2150,6 @@ input JSONFilterInput {
   startsWith: JSON
 }
 
-
 type List {
   college: CollegeEntityResponse
   createdAt: DateTime
@@ -2205,7 +2196,6 @@ input ListInput {
 type ListRelationResponseCollection {
   data: [ListEntity!]!
 }
-
 
 """
 The `BigInt` scalar type represents non-fractional signed whole numeric values.
@@ -2267,6 +2257,7 @@ type Mutation {
   createState(data: StateInput!): StateEntityResponse
   createStep(data: StepInput!): StepEntityResponse
   createStream(data: StreamInput!): StreamEntityResponse
+  createStyling(data: StylingInput!): StylingEntityResponse
   createTag(data: TagInput!): TagEntityResponse
   createTestimonial(data: TestimonialInput!): TestimonialEntityResponse
   createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
@@ -2307,6 +2298,7 @@ type Mutation {
   deleteState(id: ID!): StateEntityResponse
   deleteStep(id: ID!): StepEntityResponse
   deleteStream(id: ID!): StreamEntityResponse
+  deleteStyling(id: ID!): StylingEntityResponse
   deleteTag(id: ID!): TagEntityResponse
   deleteTestimonial(id: ID!): TestimonialEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
@@ -2365,6 +2357,7 @@ type Mutation {
   updateState(data: StateInput!, id: ID!): StateEntityResponse
   updateStep(data: StepInput!, id: ID!): StepEntityResponse
   updateStream(data: StreamInput!, id: ID!): StreamEntityResponse
+  updateStyling(data: StylingInput!, id: ID!): StylingEntityResponse
   updateTag(data: TagInput!, id: ID!): TagEntityResponse
   updateTestimonial(data: TestimonialInput!, id: ID!): TestimonialEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
@@ -2685,10 +2678,8 @@ type Query {
   courseLevel(id: ID): CourseLevelEntityResponse
   courseLevels(filters: CourseLevelFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): CourseLevelEntityResponseCollection
   courses(filters: CourseFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): CourseEntityResponseCollection
-
   degree(id: ID): DegreeEntityResponse
   degrees(filters: DegreeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): DegreeEntityResponseCollection
-
   discussionForum(id: ID): DiscussionForumEntityResponse
   discussionForums(filters: DiscussionForumFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): DiscussionForumEntityResponseCollection
   exam(id: ID): ExamEntityResponse
@@ -2697,15 +2688,12 @@ type Query {
   examMode(id: ID): ExamModeEntityResponse
   examModes(filters: ExamModeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ExamModeEntityResponseCollection
   exams(filters: ExamFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ExamEntityResponseCollection
-
   heroSection(id: ID): HeroSectionEntityResponse
   heroSections(filters: HeroSectionFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): HeroSectionEntityResponseCollection
   i18NLocale(id: ID): I18NLocaleEntityResponse
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
   list(id: ID): ListEntityResponse
   lists(filters: ListFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ListEntityResponseCollection
-
- 
   me: UsersPermissionsMe
   navbar(id: ID): NavbarEntityResponse
   navbars(filters: NavbarFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): NavbarEntityResponseCollection
@@ -2727,12 +2715,12 @@ type Query {
   specializations(filters: SpecializationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): SpecializationEntityResponseCollection
   state(id: ID): StateEntityResponse
   states(filters: StateFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): StateEntityResponseCollection
-
   step(id: ID): StepEntityResponse
   steps(filters: StepFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): StepEntityResponseCollection
-
   stream(id: ID): StreamEntityResponse
   streams(filters: StreamFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): StreamEntityResponseCollection
+  styling(id: ID): StylingEntityResponse
+  stylings(filters: StylingFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): StylingEntityResponseCollection
   tag(id: ID): TagEntityResponse
   tags(filters: TagFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TagEntityResponseCollection
   testimonial(id: ID): TestimonialEntityResponse
@@ -3185,6 +3173,53 @@ input StringFilterInput {
   null: Boolean
   or: [String]
   startsWith: String
+}
+
+type Styling {
+  border: String!
+  colleges(filters: CollegeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): CollegeRelationResponseCollection
+  createdAt: DateTime
+  publishedAt: DateTime
+  tagBg: String!
+  updatedAt: DateTime
+}
+
+type StylingEntity {
+  attributes: Styling
+  id: ID
+}
+
+type StylingEntityResponse {
+  data: StylingEntity
+}
+
+type StylingEntityResponseCollection {
+  data: [StylingEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input StylingFiltersInput {
+  and: [StylingFiltersInput]
+  border: StringFilterInput
+  colleges: CollegeFiltersInput
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: StylingFiltersInput
+  or: [StylingFiltersInput]
+  publishedAt: DateTimeFilterInput
+  tagBg: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input StylingInput {
+  border: String
+  colleges: [ID]
+  publishedAt: DateTime
+  tagBg: String
+}
+
+type StylingRelationResponseCollection {
+  data: [StylingEntity!]!
 }
 
 type Tag {
