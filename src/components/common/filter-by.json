@@ -1,0 +1,75 @@
+{
+  "collectionName": "components_common_filter_bies",
+  "info": {
+    "displayName": "filterBy",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "streams": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::stream.stream"
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course.course"
+    },
+    "course_durations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course-duration.course-duration"
+    },
+    "states": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::state.state"
+    },
+    "cities": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::city.city"
+    },
+    "colleges_types": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::colleges-type.colleges-type"
+    },
+    "college_categories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::college-category.college-category"
+    },
+    "affiliations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::affiliation.affiliation"
+    },
+    "genders": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::gender.gender"
+    },
+    "rankings": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ranking.ranking"
+    },
+    "exams": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::exam.exam"
+    },
+    "avg_fee_per_years": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::avg-fee-per-year.avg-fee-per-year"
+    },
+    "program_types": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::program-type.program-type"
+    }
+  }
+}

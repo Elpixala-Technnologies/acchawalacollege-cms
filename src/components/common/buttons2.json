@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_common_buttons2s",
+  "info": {
+    "displayName": "buttons2",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "button1": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::button.button"
+    }
+  }
+}

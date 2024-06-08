@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_common_video_galleries",
+  "info": {
+    "displayName": "videoGallery"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "colleges.title"
+    },
+    "videos": {
+      "displayName": "videos",
+      "type": "component",
+      "repeatable": true,
+      "component": "common.videos"
+    }
+  }
+}

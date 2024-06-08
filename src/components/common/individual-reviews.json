@@ -1,8 +1,7 @@
 {
-  "collectionName": "components_common_banner1s",
+  "collectionName": "components_common_individual_reviews",
   "info": {
-    "displayName": "banner1",
-    "description": ""
+    "displayName": "individualReviews"
   },
   "options": {},
   "attributes": {
@@ -10,16 +9,7 @@
       "type": "string",
       "required": true
     },
-    "text1": {
-      "type": "string",
-      "required": true
-    },
-    "button": {
-      "type": "component",
-      "repeatable": false,
-      "component": "common.button"
-    },
-    "bgImg": {
+    "icon": {
       "allowedTypes": [
         "images",
         "files",
@@ -28,6 +18,13 @@
       ],
       "type": "media",
       "multiple": true,
+      "required": true
+    },
+    "rating": {
+      "type": "decimal"
+    },
+    "basedOn": {
+      "type": "biginteger",
       "required": true
     }
   }

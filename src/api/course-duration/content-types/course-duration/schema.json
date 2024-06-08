@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "course_durations",
+  "info": {
+    "singularName": "course-duration",
+    "pluralName": "course-durations",
+    "displayName": "courseDuration",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "duration": {
+      "type": "integer"
+    }
+  }
+}

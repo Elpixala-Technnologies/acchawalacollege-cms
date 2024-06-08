@@ -1,0 +1,120 @@
+{
+  "kind": "collectionType",
+  "collectionName": "college_details_pages",
+  "info": {
+    "singularName": "college-details-page",
+    "pluralName": "college-details-pages",
+    "displayName": "collegeDetailsPage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "collegeLogo": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "bgImage": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "collegeName": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "displayName": "location",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.location"
+    },
+    "colleges_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::colleges-type.colleges-type",
+      "inversedBy": "college_details_page"
+    },
+    "estYear": {
+      "type": "biginteger",
+      "required": true
+    },
+    "topRecruiters": {
+      "displayName": "topRecruiters",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.top-recruiters"
+    },
+    "brochureSection": {
+      "displayName": "brochureSection",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.brochure-section"
+    },
+    "reviews": {
+      "displayName": "reviews",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.reviews"
+    },
+    "photoGallery": {
+      "displayName": "photoGallery",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.photo-gallery"
+    },
+    "videoGallery": {
+      "displayName": "videoGallery",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.video-gallery"
+    },
+    "campusSize": {
+      "type": "string",
+      "required": true
+    },
+    "noOfFaculty": {
+      "type": "biginteger",
+      "required": true
+    },
+    "noOfStudents": {
+      "type": "biginteger",
+      "required": true
+    },
+    "avgFee": {
+      "type": "biginteger"
+    },
+    "genderAccepted": {
+      "type": "string",
+      "required": true
+    },
+    "studyMode": {
+      "type": "enumeration",
+      "enum": [
+        "Regular",
+        "Part-time"
+      ]
+    },
+    "scholarshipPage": {
+      "displayName": "scholarshipPage",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.scholarship-page"
+    }
+  }
+}
