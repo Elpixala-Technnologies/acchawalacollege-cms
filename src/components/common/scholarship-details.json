@@ -17,6 +17,22 @@
     },
     "readMoreLink": {
       "type": "string"
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course.course"
+    },
+    "image": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::image.image"
+    },
+    "article": {
+      "type": "text"
+    },
+    "table": {
+      "type": "text"
     }
   }
 }

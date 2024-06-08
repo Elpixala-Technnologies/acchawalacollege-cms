@@ -381,6 +381,33 @@ export interface CommonFaq extends Schema.Component {
   };
 }
 
+export interface CommonFaqsQuestionsAndAnswers extends Schema.Component {
+  collectionName: 'components_common_faqs_questions_and_answers';
+  info: {
+    displayName: 'faqsQuestionsAndAnswers';
+  };
+  attributes: {
+    question: Attribute.Text & Attribute.Required;
+    answer: Attribute.Text & Attribute.Required;
+  };
+}
+
+export interface CommonFaqs2 extends Schema.Component {
+  collectionName: 'components_common_faqs2s';
+  info: {
+    displayName: 'faqs2';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.Relation<'common.faqs2', 'oneToOne', 'api::title2.title2'>;
+    faqs_questions_and_answers: Attribute.Relation<
+      'common.faqs2',
+      'oneToMany',
+      'api::faqs-questions-and-answer.faqs-questions-and-answer'
+    >;
+  };
+}
+
 export interface CommonField extends Schema.Component {
   collectionName: 'components_common_fields';
   info: {
@@ -753,6 +780,18 @@ export interface CommonScholarshipDetails extends Schema.Component {
       'api::title.title'
     >;
     readMoreLink: Attribute.String;
+    courses: Attribute.Relation<
+      'common.scholarship-details',
+      'oneToMany',
+      'api::course.course'
+    >;
+    image: Attribute.Relation<
+      'common.scholarship-details',
+      'oneToOne',
+      'api::image.image'
+    >;
+    article: Attribute.Text;
+    table: Attribute.Text;
   };
 }
 
@@ -760,9 +799,11 @@ export interface CommonScholarshipPage extends Schema.Component {
   collectionName: 'components_common_scholarship_pages';
   info: {
     displayName: 'scholarshipPage';
+    description: '';
   };
   attributes: {
-    scholarshipDetails: Attribute.Component<'common.scholarship-details'>;
+    scholarshipDetails: Attribute.Component<'common.scholarship-details', true>;
+    faqs: Attribute.Component<'common.faqs2'>;
   };
 }
 
@@ -1037,6 +1078,8 @@ declare module '@strapi/types' {
       'common.course': CommonCourse;
       'common.dislikes': CommonDislikes;
       'common.faq': CommonFaq;
+      'common.faqs-questions-and-answers': CommonFaqsQuestionsAndAnswers;
+      'common.faqs2': CommonFaqs2;
       'common.field': CommonField;
       'common.filter-by': CommonFilterBy;
       'common.form-stape': CommonFormStape;

@@ -1424,6 +1424,15 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'manyToMany',
       'api::blog.blog'
     >;
+    bg: Attribute.Media;
+    eligibility: Attribute.Text;
+    fees: Attribute.BigInteger;
+    course_duration: Attribute.Relation<
+      'api::course.course',
+      'oneToOne',
+      'api::course-duration.course-duration'
+    >;
+    buttons: Attribute.Component<'common.button', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1455,6 +1464,11 @@ export interface ApiCourseDurationCourseDuration extends Schema.CollectionType {
   };
   attributes: {
     duration: Attribute.Integer;
+    course: Attribute.Relation<
+      'api::course-duration.course-duration',
+      'oneToOne',
+      'api::course.course'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1718,6 +1732,40 @@ export interface ApiExamModeExamMode extends Schema.CollectionType {
   };
 }
 
+export interface ApiFaqsQuestionsAndAnswerFaqsQuestionsAndAnswer
+  extends Schema.CollectionType {
+  collectionName: 'faqs_questions_and_answers';
+  info: {
+    singularName: 'faqs-questions-and-answer';
+    pluralName: 'faqs-questions-and-answers';
+    displayName: 'faqsQuestionsAndAnswer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    faqsQuestionsAndAnswers: Attribute.Component<
+      'common.faqs-questions-and-answers',
+      true
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::faqs-questions-and-answer.faqs-questions-and-answer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::faqs-questions-and-answer.faqs-questions-and-answer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiGenderGender extends Schema.CollectionType {
   collectionName: 'genders';
   info: {
@@ -1778,6 +1826,37 @@ export interface ApiHeroSectionHeroSection extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::hero-section.hero-section',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiImageImage extends Schema.CollectionType {
+  collectionName: 'images';
+  info: {
+    singularName: 'image';
+    pluralName: 'images';
+    displayName: 'image';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    img: Attribute.Media;
+    text: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::image.image',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::image.image',
       'oneToOne',
       'admin::user'
     > &
@@ -2614,6 +2693,37 @@ export interface ApiTitleTitle extends Schema.CollectionType {
   };
 }
 
+export interface ApiTitle2Title2 extends Schema.CollectionType {
+  collectionName: 'title2s';
+  info: {
+    singularName: 'title2';
+    pluralName: 'title2s';
+    displayName: 'title2';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    t2: Attribute.String & Attribute.Required;
+    t3: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::title2.title2',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::title2.title2',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiUserDataUserData extends Schema.CollectionType {
   collectionName: 'user_datas';
   info: {
@@ -2795,8 +2905,10 @@ declare module '@strapi/types' {
       'api::exam.exam': ApiExamExam;
       'api::exam-level.exam-level': ApiExamLevelExamLevel;
       'api::exam-mode.exam-mode': ApiExamModeExamMode;
+      'api::faqs-questions-and-answer.faqs-questions-and-answer': ApiFaqsQuestionsAndAnswerFaqsQuestionsAndAnswer;
       'api::gender.gender': ApiGenderGender;
       'api::hero-section.hero-section': ApiHeroSectionHeroSection;
+      'api::image.image': ApiImageImage;
       'api::list.list': ApiListList;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::new.new': ApiNewNew;
@@ -2816,6 +2928,7 @@ declare module '@strapi/types' {
       'api::tag.tag': ApiTagTag;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
       'api::title.title': ApiTitleTitle;
+      'api::title2.title2': ApiTitle2Title2;
       'api::user-data.user-data': ApiUserDataUserData;
       'api::user-form.user-form': ApiUserFormUserForm;
       'api::users-meta-data.users-meta-data': ApiUsersMetaDataUsersMetaData;
