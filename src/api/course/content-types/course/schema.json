@@ -126,6 +126,33 @@
       "relation": "manyToMany",
       "target": "api::blog.blog",
       "inversedBy": "courses"
+    },
+    "bg": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "eligibility": {
+      "type": "text"
+    },
+    "fees": {
+      "type": "biginteger"
+    },
+    "course_duration": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::course-duration.course-duration",
+      "inversedBy": "course"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.button"
     }
   }
 }

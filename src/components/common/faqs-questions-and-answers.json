@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_common_faqs_questions_and_answers",
+  "info": {
+    "displayName": "faqsQuestionsAndAnswers"
+  },
+  "options": {},
+  "attributes": {
+    "question": {
+      "type": "text",
+      "required": true
+    },
+    "answer": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

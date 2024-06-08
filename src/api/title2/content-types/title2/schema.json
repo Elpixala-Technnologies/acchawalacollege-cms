@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "title2s",
+  "info": {
+    "singularName": "title2",
+    "pluralName": "title2s",
+    "displayName": "title2"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "t2": {
+      "type": "string",
+      "required": true
+    },
+    "t3": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
