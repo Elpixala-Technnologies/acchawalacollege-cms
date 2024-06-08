@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_common_banner_sections",
+  "info": {
+    "displayName": "bannerSection"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "colleges.title"
+    },
+    "author": {
+      "displayName": "author",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.author"
+    },
+    "article": {
+      "type": "text",
+      "required": true
+    },
+    "readMoreLink": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

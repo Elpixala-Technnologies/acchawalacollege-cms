@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "avg_fee_per_years",
+  "info": {
+    "singularName": "avg-fee-per-year",
+    "pluralName": "avg-fee-per-years",
+    "displayName": "avgFeePerYear"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "avgFeePerYear": {
+      "type": "integer"
+    }
+  }
+}

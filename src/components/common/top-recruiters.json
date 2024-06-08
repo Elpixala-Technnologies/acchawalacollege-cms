@@ -1,25 +1,16 @@
 {
-  "collectionName": "components_common_banner1s",
+  "collectionName": "components_common_top_recruiters",
   "info": {
-    "displayName": "banner1",
-    "description": ""
+    "displayName": "topRecruiters"
   },
   "options": {},
   "attributes": {
     "title": {
-      "type": "string",
-      "required": true
-    },
-    "text1": {
-      "type": "string",
-      "required": true
-    },
-    "button": {
       "type": "component",
       "repeatable": false,
-      "component": "common.button"
+      "component": "colleges.title"
     },
-    "bgImg": {
+    "companyLogos": {
       "allowedTypes": [
         "images",
         "files",

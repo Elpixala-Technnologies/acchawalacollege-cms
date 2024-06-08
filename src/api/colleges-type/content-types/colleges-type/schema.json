@@ -21,6 +21,12 @@
       "relation": "oneToOne",
       "target": "api::course.course",
       "inversedBy": "college_type"
+    },
+    "college_details_page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::college-details-page.college-details-page",
+      "mappedBy": "colleges_type"
     }
   }
 }

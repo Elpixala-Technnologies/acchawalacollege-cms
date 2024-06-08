@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "college_datas",
+  "info": {
+    "singularName": "college-data",
+    "pluralName": "college-datas",
+    "displayName": "collegeData",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "bannerSection": {
+      "displayName": "bannerSection",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.banner-section"
+    },
+    "filterBy": {
+      "displayName": "filterBy",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.filter-by"
+    }
+  }
+}
