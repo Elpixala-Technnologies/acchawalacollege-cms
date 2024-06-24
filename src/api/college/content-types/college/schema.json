@@ -95,12 +95,6 @@
       "repeatable": false,
       "component": "common.seo"
     },
-    "news": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::new.new",
-      "mappedBy": "colleges"
-    },
     "dawonload_brochure": {
       "type": "media",
       "multiple": true,
@@ -182,12 +176,6 @@
       "target": "api::testimonial.testimonial",
       "mappedBy": "colleges"
     },
-    "blogs": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::blog.blog",
-      "inversedBy": "colleges"
-    },
     "degrees": {
       "type": "relation",
       "relation": "oneToMany",
@@ -216,6 +204,24 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::styling.styling",
+      "inversedBy": "colleges"
+    },
+    "navbars": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::navbar.navbar",
+      "inversedBy": "colleges"
+    },
+    "blogs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::blog.blog",
+      "inversedBy": "colleges"
+    },
+    "news": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::new.new",
       "inversedBy": "colleges"
     }
   }

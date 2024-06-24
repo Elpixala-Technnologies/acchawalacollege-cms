@@ -26,12 +26,6 @@
       "target": "api::college.college",
       "mappedBy": "scholarships"
     },
-    "blog": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::blog.blog",
-      "inversedBy": "scholarships"
-    },
     "page_data": {
       "type": "dynamiczone",
       "components": [
@@ -131,7 +125,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::blog.blog",
-      "inversedBy": "scholarship"
+      "inversedBy": "scholarships"
     },
     "review_component": {
       "type": "component",

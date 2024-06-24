@@ -27,17 +27,17 @@
       "target": "api::college.college",
       "mappedBy": "country"
     },
-    "blog": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::blog.blog",
-      "inversedBy": "countries"
-    },
     "scholarships": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::scholarship.scholarship",
       "mappedBy": "country"
+    },
+    "blogs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::blog.blog",
+      "inversedBy": "countries"
     }
   }
 }

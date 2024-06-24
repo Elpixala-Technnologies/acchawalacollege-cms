@@ -431,19 +431,6 @@ export interface CommonNavItem extends Schema.Component {
   };
 }
 
-export interface CommonNavbar extends Schema.Component {
-  collectionName: 'components_common_navbars';
-  info: {
-    displayName: 'navbar';
-    icon: 'bulletList';
-    description: '';
-  };
-  attributes: {
-    nav_item: Attribute.Component<'common.nav-item', true>;
-    section: Attribute.String;
-  };
-}
-
 export interface CommonNewOverview extends Schema.Component {
   collectionName: 'components_common_new_overviews';
   info: {
@@ -776,7 +763,6 @@ declare module '@strapi/types' {
       'common.homebanner': CommonHomebanner;
       'common.likes': CommonLikes;
       'common.nav-item': CommonNavItem;
-      'common.navbar': CommonNavbar;
       'common.new-overview': CommonNewOverview;
       'common.partners': CommonPartners;
       'common.recommended-college': CommonRecommendedCollege;
