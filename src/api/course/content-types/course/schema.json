@@ -121,13 +121,12 @@
       "target": "api::blog.blog",
       "inversedBy": "courses"
     },
-  },
-  "news": {
-    "type": "relation",
-    "relation": "manyToMany",
-    "target": "api::new.new",
-    "inversedBy": "courses",
-  },
+    "news": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::new.new",
+      "inversedBy": "courses"
+    },
     "bg": {
       "allowedTypes": [
         "images",
