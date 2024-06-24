@@ -54,11 +54,13 @@ export interface CommonBanner1 extends Schema.Component {
   collectionName: 'components_common_banner1s';
   info: {
     displayName: 'banner1';
+    description: '';
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
     text1: Attribute.String & Attribute.Required;
     button: Attribute.Component<'common.button'>;
+    bgImg: Attribute.Media & Attribute.Required;
   };
 }
 
@@ -101,7 +103,6 @@ export interface CommonButton extends Schema.Component {
       Attribute.SetMinMaxLength<{
         maxLength: 250;
       }>;
-    bgImg: Attribute.Media & Attribute.Required;
   };
 }
 
@@ -410,6 +411,16 @@ export interface CommonHomebanner extends Schema.Component {
   };
 }
 
+export interface CommonHomepage extends Schema.Component {
+  collectionName: 'components_common_homepages';
+  info: {
+    displayName: 'homepage';
+  };
+  attributes: {
+    bannerSection: Attribute.Component<'common.banner-component'>;
+  };
+}
+
 export interface CommonLikes extends Schema.Component {
   collectionName: 'components_common_likes';
   info: {
@@ -580,6 +591,16 @@ export interface CommonSeo extends Schema.Component {
     page_og_url: Attribute.Text & Attribute.Unique;
     favicon: Attribute.Media;
     favicon_alt_text: Attribute.Text;
+  };
+}
+
+export interface CommonSponsors extends Schema.Component {
+  collectionName: 'components_common_sponsors';
+  info: {
+    displayName: 'sponsors';
+  };
+  attributes: {
+    partners: Attribute.Component<'common.partners'>;
   };
 }
 
@@ -761,6 +782,7 @@ declare module '@strapi/types' {
       'common.gallery': CommonGallery;
       'common.google-ads': CommonGoogleAds;
       'common.homebanner': CommonHomebanner;
+      'common.homepage': CommonHomepage;
       'common.likes': CommonLikes;
       'common.nav-item': CommonNavItem;
       'common.new-overview': CommonNewOverview;
@@ -773,6 +795,7 @@ declare module '@strapi/types' {
       'common.section2': CommonSection2;
       'common.section3': CommonSection3;
       'common.seo': CommonSeo;
+      'common.sponsors': CommonSponsors;
       'common.step-description': CommonStepDescription;
       'common.tab-data': CommonTabData;
       'common.title': CommonTitle;

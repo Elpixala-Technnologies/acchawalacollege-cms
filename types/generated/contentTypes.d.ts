@@ -1506,12 +1506,12 @@ export interface ApiExamModeExamMode extends Schema.CollectionType {
   };
 }
 
-export interface ApiHeroSectionHeroSection extends Schema.CollectionType {
-  collectionName: 'hero_sections';
+export interface ApiHomepageHomepage extends Schema.CollectionType {
+  collectionName: 'homepages';
   info: {
-    singularName: 'hero-section';
-    pluralName: 'hero-sections';
-    displayName: 'Hero_section';
+    singularName: 'homepage';
+    pluralName: 'homepages';
+    displayName: 'homepage';
     description: '';
   };
   options: {
@@ -1520,21 +1520,21 @@ export interface ApiHeroSectionHeroSection extends Schema.CollectionType {
   attributes: {
     homebanner: Attribute.Component<'common.homebanner'>;
     section2: Attribute.Component<'common.section2'>;
-    partners: Attribute.Component<'common.partners'>;
-    CounsellingPackages: Attribute.Component<'common.counselling-packages'>;
+    counsellingPackages: Attribute.Component<'common.counselling-packages'>;
     banner1: Attribute.Component<'common.banner1'>;
     banner2: Attribute.Component<'common.banner2'>;
+    sponsors: Attribute.Component<'common.sponsors'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::hero-section.hero-section',
+      'api::homepage.homepage',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::hero-section.hero-section',
+      'api::homepage.homepage',
       'oneToOne',
       'admin::user'
     > &
@@ -2443,7 +2443,7 @@ declare module '@strapi/types' {
       'api::exam.exam': ApiExamExam;
       'api::exam-level.exam-level': ApiExamLevelExamLevel;
       'api::exam-mode.exam-mode': ApiExamModeExamMode;
-      'api::hero-section.hero-section': ApiHeroSectionHeroSection;
+      'api::homepage.homepage': ApiHomepageHomepage;
       'api::list.list': ApiListList;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::new.new': ApiNewNew;
