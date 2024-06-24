@@ -60,25 +60,19 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::course.course",
-      "mappedBy": "blog"
+      "mappedBy": "blogs"
     },
     "exams": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::exam.exam",
-      "mappedBy": "blog"
-    },
-    "scholarships": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::scholarship.scholarship",
-      "mappedBy": "blog"
+      "mappedBy": "blogs"
     },
     "countries": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::country.country",
-      "mappedBy": "blog"
+      "mappedBy": "blogs"
     },
     "tags": {
       "type": "relation",
@@ -92,7 +86,7 @@
       "target": "api::college.college",
       "mappedBy": "blogs"
     },
-    "scholarship": {
+    "scholarships": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::scholarship.scholarship",

@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_common_sponsors",
+  "info": {
+    "displayName": "sponsors"
+  },
+  "options": {},
+  "attributes": {
+    "partners": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.partners"
+    }
+  }
+}

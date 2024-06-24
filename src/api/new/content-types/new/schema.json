@@ -36,36 +36,6 @@
         "images"
       ]
     },
-    "colleges": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::college.college",
-      "inversedBy": "news"
-    },
-    "exams": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::exam.exam",
-      "inversedBy": "news"
-    },
-    "newsCategories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::news-category.news-category",
-      "inversedBy": "news"
-    },
-    "courses": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::course.course",
-      "inversedBy": "news"
-    },
-    "specializations": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::specialization.specialization",
-      "mappedBy": "news"
-    },
     "type": {
       "type": "enumeration",
       "enum": [
@@ -83,6 +53,30 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::scholarship.scholarship",
+      "mappedBy": "news"
+    },
+    "colleges": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::college.college",
+      "mappedBy": "news"
+    },
+    "exams": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::exam.exam",
+      "mappedBy": "news"
+    },
+    "news_categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::news-category.news-category",
+      "mappedBy": "news"
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::course.course",
       "mappedBy": "news"
     }
   }

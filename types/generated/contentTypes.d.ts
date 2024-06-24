@@ -881,11 +881,6 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       'api::course.course'
     >;
     exams: Attribute.Relation<'api::blog.blog', 'manyToMany', 'api::exam.exam'>;
-    scholarships: Attribute.Relation<
-      'api::blog.blog',
-      'manyToMany',
-      'api::scholarship.scholarship'
-    >;
     countries: Attribute.Relation<
       'api::blog.blog',
       'manyToMany',
@@ -897,7 +892,7 @@ export interface ApiBlogBlog extends Schema.CollectionType {
       'manyToMany',
       'api::college.college'
     >;
-    scholarship: Attribute.Relation<
+    scholarships: Attribute.Relation<
       'api::blog.blog',
       'manyToMany',
       'api::scholarship.scholarship'
@@ -1036,11 +1031,6 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
     >;
     courses: Attribute.Component<'course.course', true>;
     seo: Attribute.Component<'common.seo'>;
-    news: Attribute.Relation<
-      'api::college.college',
-      'manyToMany',
-      'api::new.new'
-    >;
     dawonload_brochure: Attribute.Media & Attribute.Required;
     review_component: Attribute.Component<'common.review-component'> &
       Attribute.Required;
@@ -1086,11 +1076,6 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
       'manyToMany',
       'api::testimonial.testimonial'
     >;
-    blogs: Attribute.Relation<
-      'api::college.college',
-      'manyToMany',
-      'api::blog.blog'
-    >;
     degrees: Attribute.Relation<
       'api::college.college',
       'oneToMany',
@@ -1115,6 +1100,21 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
       'api::college.college',
       'manyToOne',
       'api::styling.styling'
+    >;
+    navbars: Attribute.Relation<
+      'api::college.college',
+      'manyToMany',
+      'api::navbar.navbar'
+    >;
+    blogs: Attribute.Relation<
+      'api::college.college',
+      'manyToMany',
+      'api::blog.blog'
+    >;
+    news: Attribute.Relation<
+      'api::college.college',
+      'manyToMany',
+      'api::new.new'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1314,15 +1314,15 @@ export interface ApiCountryCountry extends Schema.CollectionType {
       'oneToMany',
       'api::college.college'
     >;
-    blog: Attribute.Relation<
-      'api::country.country',
-      'manyToMany',
-      'api::blog.blog'
-    >;
     scholarships: Attribute.Relation<
       'api::country.country',
       'oneToMany',
       'api::scholarship.scholarship'
+    >;
+    blogs: Attribute.Relation<
+      'api::country.country',
+      'manyToMany',
+      'api::blog.blog'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1394,11 +1394,6 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'oneToOne',
       'api::colleges-type.colleges-type'
     >;
-    news: Attribute.Relation<
-      'api::course.course',
-      'manyToMany',
-      'api::new.new'
-    >;
     approvedBy: Attribute.Relation<
       'api::course.course',
       'manyToMany',
@@ -1419,10 +1414,15 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'manyToMany',
       'api::navbar.navbar'
     >;
-    blog: Attribute.Relation<
+    blogs: Attribute.Relation<
       'api::course.course',
       'manyToMany',
       'api::blog.blog'
+    >;
+    news: Attribute.Relation<
+      'api::course.course',
+      'manyToMany',
+      'api::new.new'
     >;
     bg: Attribute.Media;
     eligibility: Attribute.Text;
@@ -1621,14 +1621,8 @@ export interface ApiExamExam extends Schema.CollectionType {
       'manyToMany',
       'api::stream.stream'
     >;
-    navbars: Attribute.Relation<
-      'api::exam.exam',
-      'manyToMany',
-      'api::navbar.navbar'
-    >;
     applicationDate: Attribute.Component<'common.application-date'>;
     resultDate: Attribute.Component<'common.result-date'>;
-    news: Attribute.Relation<'api::exam.exam', 'manyToMany', 'api::new.new'>;
     isFeaturedExam: Attribute.Boolean & Attribute.DefaultTo<false>;
     examMode: Attribute.Relation<
       'api::exam.exam',
@@ -1649,7 +1643,13 @@ export interface ApiExamExam extends Schema.CollectionType {
     pageData: Attribute.DynamicZone<
       ['common.gallery', 'common.tab-data', 'common.faq']
     >;
-    blog: Attribute.Relation<'api::exam.exam', 'manyToMany', 'api::blog.blog'>;
+    navbars: Attribute.Relation<
+      'api::exam.exam',
+      'manyToMany',
+      'api::navbar.navbar'
+    >;
+    blogs: Attribute.Relation<'api::exam.exam', 'manyToMany', 'api::blog.blog'>;
+    news: Attribute.Relation<'api::exam.exam', 'manyToMany', 'api::new.new'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1797,12 +1797,77 @@ export interface ApiGenderGender extends Schema.CollectionType {
   };
 }
 
-export interface ApiHeroSectionHeroSection extends Schema.CollectionType {
-  collectionName: 'hero_sections';
+export interface ApiFaqsQuestionsAndAnswerFaqsQuestionsAndAnswer
+  extends Schema.CollectionType {
+  collectionName: 'faqs_questions_and_answers';
   info: {
-    singularName: 'hero-section';
-    pluralName: 'hero-sections';
-    displayName: 'Hero_section';
+    singularName: 'faqs-questions-and-answer';
+    pluralName: 'faqs-questions-and-answers';
+    displayName: 'faqsQuestionsAndAnswer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    faqsQuestionsAndAnswers: Attribute.Component<
+      'common.faqs-questions-and-answers',
+      true
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::faqs-questions-and-answer.faqs-questions-and-answer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::faqs-questions-and-answer.faqs-questions-and-answer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGenderGender extends Schema.CollectionType {
+  collectionName: 'genders';
+  info: {
+    singularName: 'gender';
+    pluralName: 'genders';
+    displayName: 'gender';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    gender: Attribute.Enumeration<['Co-ed', 'Boys', 'Girls']> &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::gender.gender',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::gender.gender',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomepageHomepage extends Schema.CollectionType {
+  collectionName: 'homepages';
+  info: {
+    singularName: 'homepage';
+    pluralName: 'homepages';
+    displayName: 'homepage';
     description: '';
   };
   options: {
@@ -1811,21 +1876,53 @@ export interface ApiHeroSectionHeroSection extends Schema.CollectionType {
   attributes: {
     homebanner: Attribute.Component<'common.homebanner'>;
     section2: Attribute.Component<'common.section2'>;
-    partners: Attribute.Component<'common.partners'>;
-    CounsellingPackages: Attribute.Component<'common.counselling-packages'>;
+    counsellingPackages: Attribute.Component<'common.counselling-packages'>;
     banner1: Attribute.Component<'common.banner1'>;
     banner2: Attribute.Component<'common.banner2'>;
+    sponsors: Attribute.Component<'common.sponsors'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::hero-section.hero-section',
+      'api::homepage.homepage',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::hero-section.hero-section',
+      'api::homepage.homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+
+export interface ApiImageImage extends Schema.CollectionType {
+  collectionName: 'images';
+  info: {
+    singularName: 'image';
+    pluralName: 'images';
+    displayName: 'image';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    img: Attribute.Media;
+    text: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::image.image',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::image.image',
       'oneToOne',
       'admin::user'
     > &
@@ -1964,13 +2061,20 @@ export interface ApiNewNew extends Schema.CollectionType {
         maxLength: 125;
       }>;
     featuredImage: Attribute.Media;
+    type: Attribute.Enumeration<['blog', 'news']> & Attribute.Required;
+    seo: Attribute.Component<'common.seo'>;
+    scholarships: Attribute.Relation<
+      'api::new.new',
+      'manyToMany',
+      'api::scholarship.scholarship'
+    >;
     colleges: Attribute.Relation<
       'api::new.new',
       'manyToMany',
       'api::college.college'
     >;
     exams: Attribute.Relation<'api::new.new', 'manyToMany', 'api::exam.exam'>;
-    newsCategories: Attribute.Relation<
+    news_categories: Attribute.Relation<
       'api::new.new',
       'manyToMany',
       'api::news-category.news-category'
@@ -1979,18 +2083,6 @@ export interface ApiNewNew extends Schema.CollectionType {
       'api::new.new',
       'manyToMany',
       'api::course.course'
-    >;
-    specializations: Attribute.Relation<
-      'api::new.new',
-      'manyToMany',
-      'api::specialization.specialization'
-    >;
-    type: Attribute.Enumeration<['blog', 'news']> & Attribute.Required;
-    seo: Attribute.Component<'common.seo'>;
-    scholarships: Attribute.Relation<
-      'api::new.new',
-      'manyToMany',
-      'api::scholarship.scholarship'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -2252,11 +2344,6 @@ export interface ApiScholarshipScholarship extends Schema.CollectionType {
       'api::scholarship.scholarship',
       'manyToMany',
       'api::college.college'
-    >;
-    blog: Attribute.Relation<
-      'api::scholarship.scholarship',
-      'manyToMany',
-      'api::blog.blog'
     >;
     page_data: Attribute.DynamicZone<
       [
@@ -2907,7 +2994,7 @@ declare module '@strapi/types' {
       'api::exam-mode.exam-mode': ApiExamModeExamMode;
       'api::faqs-questions-and-answer.faqs-questions-and-answer': ApiFaqsQuestionsAndAnswerFaqsQuestionsAndAnswer;
       'api::gender.gender': ApiGenderGender;
-      'api::hero-section.hero-section': ApiHeroSectionHeroSection;
+      'api::homepage.homepage': ApiHomepageHomepage;
       'api::image.image': ApiImageImage;
       'api::list.list': ApiListList;
       'api::navbar.navbar': ApiNavbarNavbar;

@@ -16,7 +16,6 @@ type Blog {
   is_featured: Boolean
   is_top: Boolean
   publishedAt: DateTime
-  scholarship(filters: ScholarshipFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ScholarshipRelationResponseCollection
   scholarships(filters: ScholarshipFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ScholarshipRelationResponseCollection
   seo: ComponentCommonSeo
   tags(filters: TagFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): TagRelationResponseCollection
@@ -54,7 +53,6 @@ input BlogFiltersInput {
   not: BlogFiltersInput
   or: [BlogFiltersInput]
   publishedAt: DateTimeFilterInput
-  scholarship: ScholarshipFiltersInput
   scholarships: ScholarshipFiltersInput
   seo: ComponentCommonSeoFiltersInput
   tags: TagFiltersInput
@@ -74,7 +72,6 @@ input BlogInput {
   is_featured: Boolean
   is_top: Boolean
   publishedAt: DateTime
-  scholarship: [ID]
   scholarships: [ID]
   seo: ComponentCommonSeoInput
   tags: [ID]
@@ -222,6 +219,7 @@ type College {
   is_top: Boolean!
   lists(filters: ListFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ListRelationResponseCollection
   logo: UploadFileEntityResponse!
+  navbars(filters: NavbarFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): NavbarRelationResponseCollection
   news(filters: NewFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): NewRelationResponseCollection
   page_data: [CollegePageDataDynamicZone]
   pin_code: Int!
@@ -273,6 +271,7 @@ input CollegeFiltersInput {
   is_featured: BooleanFilterInput
   is_top: BooleanFilterInput
   lists: ListFiltersInput
+  navbars: NavbarFiltersInput
   news: NewFiltersInput
   not: CollegeFiltersInput
   or: [CollegeFiltersInput]
@@ -312,6 +311,7 @@ input CollegeInput {
   is_top: Boolean
   lists: [ID]
   logo: ID
+  navbars: [ID]
   news: [ID]
   page_data: [CollegePageDataDynamicZoneInput!]
   pin_code: Int
@@ -890,6 +890,23 @@ input ComponentCommonHomebannerInput {
   title: ComponentCommonTitleInput
 }
 
+type ComponentCommonHomepage {
+  bannerSection: ComponentCommonBannerComponent
+  id: ID!
+}
+
+input ComponentCommonHomepageFiltersInput {
+  and: [ComponentCommonHomepageFiltersInput]
+  bannerSection: ComponentCommonBannerComponentFiltersInput
+  not: ComponentCommonHomepageFiltersInput
+  or: [ComponentCommonHomepageFiltersInput]
+}
+
+input ComponentCommonHomepageInput {
+  bannerSection: ComponentCommonBannerComponentInput
+  id: ID
+}
+
 type ComponentCommonLikes {
   id: ID!
   title: String
@@ -922,26 +939,6 @@ input ComponentCommonNavItemFiltersInput {
 input ComponentCommonNavItemInput {
   id: ID
   title: String
-}
-
-type ComponentCommonNavbar {
-  id: ID!
-  nav_item(filters: ComponentCommonNavItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentCommonNavItem]
-  section: String
-}
-
-input ComponentCommonNavbarFiltersInput {
-  and: [ComponentCommonNavbarFiltersInput]
-  nav_item: ComponentCommonNavItemFiltersInput
-  not: ComponentCommonNavbarFiltersInput
-  or: [ComponentCommonNavbarFiltersInput]
-  section: StringFilterInput
-}
-
-input ComponentCommonNavbarInput {
-  id: ID
-  nav_item: [ComponentCommonNavItemInput]
-  section: String
 }
 
 type ComponentCommonNewOverview {
@@ -1166,6 +1163,23 @@ input ComponentCommonSeoInput {
   page_title: String
 }
 
+type ComponentCommonSponsors {
+  id: ID!
+  partners: ComponentCommonPartners
+}
+
+input ComponentCommonSponsorsFiltersInput {
+  and: [ComponentCommonSponsorsFiltersInput]
+  not: ComponentCommonSponsorsFiltersInput
+  or: [ComponentCommonSponsorsFiltersInput]
+  partners: ComponentCommonPartnersFiltersInput
+}
+
+input ComponentCommonSponsorsInput {
+  id: ID
+  partners: ComponentCommonPartnersInput
+}
+
 type ComponentCommonStepDescription {
   details: String
   heading: String
@@ -1384,7 +1398,7 @@ input ComponentTableTableInput {
 }
 
 type Country {
-  blog(filters: BlogFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogRelationResponseCollection
+  blogs(filters: BlogFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogRelationResponseCollection
   colleges(filters: CollegeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): CollegeRelationResponseCollection
   country_name: String
   createdAt: DateTime
@@ -1410,7 +1424,7 @@ type CountryEntityResponseCollection {
 
 input CountryFiltersInput {
   and: [CountryFiltersInput]
-  blog: BlogFiltersInput
+  blogs: BlogFiltersInput
   colleges: CollegeFiltersInput
   country_name: StringFilterInput
   createdAt: DateTimeFilterInput
@@ -1424,7 +1438,7 @@ input CountryFiltersInput {
 }
 
 input CountryInput {
-  blog: [ID]
+  blogs: [ID]
   colleges: [ID]
   country_name: String
   publishedAt: DateTime
@@ -1439,7 +1453,7 @@ type CountryRelationResponseCollection {
 type Course {
   approvedBy(filters: OrganisationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): OrganisationRelationResponseCollection
   banner(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
-  blog(filters: BlogFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogRelationResponseCollection
+  blogs(filters: BlogFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogRelationResponseCollection
   college_type: CollegesTypeEntityResponse
   courseLevels(filters: CourseLevelFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): CourseLevelRelationResponseCollection
   course_name: String!
@@ -1478,7 +1492,7 @@ type CourseEntityResponseCollection {
 input CourseFiltersInput {
   and: [CourseFiltersInput]
   approvedBy: OrganisationFiltersInput
-  blog: BlogFiltersInput
+  blogs: BlogFiltersInput
   college_type: CollegesTypeFiltersInput
   courseLevels: CourseLevelFiltersInput
   course_name: StringFilterInput
@@ -1504,7 +1518,7 @@ input CourseFiltersInput {
 input CourseInput {
   approvedBy: [ID]
   banner: [ID]
-  blog: [ID]
+  blogs: [ID]
   college_type: ID
   courseLevels: [ID]
   course_name: String
@@ -1765,7 +1779,7 @@ type Error {
 type Exam {
   applicationDate: ComponentCommonApplicationDate
   banner(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
-  blog(filters: BlogFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogRelationResponseCollection
+  blogs(filters: BlogFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogRelationResponseCollection
   createdAt: DateTime
   examLevel(filters: ExamLevelFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ExamLevelRelationResponseCollection
   examMode: ExamModeEntityResponse
@@ -1801,7 +1815,7 @@ type ExamEntityResponseCollection {
 input ExamFiltersInput {
   and: [ExamFiltersInput]
   applicationDate: ComponentCommonApplicationDateFiltersInput
-  blog: BlogFiltersInput
+  blogs: BlogFiltersInput
   createdAt: DateTimeFilterInput
   examLevel: ExamLevelFiltersInput
   examMode: ExamModeFiltersInput
@@ -1824,7 +1838,7 @@ input ExamFiltersInput {
 input ExamInput {
   applicationDate: ComponentCommonApplicationDateInput
   banner: [ID]
-  blog: [ID]
+  blogs: [ID]
   examLevel: [ID]
   examMode: ID
   exam_name: String
@@ -1968,7 +1982,7 @@ input FloatFilterInput {
   startsWith: Float
 }
 
-union GenericMorph = Blog | Button | City | College | CollegesType | ComponentCollegesTitle | ComponentCommonApplicationDate | ComponentCommonBanner1 | ComponentCommonBanner2 | ComponentCommonBannerComponent | ComponentCommonBlogsAndOthers | ComponentCommonButton | ComponentCommonButton1 | ComponentCommonButton2 | ComponentCommonCard1 | ComponentCommonCard2 | ComponentCommonCard3 | ComponentCommonColleges | ComponentCommonCounsellingPackages | ComponentCommonCounsellingPackagesCards | ComponentCommonDislikes | ComponentCommonFaq | ComponentCommonField | ComponentCommonFormStape | ComponentCommonGallery | ComponentCommonGoogleAds | ComponentCommonHomebanner | ComponentCommonLikes | ComponentCommonNavItem | ComponentCommonNavbar | ComponentCommonNewOverview | ComponentCommonPartners | ComponentCommonRecommendedCollege | ComponentCommonRecommendedCourses | ComponentCommonRecommendedExams | ComponentCommonResultDate | ComponentCommonReviewComponent | ComponentCommonSection2 | ComponentCommonSection3 | ComponentCommonSeo | ComponentCommonStepDescription | ComponentCommonTabData | ComponentCommonTitle | ComponentCommonTopColleges | ComponentCourseCourse | ComponentCourseCourses | ComponentCourseSpecialisation | ComponentFaqFaqElements | ComponentTableColumn | ComponentTableRow | ComponentTableTable | Country | Course | CourseLevel | Degree | DiscussionForum | Exam | ExamLevel | ExamMode | HeroSection | I18NLocale | List | Navbar | New | NewsCategory | Organisation | PopularCompany | RankingBody | Scholarship | ScholarshipType | Specialization | State | Step | Stream | Styling | Tag | Testimonial | UploadFile | UploadFolder | UserData | UserForm | UsersMetaData | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Blog | Button | City | College | CollegesType | ComponentCollegesTitle | ComponentCommonApplicationDate | ComponentCommonBanner1 | ComponentCommonBanner2 | ComponentCommonBannerComponent | ComponentCommonBlogsAndOthers | ComponentCommonButton | ComponentCommonButton1 | ComponentCommonButton2 | ComponentCommonCard1 | ComponentCommonCard2 | ComponentCommonCard3 | ComponentCommonColleges | ComponentCommonCounsellingPackages | ComponentCommonCounsellingPackagesCards | ComponentCommonDislikes | ComponentCommonFaq | ComponentCommonField | ComponentCommonFormStape | ComponentCommonGallery | ComponentCommonGoogleAds | ComponentCommonHomebanner | ComponentCommonHomepage | ComponentCommonLikes | ComponentCommonNavItem | ComponentCommonNewOverview | ComponentCommonPartners | ComponentCommonRecommendedCollege | ComponentCommonRecommendedCourses | ComponentCommonRecommendedExams | ComponentCommonResultDate | ComponentCommonReviewComponent | ComponentCommonSection2 | ComponentCommonSection3 | ComponentCommonSeo | ComponentCommonSponsors | ComponentCommonStepDescription | ComponentCommonTabData | ComponentCommonTitle | ComponentCommonTopColleges | ComponentCourseCourse | ComponentCourseCourses | ComponentCourseSpecialisation | ComponentFaqFaqElements | ComponentTableColumn | ComponentTableRow | ComponentTableTable | Country | Course | CourseLevel | Degree | DiscussionForum | Exam | ExamLevel | ExamMode | HeroSection | Homepage | I18NLocale | List | Navbar | New | NewsCategory | Organisation | PopularCompany | RankingBody | Scholarship | ScholarshipType | Specialization | State | Step | Stream | Styling | Tag | Testimonial | UploadFile | UploadFolder | UserData | UserForm | UsersMetaData | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type HeroSection {
   CounsellingPackages: ComponentCommonCounsellingPackages
@@ -2024,6 +2038,62 @@ input HeroSectionInput {
 
 type HeroSectionRelationResponseCollection {
   data: [HeroSectionEntity!]!
+}
+
+type Homepage {
+  banner1: ComponentCommonBanner1
+  banner2: ComponentCommonBanner2
+  counsellingPackages: ComponentCommonCounsellingPackages
+  createdAt: DateTime
+  homebanner: ComponentCommonHomebanner
+  publishedAt: DateTime
+  section2: ComponentCommonSection2
+  sponsors: ComponentCommonSponsors
+  updatedAt: DateTime
+}
+
+type HomepageEntity {
+  attributes: Homepage
+  id: ID
+}
+
+type HomepageEntityResponse {
+  data: HomepageEntity
+}
+
+type HomepageEntityResponseCollection {
+  data: [HomepageEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input HomepageFiltersInput {
+  and: [HomepageFiltersInput]
+  banner1: ComponentCommonBanner1FiltersInput
+  banner2: ComponentCommonBanner2FiltersInput
+  counsellingPackages: ComponentCommonCounsellingPackagesFiltersInput
+  createdAt: DateTimeFilterInput
+  homebanner: ComponentCommonHomebannerFiltersInput
+  id: IDFilterInput
+  not: HomepageFiltersInput
+  or: [HomepageFiltersInput]
+  publishedAt: DateTimeFilterInput
+  section2: ComponentCommonSection2FiltersInput
+  sponsors: ComponentCommonSponsorsFiltersInput
+  updatedAt: DateTimeFilterInput
+}
+
+input HomepageInput {
+  banner1: ComponentCommonBanner1Input
+  banner2: ComponentCommonBanner2Input
+  counsellingPackages: ComponentCommonCounsellingPackagesInput
+  homebanner: ComponentCommonHomebannerInput
+  publishedAt: DateTime
+  section2: ComponentCommonSection2Input
+  sponsors: ComponentCommonSponsorsInput
+}
+
+type HomepageRelationResponseCollection {
+  data: [HomepageEntity!]!
 }
 
 type I18NLocale {
@@ -2244,6 +2314,7 @@ type Mutation {
   createExamLevel(data: ExamLevelInput!): ExamLevelEntityResponse
   createExamMode(data: ExamModeInput!): ExamModeEntityResponse
   createHeroSection(data: HeroSectionInput!): HeroSectionEntityResponse
+  createHomepage(data: HomepageInput!): HomepageEntityResponse
   createList(data: ListInput!): ListEntityResponse
   createNavbar(data: NavbarInput!): NavbarEntityResponse
   createNew(data: NewInput!): NewEntityResponse
@@ -2285,6 +2356,7 @@ type Mutation {
   deleteExamLevel(id: ID!): ExamLevelEntityResponse
   deleteExamMode(id: ID!): ExamModeEntityResponse
   deleteHeroSection(id: ID!): HeroSectionEntityResponse
+  deleteHomepage(id: ID!): HomepageEntityResponse
   deleteList(id: ID!): ListEntityResponse
   deleteNavbar(id: ID!): NavbarEntityResponse
   deleteNew(id: ID!): NewEntityResponse
@@ -2344,6 +2416,7 @@ type Mutation {
   updateExamMode(data: ExamModeInput!, id: ID!): ExamModeEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
   updateHeroSection(data: HeroSectionInput!, id: ID!): HeroSectionEntityResponse
+  updateHomepage(data: HomepageInput!, id: ID!): HomepageEntityResponse
   updateList(data: ListInput!, id: ID!): ListEntityResponse
   updateNavbar(data: NavbarInput!, id: ID!): NavbarEntityResponse
   updateNew(data: NewInput!, id: ID!): NewEntityResponse
@@ -2433,11 +2506,10 @@ type New {
   excerpt: String
   featuredImage(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   name: String!
-  newsCategories(filters: NewsCategoryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): NewsCategoryRelationResponseCollection
+  news_categories(filters: NewsCategoryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): NewsCategoryRelationResponseCollection
   publishedAt: DateTime
   scholarships(filters: ScholarshipFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ScholarshipRelationResponseCollection
   seo: ComponentCommonSeo
-  specializations(filters: SpecializationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): SpecializationRelationResponseCollection
   type: ENUM_NEW_TYPE!
   updatedAt: DateTime
 }
@@ -2466,13 +2538,12 @@ input NewFiltersInput {
   excerpt: StringFilterInput
   id: IDFilterInput
   name: StringFilterInput
-  newsCategories: NewsCategoryFiltersInput
+  news_categories: NewsCategoryFiltersInput
   not: NewFiltersInput
   or: [NewFiltersInput]
   publishedAt: DateTimeFilterInput
   scholarships: ScholarshipFiltersInput
   seo: ComponentCommonSeoFiltersInput
-  specializations: SpecializationFiltersInput
   type: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
@@ -2485,11 +2556,10 @@ input NewInput {
   excerpt: String
   featuredImage: [ID]
   name: String
-  newsCategories: [ID]
+  news_categories: [ID]
   publishedAt: DateTime
   scholarships: [ID]
   seo: ComponentCommonSeoInput
-  specializations: [ID]
   type: ENUM_NEW_TYPE
 }
 
@@ -2690,6 +2760,8 @@ type Query {
   exams(filters: ExamFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ExamEntityResponseCollection
   heroSection(id: ID): HeroSectionEntityResponse
   heroSections(filters: HeroSectionFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): HeroSectionEntityResponseCollection
+  homepage(id: ID): HomepageEntityResponse
+  homepages(filters: HomepageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): HomepageEntityResponseCollection
   i18NLocale(id: ID): I18NLocaleEntityResponse
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
   list(id: ID): ListEntityResponse
@@ -2797,7 +2869,6 @@ type ResponseCollectionMeta {
 type Scholarship {
   amount: Float
   banner(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection!
-  blog(filters: BlogFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogRelationResponseCollection
   blogs(filters: BlogFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogRelationResponseCollection
   colleges(filters: CollegeFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): CollegeRelationResponseCollection
   conducted_by: OrganisationEntityResponse
@@ -2839,7 +2910,6 @@ type ScholarshipEntityResponseCollection {
 input ScholarshipFiltersInput {
   amount: FloatFilterInput
   and: [ScholarshipFiltersInput]
-  blog: BlogFiltersInput
   blogs: BlogFiltersInput
   colleges: CollegeFiltersInput
   conducted_by: OrganisationFiltersInput
@@ -2867,7 +2937,6 @@ input ScholarshipFiltersInput {
 input ScholarshipInput {
   amount: Float
   banner: [ID]
-  blog: [ID]
   blogs: [ID]
   colleges: [ID]
   conducted_by: ID

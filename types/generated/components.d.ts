@@ -79,11 +79,13 @@ export interface CommonBanner1 extends Schema.Component {
   info: {
     displayName: 'banner1';
     description: '';
+    description: '';
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
     text1: Attribute.String & Attribute.Required;
     button: Attribute.Component<'common.button'>;
+    bgImg: Attribute.Media & Attribute.Required;
     bgImg: Attribute.Media & Attribute.Required;
   };
 }
@@ -580,6 +582,16 @@ export interface CommonHomebanner extends Schema.Component {
   };
 }
 
+export interface CommonHomepage extends Schema.Component {
+  collectionName: 'components_common_homepages';
+  info: {
+    displayName: 'homepage';
+  };
+  attributes: {
+    bannerSection: Attribute.Component<'common.banner-component'>;
+  };
+}
+
 export interface CommonIndividualReviews extends Schema.Component {
   collectionName: 'components_common_individual_reviews';
   info: {
@@ -618,6 +630,21 @@ export interface CommonLocation extends Schema.Component {
   };
 }
 
+export interface CommonLocation extends Schema.Component {
+  collectionName: 'components_common_locations';
+  info: {
+    displayName: 'location';
+  };
+  attributes: {
+    state: Attribute.Relation<
+      'common.location',
+      'oneToOne',
+      'api::state.state'
+    >;
+    city: Attribute.Relation<'common.location', 'oneToOne', 'api::city.city'>;
+  };
+}
+
 export interface CommonNavItem extends Schema.Component {
   collectionName: 'components_common_nav_items';
   info: {
@@ -628,7 +655,6 @@ export interface CommonNavItem extends Schema.Component {
     title: Attribute.String;
   };
 }
-
 export interface CommonNavbar extends Schema.Component {
   collectionName: 'components_common_navbars';
   info: {
@@ -641,7 +667,6 @@ export interface CommonNavbar extends Schema.Component {
     section: Attribute.String;
   };
 }
-
 export interface CommonNewOverview extends Schema.Component {
   collectionName: 'components_common_new_overviews';
   info: {
@@ -855,6 +880,16 @@ export interface CommonSeo extends Schema.Component {
     page_og_url: Attribute.Text & Attribute.Unique;
     favicon: Attribute.Media;
     favicon_alt_text: Attribute.Text;
+  };
+}
+
+export interface CommonSponsors extends Schema.Component {
+  collectionName: 'components_common_sponsors';
+  info: {
+    displayName: 'sponsors';
+  };
+  attributes: {
+    partners: Attribute.Component<'common.partners'>;
   };
 }
 
@@ -1086,11 +1121,11 @@ declare module '@strapi/types' {
       'common.gallery': CommonGallery;
       'common.google-ads': CommonGoogleAds;
       'common.homebanner': CommonHomebanner;
+      'common.homepage': CommonHomepage;
       'common.individual-reviews': CommonIndividualReviews;
       'common.likes': CommonLikes;
       'common.location': CommonLocation;
       'common.nav-item': CommonNavItem;
-      'common.navbar': CommonNavbar;
       'common.new-overview': CommonNewOverview;
       'common.partners': CommonPartners;
       'common.photo-gallery': CommonPhotoGallery;
@@ -1105,6 +1140,7 @@ declare module '@strapi/types' {
       'common.section2': CommonSection2;
       'common.section3': CommonSection3;
       'common.seo': CommonSeo;
+      'common.sponsors': CommonSponsors;
       'common.step-description': CommonStepDescription;
       'common.stream': CommonStream;
       'common.tab-data': CommonTabData;

@@ -20,7 +20,7 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::college.college",
-      "mappedBy": "blogs"
+      "mappedBy": "navbars"
     },
     "courses": {
       "type": "relation",

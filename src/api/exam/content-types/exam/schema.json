@@ -40,12 +40,6 @@
       "target": "api::stream.stream",
       "inversedBy": "exams"
     },
-    "navbars": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::navbar.navbar",
-      "inversedBy": "exams"
-    },
     "applicationDate": {
       "displayName": "applicationDate",
       "type": "component",
@@ -57,12 +51,6 @@
       "type": "component",
       "repeatable": false,
       "component": "common.result-date"
-    },
-    "news": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::new.new",
-      "mappedBy": "exams"
     },
     "isFeaturedExam": {
       "type": "boolean",
@@ -98,10 +86,22 @@
         "common.faq"
       ]
     },
-    "blog": {
+    "navbars": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::navbar.navbar",
+      "inversedBy": "exams"
+    },
+    "blogs": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::blog.blog",
+      "inversedBy": "exams"
+    },
+    "news": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::new.new",
       "inversedBy": "exams"
     }
   }

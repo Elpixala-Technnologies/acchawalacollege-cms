@@ -91,12 +91,6 @@
       "target": "api::colleges-type.colleges-type",
       "mappedBy": "course"
     },
-    "news": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::new.new",
-      "mappedBy": "courses"
-    },
     "approvedBy": {
       "type": "relation",
       "relation": "manyToMany",
@@ -121,12 +115,19 @@
       "target": "api::navbar.navbar",
       "inversedBy": "courses"
     },
-    "blog": {
+    "blogs": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::blog.blog",
       "inversedBy": "courses"
     },
+  },
+  "news": {
+    "type": "relation",
+    "relation": "manyToMany",
+    "target": "api::new.new",
+    "inversedBy": "courses",
+  },
     "bg": {
       "allowedTypes": [
         "images",

@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_common_homepages",
+  "info": {
+    "displayName": "homepage"
+  },
+  "options": {},
+  "attributes": {
+    "bannerSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.banner-component"
+    }
+  }
+}

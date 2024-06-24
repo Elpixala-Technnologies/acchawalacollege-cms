@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "hero_sections",
+  "collectionName": "homepages",
   "info": {
-    "singularName": "hero-section",
-    "pluralName": "hero-sections",
-    "displayName": "Hero_section",
+    "singularName": "homepage",
+    "pluralName": "homepages",
+    "displayName": "homepage",
     "description": ""
   },
   "options": {
@@ -13,40 +13,35 @@
   "pluginOptions": {},
   "attributes": {
     "homebanner": {
-      "displayName": "homebanner",
       "type": "component",
       "repeatable": false,
       "component": "common.homebanner"
     },
     "section2": {
-      "displayName": "section2",
       "type": "component",
       "repeatable": false,
       "component": "common.section2"
     },
-    "partners": {
-      "displayName": "partners",
-      "type": "component",
-      "repeatable": false,
-      "component": "common.partners"
-    },
-    "CounsellingPackages": {
-      "displayName": "CounsellingPackages",
+    "counsellingPackages": {
       "type": "component",
       "repeatable": false,
       "component": "common.counselling-packages"
     },
     "banner1": {
-      "displayName": "banner1",
       "type": "component",
       "repeatable": false,
       "component": "common.banner1"
     },
     "banner2": {
-      "displayName": "banner2",
       "type": "component",
       "repeatable": false,
       "component": "common.banner2"
+    },
+    "sponsors": {
+      "displayName": "sponsors",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.sponsors"
     }
   }
 }
