@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_common_brochure_sections",
+  "info": {
+    "displayName": "brochureSection"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "buttons": {
+      "displayName": "buttons2",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.buttons2"
+    }
+  }
+}

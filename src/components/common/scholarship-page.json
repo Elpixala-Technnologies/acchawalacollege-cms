@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_common_scholarship_pages",
+  "info": {
+    "displayName": "scholarshipPage",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "scholarshipDetails": {
+      "displayName": "scholarshipDetails",
+      "type": "component",
+      "repeatable": true,
+      "component": "common.scholarship-details"
+    },
+    "faqs": {
+      "displayName": "faqs2",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.faqs2"
+    }
+  }
+}

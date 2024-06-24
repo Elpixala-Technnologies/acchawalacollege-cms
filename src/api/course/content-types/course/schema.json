@@ -121,11 +121,39 @@
       "target": "api::blog.blog",
       "inversedBy": "courses"
     },
-    "news": {
+  },
+  "news": {
+    "type": "relation",
+    "relation": "manyToMany",
+    "target": "api::new.new",
+    "inversedBy": "courses",
+  },
+    "bg": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "eligibility": {
+      "type": "text"
+    },
+    "fees": {
+      "type": "biginteger"
+    },
+    "course_duration": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::new.new",
-      "inversedBy": "courses"
+      "relation": "oneToOne",
+      "target": "api::course-duration.course-duration",
+      "inversedBy": "course"
+    },
+    "buttons": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.button"
     }
   }
 }

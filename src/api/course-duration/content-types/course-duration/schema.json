@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "course_durations",
+  "info": {
+    "singularName": "course-duration",
+    "pluralName": "course-durations",
+    "displayName": "courseDuration",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "duration": {
+      "type": "integer"
+    },
+    "course": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::course.course",
+      "mappedBy": "course_duration"
+    }
+  }
+}

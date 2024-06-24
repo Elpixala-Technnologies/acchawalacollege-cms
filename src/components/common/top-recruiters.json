@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_common_top_recruiters",
+  "info": {
+    "displayName": "topRecruiters"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "colleges.title"
+    },
+    "companyLogos": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}

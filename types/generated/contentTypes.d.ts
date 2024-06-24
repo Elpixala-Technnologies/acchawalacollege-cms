@@ -788,6 +788,66 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAffiliationAffiliation extends Schema.CollectionType {
+  collectionName: 'affiliations';
+  info: {
+    singularName: 'affiliation';
+    pluralName: 'affiliations';
+    displayName: 'affiliation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    affiliation: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::affiliation.affiliation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::affiliation.affiliation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiAvgFeePerYearAvgFeePerYear extends Schema.CollectionType {
+  collectionName: 'avg_fee_per_years';
+  info: {
+    singularName: 'avg-fee-per-year';
+    pluralName: 'avg-fee-per-years';
+    displayName: 'avgFeePerYear';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    avgFeePerYear: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::avg-fee-per-year.avg-fee-per-year',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::avg-fee-per-year.avg-fee-per-year',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBlogBlog extends Schema.CollectionType {
   collectionName: 'blogs';
   info: {
@@ -1074,6 +1134,122 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
   };
 }
 
+export interface ApiCollegeCategoryCollegeCategory
+  extends Schema.CollectionType {
+  collectionName: 'college_categories';
+  info: {
+    singularName: 'college-category';
+    pluralName: 'college-categories';
+    displayName: 'collegeCategory';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    collegeCategory: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::college-category.college-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::college-category.college-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCollegeDataCollegeData extends Schema.CollectionType {
+  collectionName: 'college_datas';
+  info: {
+    singularName: 'college-data';
+    pluralName: 'college-datas';
+    displayName: 'collegeData';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bannerSection: Attribute.Component<'common.banner-section'>;
+    filterBy: Attribute.Component<'common.filter-by'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::college-data.college-data',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::college-data.college-data',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCollegeDetailsPageCollegeDetailsPage
+  extends Schema.CollectionType {
+  collectionName: 'college_details_pages';
+  info: {
+    singularName: 'college-details-page';
+    pluralName: 'college-details-pages';
+    displayName: 'collegeDetailsPage';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    collegeLogo: Attribute.Media & Attribute.Required;
+    bgImage: Attribute.Media & Attribute.Required;
+    collegeName: Attribute.String & Attribute.Required;
+    location: Attribute.Component<'common.location'>;
+    colleges_type: Attribute.Relation<
+      'api::college-details-page.college-details-page',
+      'oneToOne',
+      'api::colleges-type.colleges-type'
+    >;
+    estYear: Attribute.BigInteger & Attribute.Required;
+    topRecruiters: Attribute.Component<'common.top-recruiters'>;
+    brochureSection: Attribute.Component<'common.brochure-section'>;
+    reviews: Attribute.Component<'common.reviews'>;
+    photoGallery: Attribute.Component<'common.photo-gallery'>;
+    videoGallery: Attribute.Component<'common.video-gallery'>;
+    campusSize: Attribute.String & Attribute.Required;
+    noOfFaculty: Attribute.BigInteger & Attribute.Required;
+    noOfStudents: Attribute.BigInteger & Attribute.Required;
+    avgFee: Attribute.BigInteger;
+    genderAccepted: Attribute.String & Attribute.Required;
+    studyMode: Attribute.Enumeration<['Regular', 'Part-time']>;
+    scholarshipPage: Attribute.Component<'common.scholarship-page'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::college-details-page.college-details-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::college-details-page.college-details-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCollegesTypeCollegesType extends Schema.CollectionType {
   collectionName: 'colleges_types';
   info: {
@@ -1091,6 +1267,11 @@ export interface ApiCollegesTypeCollegesType extends Schema.CollectionType {
       'api::colleges-type.colleges-type',
       'oneToOne',
       'api::course.course'
+    >;
+    college_details_page: Attribute.Relation<
+      'api::colleges-type.colleges-type',
+      'oneToOne',
+      'api::college-details-page.college-details-page'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1243,6 +1424,15 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'manyToMany',
       'api::new.new'
     >;
+    bg: Attribute.Media;
+    eligibility: Attribute.Text;
+    fees: Attribute.BigInteger;
+    course_duration: Attribute.Relation<
+      'api::course.course',
+      'oneToOne',
+      'api::course-duration.course-duration'
+    >;
+    buttons: Attribute.Component<'common.button', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1254,6 +1444,42 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::course.course',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCourseDurationCourseDuration extends Schema.CollectionType {
+  collectionName: 'course_durations';
+  info: {
+    singularName: 'course-duration';
+    pluralName: 'course-durations';
+    displayName: 'courseDuration';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    duration: Attribute.Integer;
+    course: Attribute.Relation<
+      'api::course-duration.course-duration',
+      'oneToOne',
+      'api::course.course'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::course-duration.course-duration',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::course-duration.course-duration',
       'oneToOne',
       'admin::user'
     > &
@@ -1506,6 +1732,136 @@ export interface ApiExamModeExamMode extends Schema.CollectionType {
   };
 }
 
+export interface ApiFaqsQuestionsAndAnswerFaqsQuestionsAndAnswer
+  extends Schema.CollectionType {
+  collectionName: 'faqs_questions_and_answers';
+  info: {
+    singularName: 'faqs-questions-and-answer';
+    pluralName: 'faqs-questions-and-answers';
+    displayName: 'faqsQuestionsAndAnswer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    faqsQuestionsAndAnswers: Attribute.Component<
+      'common.faqs-questions-and-answers',
+      true
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::faqs-questions-and-answer.faqs-questions-and-answer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::faqs-questions-and-answer.faqs-questions-and-answer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGenderGender extends Schema.CollectionType {
+  collectionName: 'genders';
+  info: {
+    singularName: 'gender';
+    pluralName: 'genders';
+    displayName: 'gender';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    gender: Attribute.Enumeration<['Co-ed', 'Boys', 'Girls']> &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::gender.gender',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::gender.gender',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFaqsQuestionsAndAnswerFaqsQuestionsAndAnswer
+  extends Schema.CollectionType {
+  collectionName: 'faqs_questions_and_answers';
+  info: {
+    singularName: 'faqs-questions-and-answer';
+    pluralName: 'faqs-questions-and-answers';
+    displayName: 'faqsQuestionsAndAnswer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    faqsQuestionsAndAnswers: Attribute.Component<
+      'common.faqs-questions-and-answers',
+      true
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::faqs-questions-and-answer.faqs-questions-and-answer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::faqs-questions-and-answer.faqs-questions-and-answer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGenderGender extends Schema.CollectionType {
+  collectionName: 'genders';
+  info: {
+    singularName: 'gender';
+    pluralName: 'genders';
+    displayName: 'gender';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    gender: Attribute.Enumeration<['Co-ed', 'Boys', 'Girls']> &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::gender.gender',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::gender.gender',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiHomepageHomepage extends Schema.CollectionType {
   collectionName: 'homepages';
   info: {
@@ -1535,6 +1891,69 @@ export interface ApiHomepageHomepage extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::homepage.homepage',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+
+export interface ApiImageImage extends Schema.CollectionType {
+  collectionName: 'images';
+  info: {
+    singularName: 'image';
+    pluralName: 'images';
+    displayName: 'image';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    img: Attribute.Media;
+    text: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::image.image',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::image.image',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiImageImage extends Schema.CollectionType {
+  collectionName: 'images';
+  info: {
+    singularName: 'image';
+    pluralName: 'images';
+    displayName: 'image';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    img: Attribute.Media;
+    text: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::image.image',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::image.image',
       'oneToOne',
       'admin::user'
     > &
@@ -1796,6 +2215,66 @@ export interface ApiPopularCompanyPopularCompany extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::popular-company.popular-company',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProgramTypeProgramType extends Schema.CollectionType {
+  collectionName: 'program_types';
+  info: {
+    singularName: 'program-type';
+    pluralName: 'program-types';
+    displayName: 'programType';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    programType: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::program-type.program-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::program-type.program-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRankingRanking extends Schema.CollectionType {
+  collectionName: 'rankings';
+  info: {
+    singularName: 'ranking';
+    pluralName: 'rankings';
+    displayName: 'ranking';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    ranking: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ranking.ranking',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ranking.ranking',
       'oneToOne',
       'admin::user'
     > &
@@ -2268,6 +2747,70 @@ export interface ApiTestimonialTestimonial extends Schema.CollectionType {
   };
 }
 
+export interface ApiTitleTitle extends Schema.CollectionType {
+  collectionName: 'titles';
+  info: {
+    singularName: 'title';
+    pluralName: 'titles';
+    displayName: 'title';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    t1: Attribute.String & Attribute.Required;
+    t2: Attribute.String & Attribute.Required;
+    t3: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::title.title',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::title.title',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTitle2Title2 extends Schema.CollectionType {
+  collectionName: 'title2s';
+  info: {
+    singularName: 'title2';
+    pluralName: 'title2s';
+    displayName: 'title2';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    t2: Attribute.String & Attribute.Required;
+    t3: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::title2.title2',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::title2.title2',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiUserDataUserData extends Schema.CollectionType {
   collectionName: 'user_datas';
   info: {
@@ -2430,26 +2973,37 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::affiliation.affiliation': ApiAffiliationAffiliation;
+      'api::avg-fee-per-year.avg-fee-per-year': ApiAvgFeePerYearAvgFeePerYear;
       'api::blog.blog': ApiBlogBlog;
       'api::button.button': ApiButtonButton;
       'api::city.city': ApiCityCity;
       'api::college.college': ApiCollegeCollege;
+      'api::college-category.college-category': ApiCollegeCategoryCollegeCategory;
+      'api::college-data.college-data': ApiCollegeDataCollegeData;
+      'api::college-details-page.college-details-page': ApiCollegeDetailsPageCollegeDetailsPage;
       'api::colleges-type.colleges-type': ApiCollegesTypeCollegesType;
       'api::country.country': ApiCountryCountry;
       'api::course.course': ApiCourseCourse;
+      'api::course-duration.course-duration': ApiCourseDurationCourseDuration;
       'api::course-level.course-level': ApiCourseLevelCourseLevel;
       'api::degree.degree': ApiDegreeDegree;
       'api::discussion-forum.discussion-forum': ApiDiscussionForumDiscussionForum;
       'api::exam.exam': ApiExamExam;
       'api::exam-level.exam-level': ApiExamLevelExamLevel;
       'api::exam-mode.exam-mode': ApiExamModeExamMode;
+      'api::faqs-questions-and-answer.faqs-questions-and-answer': ApiFaqsQuestionsAndAnswerFaqsQuestionsAndAnswer;
+      'api::gender.gender': ApiGenderGender;
       'api::homepage.homepage': ApiHomepageHomepage;
+      'api::image.image': ApiImageImage;
       'api::list.list': ApiListList;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::new.new': ApiNewNew;
       'api::news-category.news-category': ApiNewsCategoryNewsCategory;
       'api::organisation.organisation': ApiOrganisationOrganisation;
       'api::popular-company.popular-company': ApiPopularCompanyPopularCompany;
+      'api::program-type.program-type': ApiProgramTypeProgramType;
+      'api::ranking.ranking': ApiRankingRanking;
       'api::ranking-body.ranking-body': ApiRankingBodyRankingBody;
       'api::scholarship.scholarship': ApiScholarshipScholarship;
       'api::scholarship-type.scholarship-type': ApiScholarshipTypeScholarshipType;
@@ -2460,6 +3014,8 @@ declare module '@strapi/types' {
       'api::styling.styling': ApiStylingStyling;
       'api::tag.tag': ApiTagTag;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
+      'api::title.title': ApiTitleTitle;
+      'api::title2.title2': ApiTitle2Title2;
       'api::user-data.user-data': ApiUserDataUserData;
       'api::user-form.user-form': ApiUserFormUserForm;
       'api::users-meta-data.users-meta-data': ApiUsersMetaDataUsersMetaData;

@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "college_categories",
+  "info": {
+    "singularName": "college-category",
+    "pluralName": "college-categories",
+    "displayName": "collegeCategory"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "collegeCategory": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

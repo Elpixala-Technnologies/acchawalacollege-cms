@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_common_photo_galleries",
+  "info": {
+    "displayName": "photoGallery"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "colleges.title"
+    },
+    "photos": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}

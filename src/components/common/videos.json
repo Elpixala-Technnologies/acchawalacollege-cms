@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_common_videos",
+  "info": {
+    "displayName": "videos"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "videoId": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

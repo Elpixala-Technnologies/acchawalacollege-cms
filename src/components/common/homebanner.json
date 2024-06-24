@@ -1,7 +1,8 @@
 {
   "collectionName": "components_common_homebanners",
   "info": {
-    "displayName": "homebanner"
+    "displayName": "homebanner",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -29,15 +30,15 @@
       "component": "common.button2"
     },
     "img": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true,
-      "required": true
+      ]
     },
     "text2": {
       "type": "string",

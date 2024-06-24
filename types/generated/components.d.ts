@@ -32,6 +32,17 @@ export interface CommonApplicationDate extends Schema.Component {
   };
 }
 
+export interface CommonAuthor extends Schema.Component {
+  collectionName: 'components_common_authors';
+  info: {
+    displayName: 'author';
+  };
+  attributes: {
+    avatar: Attribute.Media & Attribute.Required;
+    name: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface CommonBannerComponent extends Schema.Component {
   collectionName: 'components_common_banner_components';
   info: {
@@ -50,16 +61,31 @@ export interface CommonBannerComponent extends Schema.Component {
   };
 }
 
+export interface CommonBannerSection extends Schema.Component {
+  collectionName: 'components_common_banner_sections';
+  info: {
+    displayName: 'bannerSection';
+  };
+  attributes: {
+    title: Attribute.Component<'colleges.title'>;
+    author: Attribute.Component<'common.author'>;
+    article: Attribute.Text & Attribute.Required;
+    readMoreLink: Attribute.Text & Attribute.Required;
+  };
+}
+
 export interface CommonBanner1 extends Schema.Component {
   collectionName: 'components_common_banner1s';
   info: {
     displayName: 'banner1';
+    description: '';
     description: '';
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
     text1: Attribute.String & Attribute.Required;
     button: Attribute.Component<'common.button'>;
+    bgImg: Attribute.Media & Attribute.Required;
     bgImg: Attribute.Media & Attribute.Required;
   };
 }
@@ -84,6 +110,17 @@ export interface CommonBlogsAndOthers extends Schema.Component {
     displayName: 'BlogsAndOthers';
   };
   attributes: {};
+}
+
+export interface CommonBrochureSection extends Schema.Component {
+  collectionName: 'components_common_brochure_sections';
+  info: {
+    displayName: 'brochureSection';
+  };
+  attributes: {
+    text: Attribute.String & Attribute.Required;
+    buttons: Attribute.Component<'common.buttons2'>;
+  };
 }
 
 export interface CommonButton extends Schema.Component {
@@ -141,6 +178,21 @@ export interface CommonButton2 extends Schema.Component {
       Attribute.SetMinMaxLength<{
         maxLength: 150;
       }>;
+  };
+}
+
+export interface CommonButtons2 extends Schema.Component {
+  collectionName: 'components_common_buttons2s';
+  info: {
+    displayName: 'buttons2';
+    description: '';
+  };
+  attributes: {
+    button1: Attribute.Relation<
+      'common.buttons2',
+      'oneToOne',
+      'api::button.button'
+    >;
   };
 }
 
@@ -293,6 +345,22 @@ export interface CommonCounsellingPackages extends Schema.Component {
   };
 }
 
+export interface CommonCourseDuration extends Schema.Component {
+  collectionName: 'components_common_course_durations';
+  info: {
+    displayName: 'courseDuration';
+  };
+  attributes: {};
+}
+
+export interface CommonCourse extends Schema.Component {
+  collectionName: 'components_common_courses';
+  info: {
+    displayName: 'course';
+  };
+  attributes: {};
+}
+
 export interface CommonDislikes extends Schema.Component {
   collectionName: 'components_common_dislikes';
   info: {
@@ -312,6 +380,33 @@ export interface CommonFaq extends Schema.Component {
   attributes: {
     questions: Attribute.Component<'faq.faq-elements', true>;
     section: Attribute.String;
+  };
+}
+
+export interface CommonFaqsQuestionsAndAnswers extends Schema.Component {
+  collectionName: 'components_common_faqs_questions_and_answers';
+  info: {
+    displayName: 'faqsQuestionsAndAnswers';
+  };
+  attributes: {
+    question: Attribute.Text & Attribute.Required;
+    answer: Attribute.Text & Attribute.Required;
+  };
+}
+
+export interface CommonFaqs2 extends Schema.Component {
+  collectionName: 'components_common_faqs2s';
+  info: {
+    displayName: 'faqs2';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.Relation<'common.faqs2', 'oneToOne', 'api::title2.title2'>;
+    faqs_questions_and_answers: Attribute.Relation<
+      'common.faqs2',
+      'oneToMany',
+      'api::faqs-questions-and-answer.faqs-questions-and-answer'
+    >;
   };
 }
 
@@ -341,6 +436,81 @@ export interface CommonField extends Schema.Component {
         'passing_year',
         'score'
       ]
+    >;
+  };
+}
+
+export interface CommonFilterBy extends Schema.Component {
+  collectionName: 'components_common_filter_bies';
+  info: {
+    displayName: 'filterBy';
+    description: '';
+  };
+  attributes: {
+    streams: Attribute.Relation<
+      'common.filter-by',
+      'oneToMany',
+      'api::stream.stream'
+    >;
+    courses: Attribute.Relation<
+      'common.filter-by',
+      'oneToMany',
+      'api::course.course'
+    >;
+    course_durations: Attribute.Relation<
+      'common.filter-by',
+      'oneToMany',
+      'api::course-duration.course-duration'
+    >;
+    states: Attribute.Relation<
+      'common.filter-by',
+      'oneToMany',
+      'api::state.state'
+    >;
+    cities: Attribute.Relation<
+      'common.filter-by',
+      'oneToMany',
+      'api::city.city'
+    >;
+    colleges_types: Attribute.Relation<
+      'common.filter-by',
+      'oneToMany',
+      'api::colleges-type.colleges-type'
+    >;
+    college_categories: Attribute.Relation<
+      'common.filter-by',
+      'oneToMany',
+      'api::college-category.college-category'
+    >;
+    affiliations: Attribute.Relation<
+      'common.filter-by',
+      'oneToMany',
+      'api::affiliation.affiliation'
+    >;
+    genders: Attribute.Relation<
+      'common.filter-by',
+      'oneToMany',
+      'api::gender.gender'
+    >;
+    rankings: Attribute.Relation<
+      'common.filter-by',
+      'oneToMany',
+      'api::ranking.ranking'
+    >;
+    exams: Attribute.Relation<
+      'common.filter-by',
+      'oneToMany',
+      'api::exam.exam'
+    >;
+    avg_fee_per_years: Attribute.Relation<
+      'common.filter-by',
+      'oneToMany',
+      'api::avg-fee-per-year.avg-fee-per-year'
+    >;
+    program_types: Attribute.Relation<
+      'common.filter-by',
+      'oneToMany',
+      'api::program-type.program-type'
     >;
   };
 }
@@ -387,6 +557,7 @@ export interface CommonHomebanner extends Schema.Component {
   collectionName: 'components_common_homebanners';
   info: {
     displayName: 'homebanner';
+    description: '';
   };
   attributes: {
     title: Attribute.Component<'common.title'>;
@@ -421,6 +592,19 @@ export interface CommonHomepage extends Schema.Component {
   };
 }
 
+export interface CommonIndividualReviews extends Schema.Component {
+  collectionName: 'components_common_individual_reviews';
+  info: {
+    displayName: 'individualReviews';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    icon: Attribute.Media & Attribute.Required;
+    rating: Attribute.Decimal;
+    basedOn: Attribute.BigInteger & Attribute.Required;
+  };
+}
+
 export interface CommonLikes extends Schema.Component {
   collectionName: 'components_common_likes';
   info: {
@@ -428,6 +612,36 @@ export interface CommonLikes extends Schema.Component {
   };
   attributes: {
     title: Attribute.String;
+  };
+}
+
+export interface CommonLocation extends Schema.Component {
+  collectionName: 'components_common_locations';
+  info: {
+    displayName: 'location';
+  };
+  attributes: {
+    state: Attribute.Relation<
+      'common.location',
+      'oneToOne',
+      'api::state.state'
+    >;
+    city: Attribute.Relation<'common.location', 'oneToOne', 'api::city.city'>;
+  };
+}
+
+export interface CommonLocation extends Schema.Component {
+  collectionName: 'components_common_locations';
+  info: {
+    displayName: 'location';
+  };
+  attributes: {
+    state: Attribute.Relation<
+      'common.location',
+      'oneToOne',
+      'api::state.state'
+    >;
+    city: Attribute.Relation<'common.location', 'oneToOne', 'api::city.city'>;
   };
 }
 
@@ -441,7 +655,18 @@ export interface CommonNavItem extends Schema.Component {
     title: Attribute.String;
   };
 }
-
+export interface CommonNavbar extends Schema.Component {
+  collectionName: 'components_common_navbars';
+  info: {
+    displayName: 'navbar';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    nav_item: Attribute.Component<'common.nav-item', true>;
+    section: Attribute.String;
+  };
+}
 export interface CommonNewOverview extends Schema.Component {
   collectionName: 'components_common_new_overviews';
   info: {
@@ -470,6 +695,17 @@ export interface CommonPartners extends Schema.Component {
   attributes: {
     title: Attribute.String & Attribute.Required;
     images: Attribute.Media & Attribute.Required;
+  };
+}
+
+export interface CommonPhotoGallery extends Schema.Component {
+  collectionName: 'components_common_photo_galleries';
+  info: {
+    displayName: 'photoGallery';
+  };
+  attributes: {
+    title: Attribute.Component<'colleges.title'>;
+    photos: Attribute.Media & Attribute.Required;
   };
 }
 
@@ -540,6 +776,59 @@ export interface CommonReviewComponent extends Schema.Component {
   attributes: {
     likes: Attribute.Component<'common.likes', true>;
     dislikes: Attribute.Component<'common.dislikes', true>;
+  };
+}
+
+export interface CommonReviews extends Schema.Component {
+  collectionName: 'components_common_reviews';
+  info: {
+    displayName: 'reviews';
+  };
+  attributes: {
+    title: Attribute.Component<'colleges.title'>;
+    overallRating: Attribute.Integer & Attribute.Required;
+    individualReviews: Attribute.Component<'common.individual-reviews', true>;
+  };
+}
+
+export interface CommonScholarshipDetails extends Schema.Component {
+  collectionName: 'components_common_scholarship_details';
+  info: {
+    displayName: 'scholarshipDetails';
+    description: '';
+  };
+  attributes: {
+    navItem: Attribute.String & Attribute.Required;
+    title: Attribute.Relation<
+      'common.scholarship-details',
+      'oneToOne',
+      'api::title.title'
+    >;
+    readMoreLink: Attribute.String;
+    courses: Attribute.Relation<
+      'common.scholarship-details',
+      'oneToMany',
+      'api::course.course'
+    >;
+    image: Attribute.Relation<
+      'common.scholarship-details',
+      'oneToOne',
+      'api::image.image'
+    >;
+    article: Attribute.Text;
+    table: Attribute.Text;
+  };
+}
+
+export interface CommonScholarshipPage extends Schema.Component {
+  collectionName: 'components_common_scholarship_pages';
+  info: {
+    displayName: 'scholarshipPage';
+    description: '';
+  };
+  attributes: {
+    scholarshipDetails: Attribute.Component<'common.scholarship-details', true>;
+    faqs: Attribute.Component<'common.faqs2'>;
   };
 }
 
@@ -615,6 +904,14 @@ export interface CommonStepDescription extends Schema.Component {
   };
 }
 
+export interface CommonStream extends Schema.Component {
+  collectionName: 'components_common_streams';
+  info: {
+    displayName: 'stream';
+  };
+  attributes: {};
+}
+
 export interface CommonTabData extends Schema.Component {
   collectionName: 'components_common_tab_data';
   info: {
@@ -657,6 +954,39 @@ export interface CommonTopColleges extends Schema.Component {
   attributes: {
     title: Attribute.Component<'colleges.title'>;
     colleges: Attribute.Component<'common.colleges'>;
+  };
+}
+
+export interface CommonTopRecruiters extends Schema.Component {
+  collectionName: 'components_common_top_recruiters';
+  info: {
+    displayName: 'topRecruiters';
+  };
+  attributes: {
+    title: Attribute.Component<'colleges.title'>;
+    companyLogos: Attribute.Media & Attribute.Required;
+  };
+}
+
+export interface CommonVideoGallery extends Schema.Component {
+  collectionName: 'components_common_video_galleries';
+  info: {
+    displayName: 'videoGallery';
+  };
+  attributes: {
+    title: Attribute.Component<'colleges.title'>;
+    videos: Attribute.Component<'common.videos', true>;
+  };
+}
+
+export interface CommonVideos extends Schema.Component {
+  collectionName: 'components_common_videos';
+  info: {
+    displayName: 'videos';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    videoId: Attribute.String & Attribute.Required;
   };
 }
 
@@ -762,44 +1092,63 @@ declare module '@strapi/types' {
     export interface Components {
       'colleges.title': CollegesTitle;
       'common.application-date': CommonApplicationDate;
+      'common.author': CommonAuthor;
       'common.banner-component': CommonBannerComponent;
+      'common.banner-section': CommonBannerSection;
       'common.banner1': CommonBanner1;
       'common.banner2': CommonBanner2;
       'common.blogs-and-others': CommonBlogsAndOthers;
+      'common.brochure-section': CommonBrochureSection;
       'common.button': CommonButton;
       'common.button1': CommonButton1;
       'common.button2': CommonButton2;
+      'common.buttons2': CommonButtons2;
       'common.card1': CommonCard1;
       'common.card2': CommonCard2;
       'common.card3': CommonCard3;
       'common.colleges': CommonColleges;
       'common.counselling-packages-cards': CommonCounsellingPackagesCards;
       'common.counselling-packages': CommonCounsellingPackages;
+      'common.course-duration': CommonCourseDuration;
+      'common.course': CommonCourse;
       'common.dislikes': CommonDislikes;
       'common.faq': CommonFaq;
+      'common.faqs-questions-and-answers': CommonFaqsQuestionsAndAnswers;
+      'common.faqs2': CommonFaqs2;
       'common.field': CommonField;
+      'common.filter-by': CommonFilterBy;
       'common.form-stape': CommonFormStape;
       'common.gallery': CommonGallery;
       'common.google-ads': CommonGoogleAds;
       'common.homebanner': CommonHomebanner;
       'common.homepage': CommonHomepage;
+      'common.individual-reviews': CommonIndividualReviews;
       'common.likes': CommonLikes;
+      'common.location': CommonLocation;
       'common.nav-item': CommonNavItem;
       'common.new-overview': CommonNewOverview;
       'common.partners': CommonPartners;
+      'common.photo-gallery': CommonPhotoGallery;
       'common.recommended-college': CommonRecommendedCollege;
       'common.recommended-courses': CommonRecommendedCourses;
       'common.recommended-exams': CommonRecommendedExams;
       'common.result-date': CommonResultDate;
       'common.review-component': CommonReviewComponent;
+      'common.reviews': CommonReviews;
+      'common.scholarship-details': CommonScholarshipDetails;
+      'common.scholarship-page': CommonScholarshipPage;
       'common.section2': CommonSection2;
       'common.section3': CommonSection3;
       'common.seo': CommonSeo;
       'common.sponsors': CommonSponsors;
       'common.step-description': CommonStepDescription;
+      'common.stream': CommonStream;
       'common.tab-data': CommonTabData;
       'common.title': CommonTitle;
       'common.top-colleges': CommonTopColleges;
+      'common.top-recruiters': CommonTopRecruiters;
+      'common.video-gallery': CommonVideoGallery;
+      'common.videos': CommonVideos;
       'course.course': CourseCourse;
       'course.courses': CourseCourses;
       'course.specialisation': CourseSpecialisation;
