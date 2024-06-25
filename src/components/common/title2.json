@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_common_title2s",
+  "info": {
+    "displayName": "title2"
+  },
+  "options": {},
+  "attributes": {
+    "t1": {
+      "type": "string",
+      "required": true
+    },
+    "t2": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

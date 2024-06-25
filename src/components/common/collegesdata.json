@@ -1,0 +1,46 @@
+{
+  "collectionName": "components_common_collegesdata",
+  "info": {
+    "displayName": "collegesdata",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "bgImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "collegeName": {
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.location"
+    },
+    "overallRating": {
+      "type": "integer"
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review"
+    },
+    "avgFeePerYear": {
+      "type": "string",
+      "required": true
+    },
+    "distanceFromAirport": {
+      "required": true,
+      "type": "biginteger"
+    }
+  }
+}

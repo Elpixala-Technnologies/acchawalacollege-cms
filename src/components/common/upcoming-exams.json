@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_common_upcoming_exams",
+  "info": {
+    "displayName": "upcomingExams"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "component",
+      "repeatable": false,
+      "component": "colleges.title"
+    },
+    "exams": {
+      "displayName": "exams",
+      "type": "component",
+      "repeatable": true,
+      "component": "common.exams"
+    }
+  }
+}

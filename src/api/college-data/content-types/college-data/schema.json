@@ -12,17 +12,74 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "bannerSection": {
-      "displayName": "bannerSection",
-      "type": "component",
-      "repeatable": false,
-      "component": "common.banner-section"
+    "slug": {
+      "type": "string",
+      "required": true
     },
-    "filterBy": {
-      "displayName": "filterBy",
+    "collegeLogo": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "breadCrumb": {
+      "type": "string",
+      "required": true
+    },
+    "bgImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "collegeName": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "location": {
       "type": "component",
       "repeatable": false,
-      "component": "common.filter-by"
+      "component": "common.location"
+    },
+    "collegeType": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::colleges-type.colleges-type"
+    },
+    "affiliation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::affiliation.affiliation"
+    },
+    "estYear": {
+      "type": "biginteger",
+      "required": true
+    },
+    "exams": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::exam.exam",
+      "mappedBy": "college_datum"
+    },
+    "tabSections": {
+      "displayName": "tabSections",
+      "type": "component",
+      "repeatable": true,
+      "component": "common.tab-sections"
     }
   }
 }

@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_common_exams",
+  "info": {
+    "displayName": "exams"
+  },
+  "options": {},
+  "attributes": {
+    "img": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "studentsParticipation": {
+      "type": "biginteger",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true
+    },
+    "stream": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

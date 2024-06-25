@@ -1177,8 +1177,30 @@ export interface ApiCollegeDataCollegeData extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    bannerSection: Attribute.Component<'common.banner-section'>;
-    filterBy: Attribute.Component<'common.filter-by'>;
+    slug: Attribute.String & Attribute.Required;
+    collegeLogo: Attribute.Media & Attribute.Required;
+    breadCrumb: Attribute.String & Attribute.Required;
+    bgImage: Attribute.Media & Attribute.Required;
+    collegeName: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    location: Attribute.Component<'common.location'>;
+    collegeType: Attribute.Relation<
+      'api::college-data.college-data',
+      'oneToOne',
+      'api::colleges-type.colleges-type'
+    >;
+    affiliation: Attribute.Relation<
+      'api::college-data.college-data',
+      'oneToOne',
+      'api::affiliation.affiliation'
+    >;
+    estYear: Attribute.BigInteger & Attribute.Required;
+    exams: Attribute.Relation<
+      'api::college-data.college-data',
+      'oneToMany',
+      'api::exam.exam'
+    >;
+    tabSections: Attribute.Component<'common.tab-sections', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1650,6 +1672,11 @@ export interface ApiExamExam extends Schema.CollectionType {
     >;
     blogs: Attribute.Relation<'api::exam.exam', 'manyToMany', 'api::blog.blog'>;
     news: Attribute.Relation<'api::exam.exam', 'manyToMany', 'api::new.new'>;
+    college_datum: Attribute.Relation<
+      'api::exam.exam',
+      'manyToOne',
+      'api::college-data.college-data'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1797,71 +1824,6 @@ export interface ApiGenderGender extends Schema.CollectionType {
   };
 }
 
-export interface ApiFaqsQuestionsAndAnswerFaqsQuestionsAndAnswer
-  extends Schema.CollectionType {
-  collectionName: 'faqs_questions_and_answers';
-  info: {
-    singularName: 'faqs-questions-and-answer';
-    pluralName: 'faqs-questions-and-answers';
-    displayName: 'faqsQuestionsAndAnswer';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    faqsQuestionsAndAnswers: Attribute.Component<
-      'common.faqs-questions-and-answers',
-      true
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::faqs-questions-and-answer.faqs-questions-and-answer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::faqs-questions-and-answer.faqs-questions-and-answer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiGenderGender extends Schema.CollectionType {
-  collectionName: 'genders';
-  info: {
-    singularName: 'gender';
-    pluralName: 'genders';
-    displayName: 'gender';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    gender: Attribute.Enumeration<['Co-ed', 'Boys', 'Girls']> &
-      Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::gender.gender',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::gender.gender',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiHomepageHomepage extends Schema.CollectionType {
   collectionName: 'homepages';
   info: {
@@ -1891,38 +1853,6 @@ export interface ApiHomepageHomepage extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::homepage.homepage',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-
-export interface ApiImageImage extends Schema.CollectionType {
-  collectionName: 'images';
-  info: {
-    singularName: 'image';
-    pluralName: 'images';
-    displayName: 'image';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    img: Attribute.Media;
-    text: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::image.image',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::image.image',
       'oneToOne',
       'admin::user'
     > &
@@ -2320,6 +2250,39 @@ export interface ApiRankingBodyRankingBody extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::ranking-body.ranking-body',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiReviewReview extends Schema.CollectionType {
+  collectionName: 'reviews';
+  info: {
+    singularName: 'review';
+    pluralName: 'reviews';
+    displayName: 'review';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.Component<'colleges.title'>;
+    overallRating: Attribute.Integer & Attribute.Required;
+    individualReviews: Attribute.Component<'common.individual-reviews', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::review.review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::review.review',
       'oneToOne',
       'admin::user'
     > &
@@ -3005,6 +2968,7 @@ declare module '@strapi/types' {
       'api::program-type.program-type': ApiProgramTypeProgramType;
       'api::ranking.ranking': ApiRankingRanking;
       'api::ranking-body.ranking-body': ApiRankingBodyRankingBody;
+      'api::review.review': ApiReviewReview;
       'api::scholarship.scholarship': ApiScholarshipScholarship;
       'api::scholarship-type.scholarship-type': ApiScholarshipTypeScholarshipType;
       'api::specialization.specialization': ApiSpecializationSpecialization;
