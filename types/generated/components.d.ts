@@ -894,6 +894,57 @@ export interface CommonScholarshipPage extends Schema.Component {
   };
 }
 
+export interface CommonScholarship extends Schema.Component {
+  collectionName: 'components_common_scholarships';
+  info: {
+    displayName: 'scholarship';
+  };
+  attributes: {
+    title: Attribute.Component<'colleges.title'>;
+    scholarshipsArray: Attribute.Component<'common.scholarships-array', true>;
+  };
+}
+
+export interface CommonScholarshipsArray extends Schema.Component {
+  collectionName: 'components_common_scholarships_arrays';
+  info: {
+    displayName: 'scholarshipsArray';
+    description: '';
+  };
+  attributes: {
+    slug: Attribute.String & Attribute.Required;
+    logo: Attribute.Media & Attribute.Required;
+    bgImage: Attribute.Media & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    awardedTo: Attribute.Text & Attribute.Required;
+    date: Attribute.Date;
+    amount: Attribute.BigInteger & Attribute.Required;
+    country: Attribute.String & Attribute.Required;
+    scholarship_type: Attribute.Relation<
+      'common.scholarships-array',
+      'oneToOne',
+      'api::scholarship-type.scholarship-type'
+    >;
+    applicationStatus: Attribute.String & Attribute.Required;
+    provider: Attribute.Relation<
+      'common.scholarships-array',
+      'oneToOne',
+      'api::provider.provider'
+    >;
+    noOfScholarShipAvailable: Attribute.BigInteger;
+    conductedBy: Attribute.String & Attribute.Required;
+    courses: Attribute.Relation<
+      'common.scholarships-array',
+      'oneToMany',
+      'api::course.course'
+    >;
+    IsInternationalAllowed: Attribute.Boolean & Attribute.Required;
+    sequence: Attribute.BigInteger;
+    isTop: Attribute.Boolean & Attribute.Required;
+    topSequence: Attribute.BigInteger & Attribute.Required;
+  };
+}
+
 export interface CommonSection2 extends Schema.Component {
   collectionName: 'components_common_section2s';
   info: {
@@ -931,6 +982,7 @@ export interface CommonSections extends Schema.Component {
   collectionName: 'components_common_sections';
   info: {
     displayName: 'sections';
+    description: '';
   };
   attributes: {
     title: Attribute.Relation<
@@ -938,6 +990,20 @@ export interface CommonSections extends Schema.Component {
       'oneToOne',
       'api::title.title'
     >;
+    author: Attribute.Relation<
+      'common.sections',
+      'oneToOne',
+      'api::author.author'
+    >;
+    article: Attribute.Text & Attribute.Required;
+    important_links: Attribute.Relation<
+      'common.sections',
+      'oneToMany',
+      'api::important-link.important-link'
+    >;
+    article1: Attribute.Text & Attribute.Required;
+    table: Attribute.Text;
+    article2: Attribute.Text & Attribute.Required;
   };
 }
 
@@ -1262,6 +1328,8 @@ declare module '@strapi/types' {
       'common.reviews': CommonReviews;
       'common.scholarship-details': CommonScholarshipDetails;
       'common.scholarship-page': CommonScholarshipPage;
+      'common.scholarship': CommonScholarship;
+      'common.scholarships-array': CommonScholarshipsArray;
       'common.section2': CommonSection2;
       'common.section3': CommonSection3;
       'common.sections': CommonSections;

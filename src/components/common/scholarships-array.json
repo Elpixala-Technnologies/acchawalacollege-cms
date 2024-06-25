@@ -1,0 +1,96 @@
+{
+  "collectionName": "components_common_scholarships_arrays",
+  "info": {
+    "displayName": "scholarshipsArray",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "slug": {
+      "type": "string",
+      "required": true
+    },
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "bgImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "awardedTo": {
+      "type": "text",
+      "required": true
+    },
+    "date": {
+      "type": "date"
+    },
+    "amount": {
+      "type": "biginteger",
+      "required": true
+    },
+    "country": {
+      "type": "string",
+      "required": true
+    },
+    "scholarship_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::scholarship-type.scholarship-type"
+    },
+    "applicationStatus": {
+      "type": "string",
+      "required": true
+    },
+    "provider": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::provider.provider"
+    },
+    "noOfScholarShipAvailable": {
+      "type": "biginteger"
+    },
+    "conductedBy": {
+      "type": "string",
+      "required": true
+    },
+    "courses": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::course.course"
+    },
+    "IsInternationalAllowed": {
+      "type": "boolean",
+      "required": true
+    },
+    "sequence": {
+      "type": "biginteger"
+    },
+    "isTop": {
+      "type": "boolean",
+      "required": true
+    },
+    "topSequence": {
+      "type": "biginteger",
+      "required": true
+    }
+  }
+}

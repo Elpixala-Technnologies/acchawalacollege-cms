@@ -1,7 +1,8 @@
 {
   "collectionName": "components_common_sections",
   "info": {
-    "displayName": "sections"
+    "displayName": "sections",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,6 +10,31 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::title.title"
+    },
+    "author": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::author.author"
+    },
+    "article": {
+      "type": "text",
+      "required": true
+    },
+    "important_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::important-link.important-link"
+    },
+    "article1": {
+      "type": "text",
+      "required": true
+    },
+    "table": {
+      "type": "text"
+    },
+    "article2": {
+      "type": "text",
+      "required": true
     }
   }
 }
