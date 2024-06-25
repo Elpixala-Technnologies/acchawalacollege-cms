@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_common_tab_sections",
+  "info": {
+    "displayName": "tabSections"
+  },
+  "options": {},
+  "attributes": {
+    "navItem": {
+      "type": "string",
+      "required": true
+    },
+    "sections": {
+      "displayName": "sections",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.sections"
+    }
+  }
+}

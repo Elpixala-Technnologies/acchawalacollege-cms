@@ -103,6 +103,12 @@
       "relation": "manyToMany",
       "target": "api::new.new",
       "inversedBy": "exams"
+    },
+    "college_datum": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::college-data.college-data",
+      "inversedBy": "exams"
     }
   }
 }

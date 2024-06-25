@@ -818,6 +818,39 @@ export interface ApiAffiliationAffiliation extends Schema.CollectionType {
   };
 }
 
+export interface ApiAuthorAuthor extends Schema.CollectionType {
+  collectionName: 'authors';
+  info: {
+    singularName: 'author';
+    pluralName: 'authors';
+    displayName: 'author';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    avatar: Attribute.Media & Attribute.Required;
+    name: Attribute.String & Attribute.Required;
+    lastUpdated: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::author.author',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::author.author',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiAvgFeePerYearAvgFeePerYear extends Schema.CollectionType {
   collectionName: 'avg_fee_per_years';
   info: {
@@ -1177,8 +1210,64 @@ export interface ApiCollegeDataCollegeData extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    bannerSection: Attribute.Component<'common.banner-section'>;
-    filterBy: Attribute.Component<'common.filter-by'>;
+    slug: Attribute.String & Attribute.Required;
+    collegeLogo: Attribute.Media & Attribute.Required;
+    breadCrumb: Attribute.String & Attribute.Required;
+    bgImage: Attribute.Media & Attribute.Required;
+    collegeName: Attribute.String & Attribute.Required;
+    description: Attribute.Text & Attribute.Required;
+    location: Attribute.Component<'common.location'>;
+    collegeType: Attribute.Relation<
+      'api::college-data.college-data',
+      'oneToOne',
+      'api::colleges-type.colleges-type'
+    >;
+    affiliation: Attribute.Relation<
+      'api::college-data.college-data',
+      'oneToOne',
+      'api::affiliation.affiliation'
+    >;
+    estYear: Attribute.BigInteger & Attribute.Required;
+    exams: Attribute.Relation<
+      'api::college-data.college-data',
+      'oneToMany',
+      'api::exam.exam'
+    >;
+    tabSections: Attribute.Component<'common.tab-sections', true>;
+    topRecruiters: Attribute.Component<'common.top-recruiters'>;
+    brochureSection: Attribute.Component<'common.brochure-section'>;
+    reviews: Attribute.Component<'common.reviews'>;
+    photoGallery: Attribute.Component<'common.photo-gallery'>;
+    videoGallery: Attribute.Component<'common.video-gallery'>;
+    faqs: Attribute.Component<'common.faqs2'>;
+    scholarship: Attribute.Component<'common.scholarship'>;
+    campusSize: Attribute.BigInteger & Attribute.Required;
+    noOfFaculty: Attribute.BigInteger & Attribute.Required;
+    noOfStudents: Attribute.BigInteger & Attribute.Required;
+    avgFeePerYear: Attribute.BigInteger & Attribute.Required;
+    avgFeePerSem: Attribute.BigInteger & Attribute.Required;
+    avgPackage: Attribute.BigInteger & Attribute.Required;
+    genderAccepted: Attribute.Relation<
+      'api::college-data.college-data',
+      'oneToOne',
+      'api::gender.gender'
+    >;
+    studyMode: Attribute.Relation<
+      'api::college-data.college-data',
+      'oneToOne',
+      'api::exam-mode.exam-mode'
+    >;
+    isAbroadCollege: Attribute.Boolean & Attribute.Required;
+    collegeSequence: Attribute.BigInteger;
+    isTopCollege: Attribute.Boolean & Attribute.Required;
+    topCollegeSequence: Attribute.BigInteger & Attribute.Required;
+    distanceFromAirport: Attribute.BigInteger & Attribute.Required;
+    tag: Attribute.Relation<
+      'api::college-data.college-data',
+      'oneToOne',
+      'api::tag.tag'
+    >;
+    banner1: Attribute.Component<'common.banner1'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1650,6 +1739,11 @@ export interface ApiExamExam extends Schema.CollectionType {
     >;
     blogs: Attribute.Relation<'api::exam.exam', 'manyToMany', 'api::blog.blog'>;
     news: Attribute.Relation<'api::exam.exam', 'manyToMany', 'api::new.new'>;
+    college_datum: Attribute.Relation<
+      'api::exam.exam',
+      'manyToOne',
+      'api::college-data.college-data'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1797,71 +1891,6 @@ export interface ApiGenderGender extends Schema.CollectionType {
   };
 }
 
-export interface ApiFaqsQuestionsAndAnswerFaqsQuestionsAndAnswer
-  extends Schema.CollectionType {
-  collectionName: 'faqs_questions_and_answers';
-  info: {
-    singularName: 'faqs-questions-and-answer';
-    pluralName: 'faqs-questions-and-answers';
-    displayName: 'faqsQuestionsAndAnswer';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    faqsQuestionsAndAnswers: Attribute.Component<
-      'common.faqs-questions-and-answers',
-      true
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::faqs-questions-and-answer.faqs-questions-and-answer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::faqs-questions-and-answer.faqs-questions-and-answer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiGenderGender extends Schema.CollectionType {
-  collectionName: 'genders';
-  info: {
-    singularName: 'gender';
-    pluralName: 'genders';
-    displayName: 'gender';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    gender: Attribute.Enumeration<['Co-ed', 'Boys', 'Girls']> &
-      Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::gender.gender',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::gender.gender',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiHomepageHomepage extends Schema.CollectionType {
   collectionName: 'homepages';
   info: {
@@ -1898,7 +1927,6 @@ export interface ApiHomepageHomepage extends Schema.CollectionType {
   };
 }
 
-
 export interface ApiImageImage extends Schema.CollectionType {
   collectionName: 'images';
   info: {
@@ -1930,30 +1958,31 @@ export interface ApiImageImage extends Schema.CollectionType {
   };
 }
 
-export interface ApiImageImage extends Schema.CollectionType {
-  collectionName: 'images';
+export interface ApiImportantLinkImportantLink extends Schema.CollectionType {
+  collectionName: 'important_links';
   info: {
-    singularName: 'image';
-    pluralName: 'images';
-    displayName: 'image';
+    singularName: 'important-link';
+    pluralName: 'important-links';
+    displayName: 'importantLink';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    img: Attribute.Media;
-    text: Attribute.Text;
+    title: Attribute.String & Attribute.Required;
+    text: Attribute.String & Attribute.Required;
+    href: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::image.image',
+      'api::important-link.important-link',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::image.image',
+      'api::important-link.important-link',
       'oneToOne',
       'admin::user'
     > &
@@ -2252,6 +2281,36 @@ export interface ApiProgramTypeProgramType extends Schema.CollectionType {
   };
 }
 
+export interface ApiProviderProvider extends Schema.CollectionType {
+  collectionName: 'providers';
+  info: {
+    singularName: 'provider';
+    pluralName: 'providers';
+    displayName: 'provider';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    provider: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::provider.provider',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::provider.provider',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiRankingRanking extends Schema.CollectionType {
   collectionName: 'rankings';
   info: {
@@ -2320,6 +2379,39 @@ export interface ApiRankingBodyRankingBody extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::ranking-body.ranking-body',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiReviewReview extends Schema.CollectionType {
+  collectionName: 'reviews';
+  info: {
+    singularName: 'review';
+    pluralName: 'reviews';
+    displayName: 'review';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.Component<'colleges.title'>;
+    overallRating: Attribute.Integer & Attribute.Required;
+    individualReviews: Attribute.Component<'common.individual-reviews', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::review.review',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::review.review',
       'oneToOne',
       'admin::user'
     > &
@@ -2974,6 +3066,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::affiliation.affiliation': ApiAffiliationAffiliation;
+      'api::author.author': ApiAuthorAuthor;
       'api::avg-fee-per-year.avg-fee-per-year': ApiAvgFeePerYearAvgFeePerYear;
       'api::blog.blog': ApiBlogBlog;
       'api::button.button': ApiButtonButton;
@@ -2996,6 +3089,7 @@ declare module '@strapi/types' {
       'api::gender.gender': ApiGenderGender;
       'api::homepage.homepage': ApiHomepageHomepage;
       'api::image.image': ApiImageImage;
+      'api::important-link.important-link': ApiImportantLinkImportantLink;
       'api::list.list': ApiListList;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::new.new': ApiNewNew;
@@ -3003,8 +3097,10 @@ declare module '@strapi/types' {
       'api::organisation.organisation': ApiOrganisationOrganisation;
       'api::popular-company.popular-company': ApiPopularCompanyPopularCompany;
       'api::program-type.program-type': ApiProgramTypeProgramType;
+      'api::provider.provider': ApiProviderProvider;
       'api::ranking.ranking': ApiRankingRanking;
       'api::ranking-body.ranking-body': ApiRankingBodyRankingBody;
+      'api::review.review': ApiReviewReview;
       'api::scholarship.scholarship': ApiScholarshipScholarship;
       'api::scholarship-type.scholarship-type': ApiScholarshipTypeScholarshipType;
       'api::specialization.specialization': ApiSpecializationSpecialization;

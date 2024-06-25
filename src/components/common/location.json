@@ -1,7 +1,8 @@
 {
   "collectionName": "components_common_locations",
   "info": {
-    "displayName": "location"
+    "displayName": "location",
+    "description": ""
   },
   "options": {},
   "attributes": {

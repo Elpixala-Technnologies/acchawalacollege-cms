@@ -12,17 +12,172 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "bannerSection": {
-      "displayName": "bannerSection",
-      "type": "component",
-      "repeatable": false,
-      "component": "common.banner-section"
+    "slug": {
+      "type": "string",
+      "required": true
     },
-    "filterBy": {
-      "displayName": "filterBy",
+    "collegeLogo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "breadCrumb": {
+      "type": "string",
+      "required": true
+    },
+    "bgImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "collegeName": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "location": {
       "type": "component",
       "repeatable": false,
-      "component": "common.filter-by"
+      "component": "common.location"
+    },
+    "collegeType": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::colleges-type.colleges-type"
+    },
+    "affiliation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::affiliation.affiliation"
+    },
+    "estYear": {
+      "type": "biginteger",
+      "required": true
+    },
+    "exams": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::exam.exam",
+      "mappedBy": "college_datum"
+    },
+    "tabSections": {
+      "displayName": "tabSections",
+      "type": "component",
+      "repeatable": true,
+      "component": "common.tab-sections"
+    },
+    "topRecruiters": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.top-recruiters"
+    },
+    "brochureSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.brochure-section"
+    },
+    "reviews": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.reviews"
+    },
+    "photoGallery": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.photo-gallery"
+    },
+    "videoGallery": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.video-gallery"
+    },
+    "faqs": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.faqs2"
+    },
+    "scholarship": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.scholarship"
+    },
+    "campusSize": {
+      "type": "biginteger",
+      "required": true
+    },
+    "noOfFaculty": {
+      "type": "biginteger",
+      "required": true
+    },
+    "noOfStudents": {
+      "type": "biginteger",
+      "required": true
+    },
+    "avgFeePerYear": {
+      "type": "biginteger",
+      "required": true
+    },
+    "avgFeePerSem": {
+      "type": "biginteger",
+      "required": true
+    },
+    "avgPackage": {
+      "type": "biginteger",
+      "required": true
+    },
+    "genderAccepted": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::gender.gender"
+    },
+    "studyMode": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::exam-mode.exam-mode"
+    },
+    "isAbroadCollege": {
+      "type": "boolean",
+      "required": true
+    },
+    "collegeSequence": {
+      "type": "biginteger"
+    },
+    "isTopCollege": {
+      "type": "boolean",
+      "required": true
+    },
+    "topCollegeSequence": {
+      "type": "biginteger",
+      "required": true
+    },
+    "distanceFromAirport": {
+      "type": "biginteger",
+      "required": true
+    },
+    "tag": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tag.tag"
+    },
+    "banner1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.banner1"
     }
   }
 }

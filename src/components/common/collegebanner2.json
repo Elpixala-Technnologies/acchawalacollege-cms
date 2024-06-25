@@ -1,0 +1,45 @@
+{
+  "collectionName": "components_common_collegebanner2s",
+  "info": {
+    "displayName": "collegebanner2"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "displayName": "title2",
+      "type": "component",
+      "repeatable": false,
+      "component": "common.title2"
+    },
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "text1": {
+      "type": "text",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.button"
+    },
+    "img": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    },
+    "cards": {
+      "displayName": "cards",
+      "type": "component",
+      "repeatable": true,
+      "component": "common.cards"
+    }
+  }
+}
