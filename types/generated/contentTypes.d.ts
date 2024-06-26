@@ -1261,7 +1261,7 @@ export interface ApiCollegeDataCollegeData extends Schema.CollectionType {
     collegeSequence: Attribute.BigInteger;
     isTopCollege: Attribute.Boolean & Attribute.Required;
     topCollegeSequence: Attribute.BigInteger & Attribute.Required;
-    distanceFromAirport: Attribute.BigInteger & Attribute.Required;
+    distanceFromAirport: Attribute.Decimal & Attribute.Required;
     tag: Attribute.Relation<
       'api::college-data.college-data',
       'oneToOne',
