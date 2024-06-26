@@ -166,7 +166,7 @@
       "required": true
     },
     "distanceFromAirport": {
-      "type": "biginteger",
+      "type": "decimal",
       "required": true
     },
     "tag": {
