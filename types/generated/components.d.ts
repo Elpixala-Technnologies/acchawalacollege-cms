@@ -488,7 +488,7 @@ export interface CommonFaqs2 extends Schema.Component {
     description: '';
   };
   attributes: {
-    title: Attribute.Relation<'common.faqs2', 'oneToOne', 'api::title2.title2'>;
+    title: Attribute.Relation<'common.faqs2', 'oneToOne', 'api::title.title'>;
     faqs_questions_and_answers: Attribute.Relation<
       'common.faqs2',
       'oneToMany',
