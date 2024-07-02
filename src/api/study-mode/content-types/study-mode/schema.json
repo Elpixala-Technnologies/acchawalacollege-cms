@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "study_modes",
+  "info": {
+    "singularName": "study-mode",
+    "pluralName": "study-modes",
+    "displayName": "studyMode"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mode": {
+      "type": "string",
+      "required": true
+    },
+    "college_datum": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::college-data.college-data",
+      "inversedBy": "study_modes"
+    }
+  }
+}

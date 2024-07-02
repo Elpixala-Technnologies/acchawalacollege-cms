@@ -21,6 +21,9 @@
       "relation": "manyToMany",
       "target": "api::blog.blog",
       "inversedBy": "tags"
+    },
+    "sequence": {
+      "type": "biginteger"
     }
   }
 }

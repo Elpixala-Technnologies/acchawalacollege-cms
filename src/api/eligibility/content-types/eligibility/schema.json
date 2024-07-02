@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eligibilities",
+  "info": {
+    "singularName": "eligibility",
+    "pluralName": "eligibilities",
+    "displayName": "eligibility"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "eligibility": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
