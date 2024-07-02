@@ -1252,10 +1252,10 @@ export interface ApiCollegeDataCollegeData extends Schema.CollectionType {
       'oneToOne',
       'api::gender.gender'
     >;
-    studyMode: Attribute.Relation<
+    study_modes: Attribute.Relation<
       'api::college-data.college-data',
-      'oneToOne',
-      'api::exam-mode.exam-mode'
+      'oneToMany',
+      'api::study-mode.study-mode'
     >;
     isAbroadCollege: Attribute.Boolean & Attribute.Required;
     collegeSequence: Attribute.BigInteger;
@@ -1682,6 +1682,36 @@ export interface ApiDiscussionForumDiscussionForum
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::discussion-forum.discussion-forum',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiEligibilityEligibility extends Schema.CollectionType {
+  collectionName: 'eligibilities';
+  info: {
+    singularName: 'eligibility';
+    pluralName: 'eligibilities';
+    displayName: 'eligibility';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    eligibility: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::eligibility.eligibility',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::eligibility.eligibility',
       'oneToOne',
       'admin::user'
     > &
@@ -2737,6 +2767,41 @@ export interface ApiStreamStream extends Schema.CollectionType {
   };
 }
 
+export interface ApiStudyModeStudyMode extends Schema.CollectionType {
+  collectionName: 'study_modes';
+  info: {
+    singularName: 'study-mode';
+    pluralName: 'study-modes';
+    displayName: 'studyMode';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    mode: Attribute.String & Attribute.Required;
+    college_datum: Attribute.Relation<
+      'api::study-mode.study-mode',
+      'manyToOne',
+      'api::college-data.college-data'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::study-mode.study-mode',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::study-mode.study-mode',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiStylingStyling extends Schema.CollectionType {
   collectionName: 'stylings';
   info: {
@@ -2788,6 +2853,7 @@ export interface ApiTagTag extends Schema.CollectionType {
   attributes: {
     tags_name: Attribute.String & Attribute.Required;
     blogs: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::blog.blog'>;
+    sequence: Attribute.BigInteger;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -3082,6 +3148,7 @@ declare module '@strapi/types' {
       'api::course-level.course-level': ApiCourseLevelCourseLevel;
       'api::degree.degree': ApiDegreeDegree;
       'api::discussion-forum.discussion-forum': ApiDiscussionForumDiscussionForum;
+      'api::eligibility.eligibility': ApiEligibilityEligibility;
       'api::exam.exam': ApiExamExam;
       'api::exam-level.exam-level': ApiExamLevelExamLevel;
       'api::exam-mode.exam-mode': ApiExamModeExamMode;
@@ -3107,6 +3174,7 @@ declare module '@strapi/types' {
       'api::state.state': ApiStateState;
       'api::step.step': ApiStepStep;
       'api::stream.stream': ApiStreamStream;
+      'api::study-mode.study-mode': ApiStudyModeStudyMode;
       'api::styling.styling': ApiStylingStyling;
       'api::tag.tag': ApiTagTag;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;

@@ -1,7 +1,8 @@
 {
   "collectionName": "components_common_reviews",
   "info": {
-    "displayName": "reviews"
+    "displayName": "reviews",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -11,7 +12,7 @@
       "component": "colleges.title"
     },
     "overallRating": {
-      "type": "integer",
+      "type": "decimal",
       "required": true
     },
     "individualReviews": {
@@ -19,6 +20,10 @@
       "type": "component",
       "repeatable": true,
       "component": "common.individual-reviews"
+    },
+    "totalReviews": {
+      "type": "biginteger",
+      "required": true
     }
   }
 }

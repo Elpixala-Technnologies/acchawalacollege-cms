@@ -845,11 +845,13 @@ export interface CommonReviews extends Schema.Component {
   collectionName: 'components_common_reviews';
   info: {
     displayName: 'reviews';
+    description: '';
   };
   attributes: {
     title: Attribute.Component<'colleges.title'>;
-    overallRating: Attribute.Integer & Attribute.Required;
+    overallRating: Attribute.Decimal & Attribute.Required;
     individualReviews: Attribute.Component<'common.individual-reviews', true>;
+    totalReviews: Attribute.BigInteger & Attribute.Required;
   };
 }
 
@@ -920,9 +922,9 @@ export interface CommonScholarshipsArray extends Schema.Component {
     date: Attribute.Date;
     amount: Attribute.BigInteger & Attribute.Required;
     country: Attribute.String & Attribute.Required;
-    scholarship_type: Attribute.Relation<
+    scholarship_types: Attribute.Relation<
       'common.scholarships-array',
-      'oneToOne',
+      'oneToMany',
       'api::scholarship-type.scholarship-type'
     >;
     applicationStatus: Attribute.String & Attribute.Required;
@@ -933,15 +935,20 @@ export interface CommonScholarshipsArray extends Schema.Component {
     >;
     noOfScholarShipAvailable: Attribute.BigInteger;
     conductedBy: Attribute.String & Attribute.Required;
+    IsInternationalAllowed: Attribute.Boolean & Attribute.Required;
+    sequence: Attribute.BigInteger;
+    isTop: Attribute.Boolean & Attribute.Required;
+    topSequence: Attribute.BigInteger & Attribute.Required;
     courses: Attribute.Relation<
       'common.scholarships-array',
       'oneToMany',
       'api::course.course'
     >;
-    IsInternationalAllowed: Attribute.Boolean & Attribute.Required;
-    sequence: Attribute.BigInteger;
-    isTop: Attribute.Boolean & Attribute.Required;
-    topSequence: Attribute.BigInteger & Attribute.Required;
+    eligibilities: Attribute.Relation<
+      'common.scholarships-array',
+      'oneToMany',
+      'api::eligibility.eligibility'
+    >;
   };
 }
 
@@ -1078,10 +1085,11 @@ export interface CommonTabSections extends Schema.Component {
   collectionName: 'components_common_tab_sections';
   info: {
     displayName: 'tabSections';
+    description: '';
   };
   attributes: {
     navItem: Attribute.String & Attribute.Required;
-    sections: Attribute.Component<'common.sections'>;
+    sections: Attribute.Component<'common.sections', true>;
   };
 }
 

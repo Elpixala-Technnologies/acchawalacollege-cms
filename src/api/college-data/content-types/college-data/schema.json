@@ -145,10 +145,11 @@
       "relation": "oneToOne",
       "target": "api::gender.gender"
     },
-    "studyMode": {
+    "study_modes": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::exam-mode.exam-mode"
+      "relation": "oneToMany",
+      "target": "api::study-mode.study-mode",
+      "mappedBy": "college_datum"
     },
     "isAbroadCollege": {
       "type": "boolean",
