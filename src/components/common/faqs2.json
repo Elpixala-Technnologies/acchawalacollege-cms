@@ -9,7 +9,7 @@
     "title": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::title2.title2"
+      "target": "api::title.title"
     },
     "faqs_questions_and_answers": {
       "type": "relation",
