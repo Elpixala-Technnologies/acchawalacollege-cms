@@ -78,13 +78,6 @@
       "repeatable": false,
       "component": "common.seo"
     },
-    "review_component": {
-      "displayName": "review_component",
-      "type": "component",
-      "repeatable": false,
-      "component": "common.review-component",
-      "required": true
-    },
     "college_type": {
       "type": "relation",
       "relation": "oneToOne",

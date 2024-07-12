@@ -44,11 +44,7 @@
     "page_data": {
       "type": "dynamiczone",
       "components": [
-        "common.gallery",
-        "common.faq",
-        "common.new-overview",
-        "common.banner-component",
-        "common.recommended-college"
+        "common.placement-component"
       ]
     },
     "pin_code": {
@@ -105,13 +101,6 @@
         "videos",
         "audios"
       ]
-    },
-    "review_component": {
-      "displayName": "review_component",
-      "type": "component",
-      "repeatable": false,
-      "component": "common.review-component",
-      "required": true
     },
     "discussion_forums": {
       "type": "relation",

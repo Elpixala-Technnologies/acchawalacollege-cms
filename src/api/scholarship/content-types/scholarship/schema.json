@@ -127,11 +127,6 @@
       "target": "api::blog.blog",
       "inversedBy": "scholarships"
     },
-    "review_component": {
-      "type": "component",
-      "repeatable": true,
-      "component": "common.review-component"
-    },
     "news": {
       "type": "relation",
       "relation": "manyToMany",
