@@ -771,6 +771,28 @@ export interface CommonPhotoGallery extends Schema.Component {
   };
 }
 
+export interface CommonPlacementComponent extends Schema.Component {
+  collectionName: 'components_common_placement_components';
+  info: {
+    displayName: 'PlacementComponent';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    text: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    navbar: Attribute.Relation<
+      'common.placement-component',
+      'oneToOne',
+      'api::navbar.navbar'
+    >;
+  };
+}
+
 export interface CommonRecommendedCollege extends Schema.Component {
   collectionName: 'components_common_recommended_colleges';
   info: {
@@ -827,17 +849,6 @@ export interface CommonResultDate extends Schema.Component {
   attributes: {
     startDate: Attribute.Date;
     endDate: Attribute.Date;
-  };
-}
-
-export interface CommonReviewComponent extends Schema.Component {
-  collectionName: 'components_common_review_components';
-  info: {
-    displayName: 'review_component';
-  };
-  attributes: {
-    likes: Attribute.Component<'common.likes', true>;
-    dislikes: Attribute.Component<'common.dislikes', true>;
   };
 }
 
@@ -1328,11 +1339,11 @@ declare module '@strapi/types' {
       'common.new-overview': CommonNewOverview;
       'common.partners': CommonPartners;
       'common.photo-gallery': CommonPhotoGallery;
+      'common.placement-component': CommonPlacementComponent;
       'common.recommended-college': CommonRecommendedCollege;
       'common.recommended-courses': CommonRecommendedCourses;
       'common.recommended-exams': CommonRecommendedExams;
       'common.result-date': CommonResultDate;
-      'common.review-component': CommonReviewComponent;
       'common.reviews': CommonReviews;
       'common.scholarship-details': CommonScholarshipDetails;
       'common.scholarship-page': CommonScholarshipPage;

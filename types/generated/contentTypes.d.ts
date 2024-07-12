@@ -1027,15 +1027,7 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
     banner: Attribute.Media & Attribute.Required;
     logo: Attribute.Media & Attribute.Required;
     is_top: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>;
-    page_data: Attribute.DynamicZone<
-      [
-        'common.gallery',
-        'common.faq',
-        'common.new-overview',
-        'common.banner-component',
-        'common.recommended-college'
-      ]
-    >;
+    page_data: Attribute.DynamicZone<['common.placement-component']>;
     pin_code: Attribute.Integer & Attribute.Required;
     approved_by: Attribute.Relation<
       'api::college.college',
@@ -1065,8 +1057,6 @@ export interface ApiCollegeCollege extends Schema.CollectionType {
     courses: Attribute.Component<'course.course', true>;
     seo: Attribute.Component<'common.seo'>;
     dawonload_brochure: Attribute.Media & Attribute.Required;
-    review_component: Attribute.Component<'common.review-component'> &
-      Attribute.Required;
     discussion_forums: Attribute.Relation<
       'api::college.college',
       'manyToMany',
@@ -1476,8 +1466,6 @@ export interface ApiCourseCourse extends Schema.CollectionType {
       'api::state.state'
     >;
     seo: Attribute.Component<'common.seo'>;
-    review_component: Attribute.Component<'common.review-component'> &
-      Attribute.Required;
     college_type: Attribute.Relation<
       'api::course.course',
       'oneToOne',
@@ -2518,7 +2506,6 @@ export interface ApiScholarshipScholarship extends Schema.CollectionType {
       'manyToMany',
       'api::blog.blog'
     >;
-    review_component: Attribute.Component<'common.review-component', true>;
     news: Attribute.Relation<
       'api::scholarship.scholarship',
       'manyToMany',
